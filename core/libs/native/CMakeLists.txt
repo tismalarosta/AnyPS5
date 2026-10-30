@@ -10,7 +10,8 @@ endif()
 add_library(anyps5_native_graphics STATIC NativeAotThreads.cpp
     "${LIBS_INCLUDE_DIR}/prx/libSceLibcInternal/HeapTrace.cpp"
     "${LIBS_INCLUDE_DIR}/prx/libSceSysmodule/Export.cpp"
-    "${LIBS_INCLUDE_DIR}/prx/libSceSystemService/Export.cpp")
+    "${LIBS_INCLUDE_DIR}/prx/libSceSystemService/Export.cpp"
+    "${LIBS_INCLUDE_DIR}/prx/libSceSystemService/LoadExec.cpp")
 add_dependencies(anyps5_native_graphics agc_shader_headers agc_trace_revision)
 set_source_files_properties("${LIBS_INCLUDE_DIR}/prx/libkernel/System/src/Process.cpp"
     "${LIBS_INCLUDE_DIR}/prx/libc/src/ApplicationProcessParameters.cpp"
@@ -29,7 +30,6 @@ set(nativeUnsupportedSources
     "${LIBS_INCLUDE_DIR}/prx/libc/src/Formatting.cpp"
     "${LIBS_INCLUDE_DIR}/prx/libc/src/ScanningWide.cpp"
     "${LIBS_INCLUDE_DIR}/prx/libc/src/FormattingWide.cpp"
-    "${LIBS_INCLUDE_DIR}/prx/libc/src/JumpBuffer.cpp"
     "${LIBS_INCLUDE_DIR}/prx/libkernel/System/src/Exception.cpp"
     "${LIBS_INCLUDE_DIR}/prx/libkernel/System/src/UserContext.cpp"
     "${LIBS_INCLUDE_DIR}/prx/libc/src/exception/Exports.cpp")
@@ -207,6 +207,11 @@ add_test_executable(native_constant_bit_tests ../prx/libSceAgcDriver/tests/Const
 target_link_libraries(native_constant_bit_tests PRIVATE anyps5_native_graphics)
 add_test(NAME native_constant_bit COMMAND native_constant_bit_tests)
 set_tests_properties(native_constant_bit PROPERTIES TIMEOUT 30)
+
+add_test_executable(native_load_exec_link_tests ../tests/NativeLoadExecLink.cpp)
+target_link_libraries(native_load_exec_link_tests PRIVATE anyps5_native_graphics)
+add_test(NAME native_load_exec_link COMMAND native_load_exec_link_tests)
+set_tests_properties(native_load_exec_link PROPERTIES TIMEOUT 30)
 
 add_test_executable(native_direct_memory_alias_tests ../tests/NativeDirectMemoryAliases.cpp)
 target_link_libraries(native_direct_memory_alias_tests PRIVATE anyps5_native_graphics)
