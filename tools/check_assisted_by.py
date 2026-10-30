@@ -59,8 +59,9 @@ def check(commits, body):
     return errors
 
 
-def commits_between(base, head):
-    output = subprocess.run(["git", "log", "--no-merges", "--format=%H%x00%B%x1e", f"{base}..{head}"],
+def commits_between(base, head, first_parent=False):
+    walk = ["--first-parent"] if first_parent else []
+    output = subprocess.run(["git", "log", "--no-merges", *walk, "--format=%H%x00%B%x1e", f"{base}..{head}"],
                             capture_output=True, text=True, encoding="utf-8", check=True).stdout
     entries = []
     for record in output.split("\x1e"):
@@ -77,8 +78,9 @@ def main():
     parser.add_argument("--head", default="HEAD")
     parser.add_argument("--body", type=Path, help="file holding the pull request description")
     parser.add_argument("--authors-only", action="store_true", help="check only Co-authored-by and Signed-off-by")
+    parser.add_argument("--first-parent", action="store_true", help="skip commits merged in from other branches")
     arguments = parser.parse_args()
-    commits = commits_between(arguments.base, arguments.head)
+    commits = commits_between(arguments.base, arguments.head, arguments.first_parent)
     if arguments.authors_only:
         errors = check_authors(commits)
     elif arguments.body is None:

@@ -132,6 +132,18 @@ class GitTest(unittest.TestCase):
         result = self.run_script("--base", "arm64~1", "--head", topic, "--body", self.body(NO))
         self.assertEqual(result.returncode, 0, result.stderr)
 
+    def test_first_parent_skips_commits_merged_from_main(self):
+        self.git("switch", "-q", "-c", "upstream")
+        self.git("commit", "-q", "--allow-empty", "-m", "fix: theirs\n\nCo-authored-by: Claude Code <noreply@anthropic.com>")
+        self.git("switch", "-q", "arm64")
+        self.git("commit", "-q", "--allow-empty", "-m", "fix: ours\n\nAssisted-by: Claude Code")
+        self.git("merge", "-q", "--no-ff", "-m", "merge upstream", "upstream")
+        self.assertEqual(self.run_script("--base", self.base, "--authors-only").returncode, 1)
+        result = self.run_script("--base", self.base, "--authors-only", "--first-parent")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.git("commit", "-q", "--allow-empty", "-m", "fix: later\n\nCo-authored-by: Claude Code <noreply@anthropic.com>")
+        self.assertEqual(self.run_script("--base", self.base, "--authors-only", "--first-parent").returncode, 1)
+
     def test_authors_only_ignores_the_description(self):
         self.git("commit", "-q", "--allow-empty", "-m", "fix: one\n\nAssisted-by: Claude Code")
         self.assertEqual(self.run_script("--base", self.base, "--authors-only").returncode, 0)

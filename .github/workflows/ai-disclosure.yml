@@ -36,7 +36,7 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           printf '%s' "$BODY" > "$RUNNER_TEMP/body.md"
-          python3 -I tools/check_assisted_by.py --base "$BASE_SHA" --head "$HEAD_SHA" --body "$RUNNER_TEMP/body.md"
+          python3 -I tools/check_assisted_by.py --base "$BASE_SHA" --head "$HEAD_SHA" --body "$RUNNER_TEMP/body.md" --first-parent
 
   push:
     if: github.event_name == 'push'
@@ -53,4 +53,4 @@ jobs:
           AFTER: ${{ github.sha }}
         run: |
           if git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then base="$BEFORE"; else base="$(git merge-base "$AFTER" origin/main 2>/dev/null || echo "$AFTER^")"; fi
-          python3 -I tools/check_assisted_by.py --base "$base" --head "$AFTER" --authors-only
+          python3 -I tools/check_assisted_by.py --base "$base" --head "$AFTER" --authors-only --first-parent
