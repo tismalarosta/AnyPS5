@@ -13,6 +13,16 @@ Rules for the native Apple ARM64 compiler and runtime (`core/aot/`, `core/libs/n
 - Fixtures pinned to `clang-2100.3.34.2` are built with that exact compiler: Xcode 27.1 (27A9275) or Command Line Tools that report that build. Check `clang --version` before regenerating anything. The `xcode-27` CI job selects Xcode 27.1 and fails if the build string differs. If that compiler is no longer available, the pinned inputs are requalified with the new compiler under the rule above, never regenerated in place.
 - A flaky test gets an issue labelled `flaky` and the ctest property `DISABLED` with the issue number in the pull request that disables it. It is not retried until it passes.
 
+## What never goes in
+
+These keep the port on the interoperability side of the law. A change that breaks one is reverted.
+
+- No encryption keys, no decryption of executables or game data, and no code that removes or works around PS5 protection. Inputs are already decrypted homebrew or the user's own lawful dumps, as [unwrap_self.py](../../tools/unwrap_self.py) requires.
+- No PS5 SDK, firmware, system library binaries or unpublished documentation, leaked or otherwise, and nothing copied or translated from them. Disassembly is read to learn behaviour as [reading titles and libraries](REVERSE_ENGINEERING.md) describes; the code is written from that understanding, never pasted from decompiled output.
+- No game files, dumps or copyrighted assets in commits, pull requests, issues, logs or screenshots. Tests use homebrew and source-built fixtures.
+- No Sony or PlayStation logos, and nothing that suggests Sony endorses the port.
+- No payment tied to the port, and no help obtaining games.
+
 ## AI use
 
 AI tools may help write, read and test code. The person who opens the pull request is its author and answers for every line.
