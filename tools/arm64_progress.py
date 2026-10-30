@@ -17,6 +17,7 @@ GLOBAL_TYPES = set("TDSBRVW")
 DROPPED_WITH_VALUE = {"-o", "-MF", "-MT", "-MQ"}
 DROPPED = {"-c", "-MD", "-MMD"}
 HANDLER = re.compile(r"\bcase\s+RdnaOpcode::(\w+)\s*:")
+DECODED = re.compile(r"\{\s*0x[0-9a-fA-F]+u?\s*,\s*RdnaOpcode::(\w+)\s*,")
 CTEST_SUMMARY = re.compile(r"(\d+)% tests passed, (\d+) tests? failed out of (\d+)")
 LINE_MARKER = re.compile(r'^# \d+ "([^"]+)"')
 
@@ -148,25 +149,44 @@ def read_isa():
     return isa
 
 
+def shader_groups(isa, handled):
+    groups = {}
+    for name, encoding in isa.items():
+        group = groups.setdefault(encoding, {"name": encoding, "known": 0, "arm64": 0, "missing": []})
+        group["known"] += 1
+        if name in handled:
+            group["arm64"] += 1
+        else:
+            group["missing"].append(name)
+    return sorted(groups.values(), key=lambda g: (-g["known"], g["name"]))
+
+
+def shader_opcodes(text):
+    return set(HANDLER.findall(text)) | set(DECODED.findall(text))
+
+
 def shader_coverage(build, entries):
     isa = read_isa()
-    translation = source_root(build) / "core" / "shader" / "recompiler" / "Translation"
+    recompiler = source_root(build) / "core" / "shader" / "recompiler"
     upstream = set()
-    for source in (ROOT / "core" / "shader" / "recompiler" / "Translation").rglob("*.cpp"):
-        upstream.update(HANDLER.findall(progress.code(source.read_text(encoding="utf-8", errors="ignore"))))
+    for folder in ("Translation", "RdnaDecoder"):
+        for source in (ROOT / "core" / "shader" / "recompiler" / folder).rglob("*.cpp"):
+            upstream |= shader_opcodes(progress.code(source.read_text(encoding="utf-8", errors="ignore")))
     native = set()
     with tempfile.TemporaryDirectory() as scratch:
         for index, entry in enumerate(entries):
             if "shader_recompiler_native" not in entry.get("output", ""):
                 continue
             source = Path(entry["directory"], entry["file"]).resolve()
-            try:
-                source.relative_to(translation)
-            except ValueError:
+            if not any(source.is_relative_to(recompiler / folder) for folder in ("Translation", "RdnaDecoder")):
                 continue
-            native.update(HANDLER.findall(progress.code(preprocessed(entry, Path(scratch, f"{index}_{source.name}")))))
+            native |= shader_opcodes(progress.code(preprocessed(entry, Path(scratch, f"{index}_{source.name}"))))
+    handled = isa_names(native, isa)
+    groups = shader_groups(isa, handled)
     return {"known": len(isa), "upstream_declared": progress.collect_shaders()["done"],
-            "upstream_translated": len(isa_names(upstream, isa)), "arm64_translated": len(isa_names(native, isa))}
+            "upstream_translated": len(isa_names(upstream, isa)), "arm64_translated": len(handled),
+            "missing": sorted(name for g in groups for name in g["missing"]),
+            "groups": [{key: g[key] for key in ("name", "known", "arm64")} for g in groups]}
 
 
 def coverage(libraries, live, stub, symbols):

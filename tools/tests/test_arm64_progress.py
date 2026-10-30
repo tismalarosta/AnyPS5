@@ -94,6 +94,16 @@ class ShaderTest(unittest.TestCase):
         self.assertEqual(arm64_progress.isa_names(opcodes, self.ISA),
                          {"V_ADD_F32", "FLAT_LOAD_DWORD", "GLOBAL_LOAD_DWORD", "S_ENDPGM", "S_ENDPGM_SAVED"})
 
+    def test_decoder_table_entries_count(self):
+        text = "{0x63u, RdnaOpcode::ImageGather8hPck, nullptr, RdnaImageSampleFlagGatherHorizontal},"
+        self.assertEqual(arm64_progress.shader_opcodes(text), {"ImageGather8hPck"})
+
+    def test_groups_by_encoding_with_missing_names(self):
+        groups = arm64_progress.shader_groups(self.ISA, {"V_ADD_F32", "S_ENDPGM", "S_ENDPGM_SAVED"})
+        self.assertEqual({g["name"]: (g["known"], g["arm64"], g["missing"]) for g in groups},
+                         {"VOP2": (2, 1, ["V_MUL_F32"]), "FLAT": (2, 0, ["FLAT_LOAD_DWORD", "GLOBAL_LOAD_DWORD"]),
+                          "SOPP": (2, 2, [])})
+
     def test_mentions_outside_case_labels_do_not_count(self):
         self.assertEqual(arm64_progress.HANDLER.findall("if (op == RdnaOpcode::VMulF32) {}"), [])
 
