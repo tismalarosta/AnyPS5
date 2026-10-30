@@ -368,6 +368,8 @@ int APS5_VABI dlclose_nid_postfix(void* handle) {
         GuestAllocations::Mutation mutation;
 #ifdef _WIN32
         mutation.UnregisterImage(module->native);
+#elif defined(__APPLE__)
+        throw std::runtime_error("dlclose: unloading a guest module is not supported on macOS");
 #else
         mutation.UnregisterImage(reinterpret_cast<const void*>(static_cast<link_map*>(module->native)->l_addr));
 #endif
