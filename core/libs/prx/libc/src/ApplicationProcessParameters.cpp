@@ -57,6 +57,7 @@ const void* ApplicationEmptyProcessParameters_nid_no_patch() {
     return empty;
 }
 
+#ifndef APS5_NATIVE_AGGREGATE
 const void* ApplicationProcessParameters_nid_no_patch() {
 #ifdef _WIN32
     const auto* image = reinterpret_cast<const std::byte*>(GetModuleHandleW(nullptr));
@@ -122,3 +123,4 @@ const void* ApplicationProcessParameters_nid_no_patch() {
     throw std::runtime_error("application heap: unsupported executable format");
 #endif
 }
+#endif

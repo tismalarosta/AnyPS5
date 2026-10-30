@@ -13,13 +13,19 @@ add_library(anyps5_native_graphics STATIC NativeAotThreads.cpp
     "${LIBS_INCLUDE_DIR}/prx/libSceSystemService/Export.cpp")
 add_dependencies(anyps5_native_graphics agc_shader_headers agc_trace_revision)
 set_source_files_properties("${LIBS_INCLUDE_DIR}/prx/libkernel/System/src/Process.cpp"
+    "${LIBS_INCLUDE_DIR}/prx/libc/src/ApplicationProcessParameters.cpp"
     TARGET_DIRECTORY anyps5_native_graphics PROPERTIES COMPILE_DEFINITIONS APS5_NATIVE_AGGREGATE=1)
 set(nativeComponents libc libkernel libSceAgc libSceAgcDriver
     libSceVideoOut libScePad libSceMouse libSceKeyboard libSceIme)
 set(nativeUnsupportedSources
     "${LIBS_INCLUDE_DIR}/prx/libkernel/Pthread/src/GuestTlsMacOs.cpp"
-    "${LIBS_INCLUDE_DIR}/prx/libc/src/ApplicationProcessParameters.cpp"
     "${LIBS_INCLUDE_DIR}/prx/libc/src/Math.cpp"
+    "${LIBS_INCLUDE_DIR}/prx/libc/src/MathExact.cpp"
+    "${LIBS_INCLUDE_DIR}/prx/libc/src/Bessel.cpp"
+    "${LIBS_INCLUDE_DIR}/prx/libc/src/DinkumwareInternals.cpp"
+    "${LIBS_INCLUDE_DIR}/prx/libc/src/FloatBuiltins.cpp"
+    "${LIBS_INCLUDE_DIR}/prx/libc/src/FloatingPoint.cpp"
+    "${LIBS_INCLUDE_DIR}/prx/libc/src/AtomicBuiltins.cpp"
     "${LIBS_INCLUDE_DIR}/prx/libc/src/Formatting.cpp"
     "${LIBS_INCLUDE_DIR}/prx/libc/src/ScanningWide.cpp"
     "${LIBS_INCLUDE_DIR}/prx/libc/src/FormattingWide.cpp"
@@ -56,7 +62,7 @@ file(GLOB_RECURSE nativeShaderGuards CONFIGURE_DEPENDS
     "${LIBS_INCLUDE_DIR}/prx/libSceAgcDriver/*.h")
 list(FILTER nativeShaderGuards EXCLUDE REGEX "/(tests|tools)/")
 add_shader_recompiler(shader_recompiler_native native_runtime_platform GUARD_SOURCES ${nativeShaderGuards})
-target_link_libraries(anyps5_native_graphics PUBLIC jpeg_turbo SDL2-static shader_recompiler_native decoder_png_native native_runtime_platform anyps5_native_image)
+target_link_libraries(anyps5_native_graphics PUBLIC jpeg_turbo SDL2-static shader_recompiler_native decoder_png_native native_runtime_platform anyps5_native_image zarchive libzstd_static)
 if(ANYPS5_ENABLE_SPIRV_TOOLS)
     target_link_libraries(anyps5_native_graphics PUBLIC SPIRV-Tools-opt SPIRV-Tools-static)
 endif()
@@ -106,7 +112,7 @@ target_link_libraries(native_shared_memory_alias_tests PRIVATE anyps5_native_gra
 add_test(NAME native_shared_memory_alias COMMAND native_shared_memory_alias_tests)
 set_tests_properties(native_shared_memory_alias PROPERTIES TIMEOUT 20)
 
-add_test_executable(native_runtime_smoke NativeRuntimeSmoke.cpp)
+add_test_executable(native_runtime_smoke NativeRuntimeSmoke.cpp "${LIBS_INCLUDE_DIR}/prx/libSceUserService/Export.cpp")
 target_link_libraries(native_runtime_smoke PRIVATE anyps5_native_graphics)
 
 target_include_directories(native_runtime_smoke PRIVATE "${CMAKE_SOURCE_DIR}/core/shader/recompiler" "${CMAKE_SOURCE_DIR}/3rdparty/Vulkan-Headers/include")
