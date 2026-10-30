@@ -83,6 +83,21 @@ class CoverageTest(unittest.TestCase):
         self.assertEqual(arm64_progress.coverage({"total": 0, "groups": []}, {}, {}, set())["percent"], 0)
 
 
+class ShaderTest(unittest.TestCase):
+    ISA = {"V_ADD_F32": "VOP2", "FLAT_LOAD_DWORD": "FLAT", "GLOBAL_LOAD_DWORD": "FLAT", "S_ENDPGM": "SOPP",
+           "S_ENDPGM_SAVED": "SOPP", "V_MUL_F32": "VOP2"}
+
+    def test_handlers_map_to_isa_names(self):
+        text = "switch (op) { case RdnaOpcode::VAddF32: break; case RdnaOpcode::FlatLoadDword: case RdnaOpcode::SEndpgm: break; }"
+        opcodes = set(arm64_progress.HANDLER.findall(text))
+        self.assertEqual(opcodes, {"VAddF32", "FlatLoadDword", "SEndpgm"})
+        self.assertEqual(arm64_progress.isa_names(opcodes, self.ISA),
+                         {"V_ADD_F32", "FLAT_LOAD_DWORD", "GLOBAL_LOAD_DWORD", "S_ENDPGM", "S_ENDPGM_SAVED"})
+
+    def test_mentions_outside_case_labels_do_not_count(self):
+        self.assertEqual(arm64_progress.HANDLER.findall("if (op == RdnaOpcode::VMulF32) {}"), [])
+
+
 class CtestTest(unittest.TestCase):
     def test_reads_the_last_summary(self):
         log = "99% tests passed, 2 tests failed out of 737\n...\n100% tests passed, 0 tests failed out of 2\n"

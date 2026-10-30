@@ -16,6 +16,7 @@ MARK = "ANYPS5PROGRESSVABI"
 GLOBAL_TYPES = set("TDSBRVW")
 DROPPED_WITH_VALUE = {"-o", "-MF", "-MT", "-MQ"}
 DROPPED = {"-c", "-MD", "-MMD"}
+HANDLER = re.compile(r"\bcase\s+RdnaOpcode::(\w+)\s*:")
 CTEST_SUMMARY = re.compile(r"(\d+)% tests passed, (\d+) tests? failed out of (\d+)")
 LINE_MARKER = re.compile(r'^# \d+ "([^"]+)"')
 
@@ -88,10 +89,23 @@ def source_root(build):
     raise RuntimeError(f"{build} has no CMAKE_HOME_DIRECTORY in CMakeCache.txt")
 
 
-def compiled_libraries(build):
+def preprocessed(entry, copy):
+    source = Path(entry["directory"], entry["file"]).resolve()
+    copy.write_text(source.read_text(encoding="utf-8", errors="ignore").replace("APS5_VABI", MARK), encoding="utf-8")
+    result = subprocess.run(preprocess_arguments(entry["command"], source, copy), cwd=entry["directory"],
+                            capture_output=True, text=True, errors="replace")
+    if result.returncode:
+        raise RuntimeError(f"preprocessing {source} failed: {result.stderr.strip()[:400]}")
+    return main_file_lines(result.stdout, copy).replace(MARK, "APS5_VABI")
+
+
+def compile_entries(build):
+    return json.loads(subprocess.run(["ninja", "-C", str(build), "-t", "compdb"], capture_output=True, text=True,
+                                     check=True).stdout)
+
+
+def compiled_libraries(build, entries):
     prx = source_root(build) / "core" / "libs" / "prx"
-    entries = json.loads(subprocess.run(["ninja", "-C", str(build), "-t", "compdb"], capture_output=True, text=True,
-                                        check=True).stdout)
     live, stub = {}, {}
     with tempfile.TemporaryDirectory() as scratch:
         for entry in entries:
@@ -104,17 +118,55 @@ def compiled_libraries(build):
                 continue
             if "tests" in relative.parts:
                 continue
-            copy = Path(scratch, str(relative).replace("/", "__"))
-            copy.write_text(source.read_text(encoding="utf-8", errors="ignore").replace("APS5_VABI", MARK), encoding="utf-8")
-            result = subprocess.run(preprocess_arguments(entry["command"], source, copy), cwd=entry["directory"],
-                                    capture_output=True, text=True, errors="replace")
-            if result.returncode:
-                raise RuntimeError(f"preprocessing {relative} failed: {result.stderr.strip()[:400]}")
-            found_live, found_stub = scan_compiled(main_file_lines(result.stdout, copy).replace(MARK, "APS5_VABI"))
+            text = preprocessed(entry, Path(scratch, str(relative).replace("/", "__")))
+            found_live, found_stub = scan_compiled(text)
             library = relative.parts[0]
             live.setdefault(library, set()).update(found_live)
             stub.setdefault(library, set()).update(found_stub)
     return live, {library: names - live.get(library, set()) for library, names in stub.items()}
+
+
+def isa_names(opcodes, isa):
+    by_camel = {progress.camel(name): name for name in isa}
+    names = set()
+    for opcode in opcodes:
+        names.update(name for name in progress.OPCODE_VARIANTS.get(opcode, ()) if name in isa)
+        name = progress.OPCODE_ALIASES.get(opcode) or by_camel.get(opcode)
+        if name in isa:
+            names.add(name)
+            if name.startswith("FLAT_"):
+                names.update(n for n in (s + name.removeprefix("FLAT_") for s in progress.FLAT_SEGMENTS) if n in isa)
+    return names
+
+
+def read_isa():
+    isa = {}
+    for line in progress.ISA.read_text(encoding="utf-8", errors="ignore").splitlines():
+        if line and not line.startswith("#"):
+            name, encoding = line.split()
+            isa[name] = encoding
+    return isa
+
+
+def shader_coverage(build, entries):
+    isa = read_isa()
+    translation = source_root(build) / "core" / "shader" / "recompiler" / "Translation"
+    upstream = set()
+    for source in (ROOT / "core" / "shader" / "recompiler" / "Translation").rglob("*.cpp"):
+        upstream.update(HANDLER.findall(progress.code(source.read_text(encoding="utf-8", errors="ignore"))))
+    native = set()
+    with tempfile.TemporaryDirectory() as scratch:
+        for index, entry in enumerate(entries):
+            if "shader_recompiler_native" not in entry.get("output", ""):
+                continue
+            source = Path(entry["directory"], entry["file"]).resolve()
+            try:
+                source.relative_to(translation)
+            except ValueError:
+                continue
+            native.update(HANDLER.findall(progress.code(preprocessed(entry, Path(scratch, f"{index}_{source.name}")))))
+    return {"known": len(isa), "upstream_declared": progress.collect_shaders()["done"],
+            "upstream_translated": len(isa_names(upstream, isa)), "arm64_translated": len(isa_names(native, isa))}
 
 
 def coverage(libraries, live, stub, symbols):
@@ -160,9 +212,11 @@ def main():
     archives = sorted((arguments.build / "core" / "libs" / "native").glob("*.a")) + sorted((arguments.build / "core" / "aot").glob("*.a"))
     if not archives:
         parser.error(f"no ARM64 archives under {arguments.build}")
-    live, stub = compiled_libraries(arguments.build)
+    entries = compile_entries(arguments.build)
+    live, stub = compiled_libraries(arguments.build, entries)
     result = {"date": date.today().isoformat(), "commit": git("rev-parse", "--short", arguments.ref),
-              "libraries": coverage(progress.collect_libraries(), live, stub, archive_symbols(archives))}
+              "libraries": coverage(progress.collect_libraries(), live, stub, archive_symbols(archives)),
+              "shaders": shader_coverage(arguments.build, entries)}
     if arguments.ctest_log:
         result["tests"] = ctest_result(arguments.ctest_log.read_text(encoding="utf-8", errors="replace"))
     if arguments.upstream:
