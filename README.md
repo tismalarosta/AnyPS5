@@ -31,11 +31,14 @@ Includes a [relinker](core/relinker) that converts executable to the target syst
 
 ## Status
 
-[![libraries](https://boykopovar.github.io/AnyPS5/badge-libraries.svg)](https://boykopovar.github.io/AnyPS5/progress.html) [![shaders](https://boykopovar.github.io/AnyPS5/badge-shaders.svg)](https://boykopovar.github.io/AnyPS5/progress.html)
+Native Apple ARM64 (Mac) status of this branch:
 
-[![progress map](https://boykopovar.github.io/AnyPS5/progress.svg)](https://boykopovar.github.io/AnyPS5/progress.html)
+[![Mac system libraries](https://img.shields.io/badge/Mac%20system%20libraries-8.3%25-2ea043)](tools/arm64_progress.py) [![Mac GPU instructions](https://img.shields.io/badge/Mac%20GPU%20instructions-100%25-2ea043)](tools/arm64_progress.py)
 
-[Progress history](https://boykopovar.github.io/AnyPS5/history.html)
+- System libraries: 2,204 of the 26,673 known PS5 system library functions compile as real code in the native Mac build (Apple-only stubs are not counted). Each function is compiled, not tested one by one.
+- GPU: the shader recompiler in the native Mac build handles all 1,166 known GPU instructions. Translated shaders reach Metal through MoltenVK; this counts handled instructions, not shaders checked on screen.
+
+Measured on 31 October 2026 with [arm64_progress.py](tools/arm64_progress.py) on the native ARM64 build. Upstream's Windows and Linux progress is on its [progress page](https://boykopovar.github.io/AnyPS5/progress.html).
 
 <sub>* System libraries: percentage of the functions known to the project so far (declared in [core/libs/prx](core/libs/prx)), not of every PS5 system function. The total grows as more functions are declared.</sub>
 
