@@ -208,12 +208,14 @@ int main(void) {
             with self.subTest(instruction=instruction):
                 self.compare(instruction, self.random_samples(), 'memory')
 
-    def test_integer_and_shuffle_semantics_against_x86(self):
+    def test_integer_and_unpack_semantics_against_x86(self):
         operations = ['xorps', 'andps', 'orps', 'pand', 'pandn', 'por', 'unpcklps', 'unpckhps', 'unpcklpd',
                       'unpckhpd', 'punpcklqdq', 'punpckhqdq', 'movlhps', 'movhlps', 'paddd', 'pcmpgtd', 'packuswb']
         for operation in operations:
             with self.subTest(operation=operation):
                 self.compare(f'{operation} xmm0, xmm1', self.random_samples())
+
+    def test_immediate_shuffle_semantics_against_x86(self):
         for control in [0, 27, 78, 177, 228, 255]:
             for operation in ('shufps', 'pshufd'):
                 with self.subTest(operation=operation, control=control):
