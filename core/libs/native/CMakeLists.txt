@@ -208,6 +208,11 @@ target_link_libraries(native_constant_bit_tests PRIVATE anyps5_native_graphics)
 add_test(NAME native_constant_bit COMMAND native_constant_bit_tests)
 set_tests_properties(native_constant_bit PROPERTIES TIMEOUT 30)
 
+add_test_executable(native_agc_static_table_tests ../tests/NativeAgcStaticTable.cpp)
+target_link_libraries(native_agc_static_table_tests PRIVATE anyps5_native_graphics)
+add_test(NAME native_agc_static_table COMMAND native_agc_static_table_tests)
+set_tests_properties(native_agc_static_table PROPERTIES TIMEOUT 30)
+
 add_test_executable(native_load_exec_link_tests ../tests/NativeLoadExecLink.cpp)
 target_link_libraries(native_load_exec_link_tests PRIVATE anyps5_native_graphics)
 add_test(NAME native_load_exec_link COMMAND native_load_exec_link_tests)

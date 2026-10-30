@@ -53,6 +53,16 @@ int main() {
     std::puts("skipped: the static table lives at the PS5's fixed 0xfe0040000, which an ANYPS5_ENABLE_ASAN build cannot map");
     return 0;
 #endif
+#if defined(__APPLE__) && defined(__aarch64__)
+    std::array<std::uint64_t, 2> refused{};
+    try {
+        sceAgcGetStaticBuffer(0, refused.data());
+    } catch (const std::runtime_error& error) {
+        if (std::strcmp(error.what(), "the AGC static table at 0xfe0040000 is in the Apple ARM64 shared region guard and cannot be mapped") == 0) return 0;
+    }
+    std::fprintf(stderr, "the static table did not refuse on Apple ARM64\n");
+    return 1;
+#endif
     try {
         testBuffers();
         testQwords();

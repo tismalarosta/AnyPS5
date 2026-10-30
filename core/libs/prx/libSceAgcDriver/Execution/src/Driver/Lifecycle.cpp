@@ -68,6 +68,7 @@ constexpr std::uint32_t ScalarSetpcB64LinkS14 = 0xbe80200eu;
 constexpr std::uint32_t ScalarEndProgram = 0xbf810000u;
 constexpr std::uint64_t FsTableDword3 = 0x5204u;
 
+#if !(defined(__APPLE__) && defined(__aarch64__))
 void MapDriverMemory() {
     void* mapped;
 #ifdef _WIN32
@@ -104,6 +105,7 @@ void MapDriverMemory() {
     GuestAllocations::Mutation mutation;
     mutation.Add(mapped, DriverMemoryBytes, true, true, true);
 }
+#endif
 
 bool StackHoldsImport() {
 #ifdef _WIN32
@@ -208,8 +210,10 @@ void Driver::stop() {
 
 Driver::Driver() {
     InstallAsyncLog_nid_no_patch();
+#if !(defined(__APPLE__) && defined(__aarch64__))
     static const bool driverMemory = (MapDriverMemory(), true);
     static_cast<void>(driverMemory);
+#endif
     LibcSetExitDrain_nid_no_patch([] {
         const auto current = Driver::Get().device.Load();
         if (current) current->SavePipelineCache();
@@ -359,6 +363,10 @@ std::unique_lock<std::mutex> HoldAsyncLog() {
 }
 
 extern "C" void* AgcDriverStaticTable_nid_postfix() {
+#if defined(__APPLE__) && defined(__aarch64__)
+    throw std::runtime_error("the AGC static table at 0xfe0040000 is in the Apple ARM64 shared region guard and cannot be mapped");
+#else
     static_cast<void>(AgcDriver::DriverDetail::Driver::Get());
     return reinterpret_cast<void*>(AgcDriver::DriverDetail::FsTableAddress);
+#endif
 }
