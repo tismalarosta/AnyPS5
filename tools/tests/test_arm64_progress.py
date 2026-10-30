@@ -61,25 +61,25 @@ class ScanTest(unittest.TestCase):
 
 class CoverageTest(unittest.TestCase):
     LIBRARIES = {"total": 10, "groups": [
-        {"name": "libkernel", "done": 4, "done_names": ["a", "b", "c", "exit"]},
-        {"name": "libSceEmpty", "done": 0, "done_names": []},
-        {"name": "libc", "done": 2, "done_names": ["d", "exit"]}]}
+        {"name": "libkernel", "done": 4, "todo": 2, "done_names": ["a", "b", "c", "exit"]},
+        {"name": "libSceEmpty", "done": 0, "todo": 0, "done_names": []},
+        {"name": "libSceTodo", "done": 0, "todo": 2, "done_names": []},
+        {"name": "libc", "done": 2, "todo": 0, "done_names": ["d", "exit"]}]}
 
-    def test_counts_live_compiled_symbols_once(self):
+    def test_counts_live_compiled_symbols_once_against_all_known(self):
         live = {"libkernel": {"a", "b"}, "libc": {"d", "exit"}}
         stub = {"libkernel": {"c"}}
         result = arm64_progress.coverage(self.LIBRARIES, live, stub, {"a", "c", "d", "exit", "zzz"})
-        self.assertEqual((result["upstream_done"], result["arm64"], result["arm64_stubs"], result["upstream_total"]),
-                         (6, 3, 1, 10))
-        self.assertEqual(result["percent"], 50.0)
-        self.assertEqual({g["name"]: g["arm64"] for g in result["groups"]}, {"libkernel": 1, "libc": 2})
+        self.assertEqual((result["known"], result["upstream_done"], result["arm64"], result["arm64_stubs"]), (10, 6, 3, 1))
+        self.assertEqual((result["percent"], result["upstream_percent"], result["of_upstream_percent"]), (30.0, 60.0, 50.0))
+        self.assertEqual({g["name"]: (g["arm64"], g["known"]) for g in result["groups"]},
+                         {"libkernel": (1, 6), "libc": (2, 2), "libSceTodo": (0, 2)})
 
     def test_a_name_live_in_two_libraries_counts_once(self):
         live = {"libkernel": {"exit"}, "libc": {"exit"}}
-        result = arm64_progress.coverage(self.LIBRARIES, live, {}, {"exit"})
-        self.assertEqual(result["arm64"], 1)
+        self.assertEqual(arm64_progress.coverage(self.LIBRARIES, live, {}, {"exit"})["arm64"], 1)
 
-    def test_no_implemented_functions(self):
+    def test_no_known_functions(self):
         self.assertEqual(arm64_progress.coverage({"total": 0, "groups": []}, {}, {}, set())["percent"], 0)
 
 

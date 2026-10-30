@@ -120,16 +120,20 @@ def compiled_libraries(build):
 def coverage(libraries, live, stub, symbols):
     groups, counted, stubbed = [], set(), 0
     for group in libraries["groups"]:
-        if not group["done"]:
+        known = group["done"] + group["todo"]
+        if not known:
             continue
         done = set(group["done_names"])
         native = sorted((done & live.get(group["name"], set()) & symbols) - counted)
         counted.update(native)
         stubbed += len(done & stub.get(group["name"], set()))
-        groups.append({"name": group["name"], "upstream_done": group["done"], "arm64": len(native)})
+        groups.append({"name": group["name"], "known": known, "upstream_done": group["done"], "arm64": len(native)})
+    known = sum(g["known"] for g in groups)
     upstream_done = sum(g["upstream_done"] for g in groups)
-    return {"upstream_done": upstream_done, "upstream_total": libraries["total"], "arm64": len(counted),
-            "arm64_stubs": stubbed, "percent": round(100 * len(counted) / upstream_done, 2) if upstream_done else 0,
+    share = lambda part, whole: round(100 * part / whole, 2) if whole else 0
+    return {"known": known, "upstream_done": upstream_done, "arm64": len(counted), "arm64_stubs": stubbed,
+            "percent": share(len(counted), known), "upstream_percent": share(upstream_done, known),
+            "of_upstream_percent": share(len(counted), upstream_done),
             "groups": sorted(groups, key=lambda g: (-g["arm64"], g["name"]))}
 
 
