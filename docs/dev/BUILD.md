@@ -474,7 +474,7 @@ The first command writes the contracts and `generated-contracts.derivation.json`
 Requirements: Apple Silicon, a logged-in macOS graphical session, Apple clang 21.0.0 (`clang-2100.3.34.2`), CMake, Ninja and Python 3. The input contract is hash-bound; another compiler revision that changes the ELF is rejected and requires contract requalification. Install a native Vulkan loader and MoltenVK; the validated driver is MoltenVK 1.4.2. Set `DYLD_LIBRARY_PATH` to the directory containing `libvulkan.1.dylib`, `SDL_VULKAN_LIBRARY` to that library, and `VK_ICD_FILENAMES` to the MoltenVK ICD JSON. These are GPU driver dependencies, not another AnyPS5 checkout. Do not set `APS5_*` diagnostic overrides for the acceptance run.
 
 ```sh
-git submodule update --init 3rdparty/capstone 3rdparty/pyelftools 3rdparty/ps5link-sdk 3rdparty/SDL2 3rdparty/Vulkan-Headers 3rdparty/SPIRV-Headers 3rdparty/SPIRV-Tools 3rdparty/glslang 3rdparty/VulkanMemoryAllocator 3rdparty/ffmpeg-core 3rdparty/freetype 3rdparty/stb 3rdparty/libjpeg-turbo 3rdparty/LibAtrac9
+git submodule update --init --recursive 3rdparty/capstone 3rdparty/pyelftools 3rdparty/ps5link-sdk 3rdparty/SDL2 3rdparty/Vulkan-Headers 3rdparty/SPIRV-Headers 3rdparty/SPIRV-Tools 3rdparty/glslang 3rdparty/VulkanMemoryAllocator 3rdparty/ffmpeg-core 3rdparty/freetype 3rdparty/stb 3rdparty/libjpeg-turbo 3rdparty/LibAtrac9 3rdparty/libusb-cmake 3rdparty/mbedtls
 cmake -S . -B build-graphics -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=arm64 -DANYPS5_NATIVE_AOT=ON -DANYPS5_NATIVE_GRAPHICS=ON -DBUILD_TESTING=OFF
 cmake --build build-graphics --target native_gpu_cube_check --parallel 6
 ```

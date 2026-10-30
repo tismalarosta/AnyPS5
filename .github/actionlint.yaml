@@ -1,3 +1,4 @@
 self-hosted-runner:
   labels:
     - anyps5
+    - xcode-27

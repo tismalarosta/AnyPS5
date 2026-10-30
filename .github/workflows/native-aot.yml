@@ -2,7 +2,7 @@ name: Native ARM64 AOT
 
 on:
   push:
-    branches: ['feature/aot-native-runtime']
+    branches: ['feature/aot-native-runtime', 'arm64']
   pull_request:
     paths:
       - 'core/aot/**'
@@ -38,12 +38,16 @@ jobs:
         include:
           - os: macos-15
             example: 'ON'
+          - os: xcode-27
+            example: 'ON'
+            xcode: '/Applications/Xcode_27.1.app'
+            pinned_clang: 'clang-2100.3.34.2'
           - os: ubuntu-latest
             example: 'ON'
           - os: ubuntu-24.04-arm
             example: 'ON'
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 15
+    timeout-minutes: ${{ matrix.xcode && 45 || 15 }}
     steps:
       - uses: actions/checkout@v7
       - run: git submodule update --init 3rdparty/capstone 3rdparty/pyelftools
@@ -52,6 +56,14 @@ jobs:
         run: test "$(uname -m)" = arm64
       - if: runner.os == 'macOS'
         run: /usr/bin/arch -x86_64 /usr/bin/true
+      - if: matrix.xcode
+        env:
+          XCODE: ${{ matrix.xcode }}
+        run: sudo xcode-select -s "$XCODE"
+      - if: matrix.pinned_clang
+        env:
+          PINNED: ${{ matrix.pinned_clang }}
+        run: clang --version | head -1 | grep -F "($PINNED)"
       - run: cmake -S . -B build-aot -G Ninja -DCMAKE_BUILD_TYPE=Release -DANYPS5_RELINKER_ONLY=ON -DANYPS5_NATIVE_AOT=ON -DBUILD_TESTING=ON -DANYPS5_NATIVE_AOT_EXAMPLE=${{ matrix.example }}
       - if: matrix.os != 'ubuntu-24.04-arm'
         run: cmake --build build-aot --parallel 3
