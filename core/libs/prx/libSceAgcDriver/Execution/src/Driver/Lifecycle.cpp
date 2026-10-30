@@ -81,7 +81,12 @@ void MapDriverMemory() {
 #endif
     if (mapped == MAP_FAILED) throw std::system_error(errno, std::generic_category(), "map the AGC driver memory");
 #endif
-    if (reinterpret_cast<std::uint64_t>(mapped) != DriverMemoryAddress) throw std::runtime_error("the AGC driver memory was not mapped at its fixed address");
+    if (reinterpret_cast<std::uint64_t>(mapped) != DriverMemoryAddress) {
+#ifndef _WIN32
+        munmap(mapped, DriverMemoryBytes);
+#endif
+        throw std::runtime_error("the AGC driver memory was not mapped at its fixed address");
+    }
     auto* routineTable = reinterpret_cast<std::uint64_t*>(FsRoutineTableAddress);
     for (std::uint64_t record = 0; record < FsRoutineRecords; ++record) {
         routineTable[record * 2u] = FsRoutineAddress;

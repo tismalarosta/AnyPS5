@@ -138,8 +138,10 @@ add_custom_command(OUTPUT "${cubeArtifacts}/module.o" "${cubeArtifacts}/referenc
     DEPENDS capstone_shared ${cubeBuildInputs}
     VERBATIM)
 set_source_files_properties("${cubeArtifacts}/module.o" "${cubeArtifacts}/reference.o" PROPERTIES GENERATED TRUE EXTERNAL_OBJECT TRUE)
-add_executable(native_gpu_cube EXCLUDE_FROM_ALL NativeCubeLauncher.cpp "${cubeArtifacts}/module.o")
-add_executable(native_gpu_cube_reference EXCLUDE_FROM_ALL NativeCubeReference.cpp "${cubeArtifacts}/reference.o")
+add_executable(native_gpu_cube EXCLUDE_FROM_ALL NativeCubeLauncher.cpp "${cubeArtifacts}/module.o"
+    "${LIBS_INCLUDE_DIR}/prx/libSceUserService/Export.cpp")
+add_executable(native_gpu_cube_reference EXCLUDE_FROM_ALL NativeCubeReference.cpp "${cubeArtifacts}/reference.o"
+    "${LIBS_INCLUDE_DIR}/prx/libSceUserService/Export.cpp")
 target_link_libraries(native_gpu_cube PRIVATE anyps5_native_graphics)
 target_link_libraries(native_gpu_cube_reference PRIVATE anyps5_native_graphics)
 add_custom_target(native_gpu_cube_build DEPENDS native_gpu_cube native_gpu_cube_reference)
@@ -171,7 +173,7 @@ add_custom_target(native_gpu_cube_check
     DEPENDS native_gpu_cube native_gpu_cube_reference
     USES_TERMINAL VERBATIM)
 
-foreach(test IN ITEMS GuestSocketEvents GuestSocketPair GuestEqueueEvents GuestKernelFcntl)
+foreach(test IN ITEMS GuestSocketEvents GuestSocketPair GuestEqueueEvents GuestKernelFcntl GuestSyncOnAddress)
     string(TOLOWER "${test}" lower)
     add_test_executable(native_${lower}_tests "${LIBS_INCLUDE_DIR}/tests/${test}.cpp")
     target_link_libraries(native_${lower}_tests PRIVATE anyps5_native_graphics)

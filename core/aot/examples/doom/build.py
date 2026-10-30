@@ -105,7 +105,8 @@ def main():
                  'libjpeg-turbo/lib/libturbojpeg.a', '3rdparty/SDL2/libSDL2.a', 'core/libs/native/libshader_recompiler_native.a',
                  '3rdparty/glslang/SPIRV/libSPIRV.a', '3rdparty/glslang/glslang/libglslang.a',
                  'core/libs/native/libdecoder_png_native.a', 'core/aot/libanyps5_native_image.a',
-                 '3rdparty/mbedtls/library/libmbedx509.a', '3rdparty/mbedtls/library/libmbedcrypto.a', '3rdparty/mbedtls/3rdparty/p256-m/libp256m.a']
+                 '3rdparty/mbedtls/library/libmbedx509.a', '3rdparty/mbedtls/library/libmbedcrypto.a', '3rdparty/mbedtls/3rdparty/p256-m/libp256m.a',
+                 'libzarchive.a', '3rdparty/zstd/lib/libzstd.a']
     frameworks = ['CoreVideo', 'Cocoa', 'IOKit', 'ForceFeedback', 'Carbon', 'CoreAudio', 'AudioToolbox', 'AVFoundation',
                   'Foundation', 'GameController', 'Metal', 'QuartzCore', 'CoreHaptics', 'CoreFoundation']
     link = ['-Wl,-dead_strip'] + [str(path) for path in objects] + [str(build / path) for path in libraries]

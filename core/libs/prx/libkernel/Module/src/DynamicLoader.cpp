@@ -22,6 +22,7 @@
 #endif
 #include <windows.h>
 #elif defined(__APPLE__)
+#include "prx/libc/include/specifics/linux/ElfTypes.hpp"
 #include <dlfcn.h>
 #include <mach-o/dyld.h>
 #else
@@ -147,6 +148,26 @@ void* FindSymbol(Module& module, const char* name) {
 #endif
 }
 }
+
+#ifdef __APPLE__
+static std::uintptr_t GuestImageBias(void* native) {
+    struct Search {
+        void* native;
+        std::uintptr_t bias;
+    } search{native, 0};
+    dl_iterate_phdr([](dl_phdr_info* image, std::size_t, void* data) {
+        auto& found = *static_cast<Search*>(data);
+        if (image->dlpi_name == nullptr || *image->dlpi_name == '\0') return 0;
+        void* handle = ::dlopen(image->dlpi_name, RTLD_LAZY | RTLD_NOLOAD);
+        if (handle == nullptr) return 0;
+        ::dlclose(handle);
+        if (handle != found.native) return 0;
+        found.bias = static_cast<std::uintptr_t>(image->dlpi_addr);
+        return 1;
+    }, &search);
+    return search.bias;
+}
+#endif
 
 extern "C" {
 char* APS5_VABI dlerror_nid_postfix() {
@@ -298,6 +319,9 @@ void* APS5_VABI dlopen_nid_postfix(const char* path, int flags) {
 #ifdef __linux__
         if (path) InitializeLinuxGuestModule(module->native);
 #endif
+#ifdef __APPLE__
+        if (!path) module->owned = false;
+#endif
 #endif
         std::lock_guard lock(modulesMutex);
         const auto handle = nextHandle++;
@@ -369,7 +393,7 @@ int APS5_VABI dlclose_nid_postfix(void* handle) {
 #ifdef _WIN32
         mutation.UnregisterImage(module->native);
 #elif defined(__APPLE__)
-        throw std::runtime_error("dlclose: unloading a guest module is not supported on macOS");
+        if (const auto bias = GuestImageBias(module->native)) mutation.UnregisterImage(reinterpret_cast<const void*>(bias));
 #else
         mutation.UnregisterImage(reinterpret_cast<const void*>(static_cast<link_map*>(module->native)->l_addr));
 #endif
