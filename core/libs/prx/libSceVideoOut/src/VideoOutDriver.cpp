@@ -29,6 +29,7 @@
 #include "prx/libSceVideoOut/include/FrameTimingLog.hpp"
 #endif
 #include "prx/libSceAgcDriver/Execution/include/Driver.hpp"
+#include "prx/libSceAgcDriver/Execution/include/CaptureTrace.hpp"
 #include "prx/libSceAgcDriver/Execution/include/HostHdr.hpp"
 #include "prx/libSceAgcDriver/Execution/include/Presentation.hpp"
 #include "prx/libSceIme/include/ImeKeyboardView.hpp"
@@ -646,6 +647,7 @@ void VideoOutDriver::processFlip(FlipRequest& req) {
     require(req.cfg->flipStatus.count != std::numeric_limits<uint64_t>::max(), "flip counter overflow");
     triggerEvents(*req.cfg, VIDEO_OUT_EVENT_FLIP, reinterpret_cast<void*>(req.flipArg));
     ++req.cfg->flipStatus.count;
+    AgcDriver::CaptureTrace::Log("display-flip-complete output=%u buffer=%d argument=%lld", req.outputHandle, req.index, static_cast<long long>(req.flipArg));
     req.cfg->flipStatus.processTime = sceKernelGetProcessTime();
     req.cfg->flipStatus.processTimeCounter = sceKernelGetProcessTimeCounter();
     req.cfg->flipStatus.flipArg = req.flipArg;
