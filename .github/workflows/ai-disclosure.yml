@@ -1,0 +1,56 @@
+name: AI disclosure
+
+on:
+  pull_request_target:
+    branches: ['arm64']
+    types: [opened, edited, synchronize, reopened]
+  push:
+    branches: ['arm64']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ai-disclosure-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request_target' }}
+
+jobs:
+  pull-request:
+    if: github.event_name == 'pull_request_target'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Fetch pull request objects without checking out its code
+        env:
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: git fetch --no-tags origin "$HEAD_SHA"
+      - name: Check disclosure with the trusted base script
+        env:
+          BODY: ${{ github.event.pull_request.body }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          printf '%s' "$BODY" > "$RUNNER_TEMP/body.md"
+          python3 -I tools/check_assisted_by.py --base "$BASE_SHA" --head "$HEAD_SHA" --body "$RUNNER_TEMP/body.md"
+
+  push:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check pushed commits for AI authors
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          if git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then base="$BEFORE"; else base="$(git merge-base "$AFTER" origin/main 2>/dev/null || echo "$AFTER^")"; fi
+          python3 -I tools/check_assisted_by.py --base "$base" --head "$AFTER" --authors-only

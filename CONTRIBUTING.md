@@ -22,6 +22,8 @@
 
 Toolchains are listed in the [build instructions](docs/dev/BUILD.md).
 
+Changes to the native ARM64 compiler and runtime also follow the [ARM64 port rules](docs/dev/ARM64.md), including its rules on AI use.
+
 For relinker changes, use the [relinker-only build](docs/dev/BUILD.md#relinker-only) to build and test without third-party submodules, system libraries or a GPU. It also works on macOS. Changes to system libraries or shaders still need the full build and relevant runtime tests.
 
 ```
