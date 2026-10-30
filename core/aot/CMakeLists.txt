@@ -72,31 +72,232 @@ if(BUILD_TESTING)
     target_link_libraries(native_aot_image_tests PRIVATE anyps5_native_image)
     add_test(NAME native_aot_image COMMAND native_aot_image_tests)
     set_tests_properties(native_aot_image PROPERTIES TIMEOUT 30)
-    if(APPLE)
-        file(GLOB testSources CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_*.py")
-    else()
-        set(testSources "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_portable.py"
-            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_contract_recipe.py"
-            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_provider_catalog.py"
-            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_debug_candidates.py"
-            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_load_facts.py")
-    endif()
-    foreach(testSource IN LISTS testSources)
+    set(aotTestCommand ${CMAKE_COMMAND} -E env ${aotClangEnvironment}
+        "LIBCAPSTONE_PATH=$<TARGET_FILE_DIR:capstone_shared>" "PYTHONPATH=${aotPythonPath}" ${Python3_EXECUTABLE})
+    function(aot_test_cases testSource)
         get_filename_component(suite "${testSource}" NAME_WE)
         string(REGEX REPLACE "^test_" "" suite "${suite}")
         set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${testSource}")
         execute_process(COMMAND ${Python3_EXECUTABLE} "${CMAKE_CURRENT_SOURCE_DIR}/tests/list_cases.py" "${testSource}"
             OUTPUT_VARIABLE cases OUTPUT_STRIP_TRAILING_WHITESPACE COMMAND_ERROR_IS_FATAL ANY)
         string(REPLACE "\n" ";" cases "${cases}")
+        list(POP_FRONT cases first)
         foreach(case IN LISTS cases)
-            add_test(NAME native_aot_${suite}.${case}
-                COMMAND ${CMAKE_COMMAND} -E env ${aotClangEnvironment}
-                    "LIBCAPSTONE_PATH=$<TARGET_FILE_DIR:capstone_shared>"
-                    "PYTHONPATH=${aotPythonPath}"
-                    ${Python3_EXECUTABLE} "${testSource}" "${case}")
+            add_test(NAME native_aot_${suite}.${case} COMMAND ${aotTestCommand} "${testSource}" "${case}")
             set_tests_properties(native_aot_${suite}.${case} PROPERTIES TIMEOUT 30)
         endforeach()
-    endforeach()
+        set(aotFirstCase "${first}" PARENT_SCOPE)
+    endfunction()
+    aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_portable.py")
+    add_test(NAME native_aot_portable.${aotFirstCase} COMMAND ${aotTestCommand}
+        "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_portable.py" "${aotFirstCase}")
+    set_tests_properties(native_aot_portable.${aotFirstCase} PROPERTIES TIMEOUT 30)
+    aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_contract_recipe.py")
+    add_test(NAME native_aot_contract_recipe.${aotFirstCase} COMMAND ${aotTestCommand}
+        "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_contract_recipe.py" "${aotFirstCase}")
+    set_tests_properties(native_aot_contract_recipe.${aotFirstCase} PROPERTIES TIMEOUT 30)
+    aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_provider_catalog.py")
+    add_test(NAME native_aot_provider_catalog.${aotFirstCase} COMMAND ${aotTestCommand}
+        "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_provider_catalog.py" "${aotFirstCase}")
+    set_tests_properties(native_aot_provider_catalog.${aotFirstCase} PROPERTIES TIMEOUT 30)
+    aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_debug_candidates.py")
+    add_test(NAME native_aot_debug_candidates.${aotFirstCase} COMMAND ${aotTestCommand}
+        "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_debug_candidates.py" "${aotFirstCase}")
+    set_tests_properties(native_aot_debug_candidates.${aotFirstCase} PROPERTIES TIMEOUT 30)
+    aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_load_facts.py")
+    add_test(NAME native_aot_load_facts.${aotFirstCase} COMMAND ${aotTestCommand}
+        "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_load_facts.py" "${aotFirstCase}")
+    set_tests_properties(native_aot_load_facts.${aotFirstCase} PROPERTIES TIMEOUT 30)
+    if(APPLE)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_abi.py")
+        add_test(NAME native_aot_abi.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_abi.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_abi.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_avx.py")
+        add_test(NAME native_aot_avx.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_avx.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_avx.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_bundle.py")
+        add_test(NAME native_aot_bundle.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_bundle.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_bundle.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_calls.py")
+        add_test(NAME native_aot_calls.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_calls.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_calls.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_checked_pointers.py")
+        add_test(NAME native_aot_checked_pointers.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_checked_pointers.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_checked_pointers.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_checked_stack.py")
+        add_test(NAME native_aot_checked_stack.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_checked_stack.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_checked_stack.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_compiler.py")
+        add_test(NAME native_aot_compiler.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_compiler.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_compiler.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_contract_recipe_execution.py")
+        add_test(NAME native_aot_contract_recipe_execution.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_contract_recipe_execution.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_contract_recipe_execution.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_debug_pointer_loads.py")
+        add_test(NAME native_aot_debug_pointer_loads.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_debug_pointer_loads.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_debug_pointer_loads.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_doom_replay.py")
+        add_test(NAME native_aot_doom_replay.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_doom_replay.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_doom_replay.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_dynamic.py")
+        add_test(NAME native_aot_dynamic.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_dynamic.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_dynamic.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_effects.py")
+        add_test(NAME native_aot_effects.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_effects.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_effects.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_finite_tables.py")
+        add_test(NAME native_aot_finite_tables.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_finite_tables.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_finite_tables.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_graphics_invariants.py")
+        add_test(NAME native_aot_graphics_invariants.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_graphics_invariants.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_graphics_invariants.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_avx.py")
+        add_test(NAME native_aot_guest_avx.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_avx.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_avx.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_bit_test.py")
+        add_test(NAME native_aot_guest_bit_test.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_bit_test.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_bit_test.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_bulk.py")
+        add_test(NAME native_aot_guest_bulk.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_bulk.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_bulk.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_bundle.py")
+        add_test(NAME native_aot_guest_bundle.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_bundle.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_bundle.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_call_boundaries.py")
+        add_test(NAME native_aot_guest_call_boundaries.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_call_boundaries.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_call_boundaries.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_call_effects.py")
+        add_test(NAME native_aot_guest_call_effects.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_call_effects.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_call_effects.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_epoch_calls.py")
+        add_test(NAME native_aot_guest_epoch_calls.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_epoch_calls.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_epoch_calls.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_extract_endian.py")
+        add_test(NAME native_aot_guest_extract_endian.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_extract_endian.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_extract_endian.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_lowering.py")
+        add_test(NAME native_aot_guest_lowering.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_lowering.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_lowering.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_profiles.py")
+        add_test(NAME native_aot_guest_profiles.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_profiles.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_profiles.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_value_leaves.py")
+        add_test(NAME native_aot_guest_value_leaves.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_value_leaves.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_value_leaves.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_vex_float.py")
+        add_test(NAME native_aot_guest_vex_float.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_vex_float.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_vex_float.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_vex_integer.py")
+        add_test(NAME native_aot_guest_vex_integer.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_vex_integer.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_vex_integer.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_vex_mask_fma.py")
+        add_test(NAME native_aot_guest_vex_mask_fma.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_vex_mask_fma.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_vex_mask_fma.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_vex_moves.py")
+        add_test(NAME native_aot_guest_vex_moves.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_vex_moves.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_vex_moves.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_vex_permute.py")
+        add_test(NAME native_aot_guest_vex_permute.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_vex_permute.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_vex_permute.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_vex_residual.py")
+        add_test(NAME native_aot_guest_vex_residual.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_guest_vex_residual.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_guest_vex_residual.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_immutable_data.py")
+        add_test(NAME native_aot_immutable_data.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_immutable_data.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_immutable_data.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_integer.py")
+        add_test(NAME native_aot_integer.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_integer.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_integer.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_loop_ranges.py")
+        add_test(NAME native_aot_loop_ranges.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_loop_ranges.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_loop_ranges.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_memory_writes.py")
+        add_test(NAME native_aot_memory_writes.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_memory_writes.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_memory_writes.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_module_lifecycle.py")
+        add_test(NAME native_aot_module_lifecycle.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_module_lifecycle.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_module_lifecycle.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_module_tls.py")
+        add_test(NAME native_aot_module_tls.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_module_tls.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_module_tls.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_native_image.py")
+        add_test(NAME native_aot_native_image.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_native_image.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_native_image.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_parameter_effects.py")
+        add_test(NAME native_aot_parameter_effects.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_parameter_effects.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_parameter_effects.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_pointer_outputs.py")
+        add_test(NAME native_aot_pointer_outputs.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_pointer_outputs.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_pointer_outputs.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_pointer_provenance.py")
+        add_test(NAME native_aot_pointer_provenance.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_pointer_provenance.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_pointer_provenance.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_provider_effects.py")
+        add_test(NAME native_aot_provider_effects.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_provider_effects.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_provider_effects.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_recover.py")
+        add_test(NAME native_aot_recover.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_recover.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_recover.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_regressions.py")
+        add_test(NAME native_aot_regressions.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_regressions.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_regressions.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_stack_origins.py")
+        add_test(NAME native_aot_stack_origins.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_stack_origins.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_stack_origins.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_stack_values.py")
+        add_test(NAME native_aot_stack_values.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_stack_values.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_stack_values.${aotFirstCase} PROPERTIES TIMEOUT 30)
+        aot_test_cases("${CMAKE_CURRENT_SOURCE_DIR}/tests/test_vectors.py")
+        add_test(NAME native_aot_vectors.${aotFirstCase} COMMAND ${aotTestCommand}
+            "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_vectors.py" "${aotFirstCase}")
+        set_tests_properties(native_aot_vectors.${aotFirstCase} PROPERTIES TIMEOUT 30)
+    endif()
 endif()
 
 option(ANYPS5_NATIVE_AOT_EXAMPLE "Build the source-based native runtime example" OFF)
