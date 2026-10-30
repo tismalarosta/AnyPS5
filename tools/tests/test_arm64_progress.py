@@ -8,43 +8,79 @@ import arm64_progress
 NM = """
 Threads.cpp.o:
 _sceKernelOpen_nid_postfix T 0 0
-_EqueueAddEvent_nid_postfix T 10 0
 __ZN6Kernel9ResetOnceEv T 20 0
 _gTable D 30 8
 _undefinedImport U 0 0
+_localHelper t 40 0
+"""
 
-Other.cpp.o:
-_sceKernelClose_nid_postfix t 40 0
+COMPILED = """
+int APS5_VABI sceKernelOpen_nid_postfix(const char* path) { return OpenHost(path); }
+int APS5_VABI sceKernelGetModuleInfo_nid_postfix(int handle) { return NotImplemented_nid_no_patch(__func__); }
+int APS5_VABI sceKernelClose_nid_postfix(int fd) { return host::NotImplemented_nid_no_patch(fd); }
+"""
+
+PREPROCESSED = """# 1 "/tmp/x/libkernel__Open.cpp"
+# 1 "<built-in>" 1
+int fromHeader();
+# 3 "/tmp/x/libkernel__Open.cpp" 2
+int ANYPS5PROGRESSVABI sceKernelOpen_nid_postfix() { return 0; }
 """
 
 
 class SymbolTest(unittest.TestCase):
-    def test_defined_global_symbols_only(self):
+    def test_only_defined_global_symbols(self):
         symbols = arm64_progress.defined_symbols(NM)
-        self.assertIn("_sceKernelOpen_nid_postfix", symbols)
-        self.assertIn("_gTable", symbols)
-        self.assertNotIn("_undefinedImport", symbols)
-        self.assertNotIn("Threads.cpp.o:", symbols)
+        self.assertEqual(symbols, {"_sceKernelOpen_nid_postfix", "__ZN6Kernel9ResetOnceEv", "_gTable"})
 
-    def test_base_names_strip_underscore_and_demangle(self):
-        symbols = {"_sceKernelOpen_nid_postfix", "__ZN6Kernel9ResetOnceEv", "__ZN3Foo3BarIiEEvT_"}
-        demangled = {"__ZN6Kernel9ResetOnceEv": "Kernel::ResetOnce()", "__ZN3Foo3BarIiEEvT_": "void Foo::Bar<int>(int)"}
-        self.assertEqual(arm64_progress.base_names(symbols, demangled), {"sceKernelOpen_nid_postfix", "ResetOnce", "Bar"})
+    def test_c_names_strip_underscore_and_skip_cpp(self):
+        self.assertEqual(arm64_progress.c_names({"_sceKernelOpen_nid_postfix", "__ZN6Kernel9ResetOnceEv", "plain"}),
+                         {"sceKernelOpen_nid_postfix", "plain"})
+
+
+class PreprocessTest(unittest.TestCase):
+    def test_arguments_drop_outputs_and_the_source(self):
+        source = Path("/repo/core/libs/prx/libkernel/File/Open.cpp")
+        command = f"clang++ -DX=1 -Iinc -MD -MT a.o -MF a.d -o a.o -c {source}"
+        arguments = arm64_progress.preprocess_arguments(command, source, Path("/tmp/x/libkernel__File__Open.cpp"))
+        self.assertEqual(arguments, ["clang++", "-DX=1", "-Iinc", "-E", "-iquote", "/repo/core/libs/prx/libkernel/File",
+                                     "/tmp/x/libkernel__File__Open.cpp"])
+
+    def test_keeps_only_the_main_file(self):
+        text = arm64_progress.main_file_lines(PREPROCESSED, Path("/tmp/x/libkernel__Open.cpp"))
+        self.assertNotIn("fromHeader", text)
+        self.assertIn("sceKernelOpen_nid_postfix", text)
+
+
+class ScanTest(unittest.TestCase):
+    def test_stub_and_live_definitions(self):
+        live, stub = arm64_progress.scan_compiled(COMPILED)
+        self.assertEqual(live, {"sceKernelOpen_nid_postfix", "sceKernelClose_nid_postfix"})
+        self.assertEqual(stub, {"sceKernelGetModuleInfo_nid_postfix"})
 
 
 class CoverageTest(unittest.TestCase):
-    def test_counts_only_upstream_implemented_names(self):
-        libraries = {"total": 10, "groups": [
-            {"name": "libkernel", "done": 3, "done_names": ["a", "b", "c"]},
-            {"name": "libSceEmpty", "done": 0, "done_names": []},
-            {"name": "libc", "done": 1, "done_names": ["d"]}]}
-        result = arm64_progress.coverage(libraries, {"a", "c", "zzz"})
-        self.assertEqual((result["upstream_done"], result["arm64"], result["percent"], result["upstream_total"]),
-                         (4, 2, 50.0, 10))
-        self.assertEqual([g["name"] for g in result["groups"]], ["libkernel", "libc"])
+    LIBRARIES = {"total": 10, "groups": [
+        {"name": "libkernel", "done": 4, "done_names": ["a", "b", "c", "exit"]},
+        {"name": "libSceEmpty", "done": 0, "done_names": []},
+        {"name": "libc", "done": 2, "done_names": ["d", "exit"]}]}
+
+    def test_counts_live_compiled_symbols_once(self):
+        live = {"libkernel": {"a", "b"}, "libc": {"d", "exit"}}
+        stub = {"libkernel": {"c"}}
+        result = arm64_progress.coverage(self.LIBRARIES, live, stub, {"a", "c", "d", "exit", "zzz"})
+        self.assertEqual((result["upstream_done"], result["arm64"], result["arm64_stubs"], result["upstream_total"]),
+                         (6, 3, 1, 10))
+        self.assertEqual(result["percent"], 50.0)
+        self.assertEqual({g["name"]: g["arm64"] for g in result["groups"]}, {"libkernel": 1, "libc": 2})
+
+    def test_a_name_live_in_two_libraries_counts_once(self):
+        live = {"libkernel": {"exit"}, "libc": {"exit"}}
+        result = arm64_progress.coverage(self.LIBRARIES, live, {}, {"exit"})
+        self.assertEqual(result["arm64"], 1)
 
     def test_no_implemented_functions(self):
-        self.assertEqual(arm64_progress.coverage({"total": 0, "groups": []}, set())["percent"], 0)
+        self.assertEqual(arm64_progress.coverage({"total": 0, "groups": []}, {}, {}, set())["percent"], 0)
 
 
 class CtestTest(unittest.TestCase):
