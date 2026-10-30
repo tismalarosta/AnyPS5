@@ -1020,7 +1020,7 @@ std::vector<ShaderRecompiler::TableCallee> ReadTableCallees(const ShaderRecompil
     constexpr std::uint64_t limitBytes = 64u << 20u;
     constexpr std::size_t limitCallees = 64u;
     const auto slot = call.userDataRegister - request.context.userDataBaseRegister;
-    const auto pointer = call.constantPointer ? *call.constantPointer : static_cast<std::uint64_t>(request.context.userData[slot]) | static_cast<std::uint64_t>(request.context.userData[slot + 1u]) << 32u;
+    const auto pointer = call.constantPointer ? DriverMemoryHostAddress(*call.constantPointer) : static_cast<std::uint64_t>(request.context.userData[slot]) | static_cast<std::uint64_t>(request.context.userData[slot + 1u]) << 32u;
     const auto words = ReadGuestBytes(pointer + call.descriptorOffset, 16u, "call table descriptor");
     ShaderRecompiler::ShaderBufferResource descriptor{};
     std::memcpy(descriptor.fields.data(), words.data(), words.size());
@@ -1038,6 +1038,14 @@ std::vector<ShaderRecompiler::TableCallee> ReadTableCallees(const ShaderRecompil
     std::vector<ShaderRecompiler::TableCallee> callees;
     for (const auto target : targets) callees.push_back({target, ReadUserDataCallee(target, call.linkRegister)});
     return callees;
+}
+
+void RelocateConstant(std::vector<std::uint32_t>& code, std::uint32_t programCounter, std::uint32_t value) {
+    auto& word = code[programCounter / 4u];
+    const auto source = word & 0xffu;
+    if (source == 0xffu) code[programCounter / 4u + 1u] = value;
+    else if (source >= 0x80u && source <= 0xc0u && value <= 64u) word = (word & ~0xffu) | (0x80u + value);
+    else throw std::runtime_error("its table pointer half at program counter " + hexText(programCounter) + " cannot hold the relocated " + hexText(value) + " in place");
 }
 
 ShaderRecompiler::LinkedCalls LinkUserDataCallees(const ShaderRecompiler::RecompileRequest& request) {
@@ -1069,7 +1077,19 @@ ShaderRecompiler::LinkedCalls LinkUserDataCallees(const ShaderRecompiler::Recomp
             throw std::runtime_error("AGC driver: compute shader " + hexText(request.shader.codeAddress) + " calls a target loaded from a table at program counter " + hexText(call.programCounter) + ", but " + error.what());
         }
     }
-    return ShaderRecompiler::LinkCalls(program, calls, callees, tableCalls, tableCallees);
+    auto linked = ShaderRecompiler::LinkCalls(program, calls, callees, tableCalls, tableCallees);
+    for (const auto& call : tableCalls) {
+        if (!call.constantPointer) continue;
+        const auto host = DriverMemoryHostAddress(*call.constantPointer);
+        if (host == *call.constantPointer) continue;
+        try {
+            RelocateConstant(linked.code, call.constantLowProgramCounter, static_cast<std::uint32_t>(host));
+            RelocateConstant(linked.code, call.constantHighProgramCounter, static_cast<std::uint32_t>(host >> 32u));
+        } catch (const std::exception& error) {
+            throw std::runtime_error("AGC driver: compute shader " + hexText(request.shader.codeAddress) + " calls a target loaded from a table at program counter " + hexText(call.programCounter) + ", but " + error.what());
+        }
+    }
+    return linked;
 }
 
 }

@@ -57,6 +57,8 @@ inline std::uint32_t ThreadDimensionGroups(std::uint32_t threads, std::uint32_t 
 
 struct DrawTail;
 
+std::uint64_t DriverMemoryHostAddress(std::uint64_t address);
+
 class Driver {
 public:
     static Driver& Get();

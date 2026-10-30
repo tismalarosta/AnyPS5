@@ -56,22 +56,32 @@ void PrintFailure(std::exception_ptr error) {
 
 constexpr std::uint64_t DriverMemoryAddress = 0xfe0000000ull + GuestArena::GuestAddressOffset;
 constexpr std::size_t DriverMemoryBytes = 2u << 20u;
-constexpr std::uint64_t FsTableAddress = DriverMemoryAddress + 0x40000ull;
+constexpr std::uint64_t FsTableOffset = 0x40000ull;
+constexpr std::uint64_t FsTableAddress = DriverMemoryAddress + FsTableOffset;
 constexpr std::uint64_t FsTableSlotBytes = 16u;
 constexpr std::uint64_t FsTableSlots = 6u;
 constexpr std::uint64_t FsRoutineRecords = 8u;
 constexpr std::uint64_t FsRoutineRecordBytes = 16u;
 constexpr std::uint64_t FsRoutineTableBytes = FsRoutineRecords * FsRoutineRecordBytes;
-constexpr std::uint64_t FsRoutineTableAddress = FsTableAddress + FsTableSlots * FsTableSlotBytes;
-constexpr std::uint64_t FsRoutineAddress = FsRoutineTableAddress + FsRoutineTableBytes;
+constexpr std::uint64_t FsRoutineTableOffset = FsTableOffset + FsTableSlots * FsTableSlotBytes;
+constexpr std::uint64_t FsRoutineOffset = FsRoutineTableOffset + FsRoutineTableBytes;
+#if defined(__APPLE__) && defined(__aarch64__)
+constexpr std::uint64_t InlineConstantHighLimit = 64u;
+#endif
 constexpr std::uint32_t ScalarSetpcB64LinkS14 = 0xbe80200eu;
 constexpr std::uint32_t ScalarEndProgram = 0xbf810000u;
 constexpr std::uint64_t FsTableDword3 = 0x5204u;
 
-#if !(defined(__APPLE__) && defined(__aarch64__))
-void MapDriverMemory() {
+std::uint64_t MapDriverMemory() {
     void* mapped;
-#ifdef _WIN32
+#if defined(__APPLE__) && defined(__aarch64__)
+    mapped = mmap(nullptr, DriverMemoryBytes, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+    if (mapped == MAP_FAILED) throw std::system_error(errno, std::generic_category(), "map the AGC driver memory");
+    if ((reinterpret_cast<std::uint64_t>(mapped) + DriverMemoryBytes - 1u) >> 32u > InlineConstantHighLimit) {
+        munmap(mapped, DriverMemoryBytes);
+        throw std::runtime_error("the relocated AGC driver memory is above 0x40ffffffff, where a shader's inline constant cannot reach it");
+    }
+#elif defined(_WIN32)
     mapped = reinterpret_cast<void*>(DriverMemoryAddress);
     GuestArena::GuestArenaCommit_nid_postfix(mapped, DriverMemoryBytes, PAGE_READWRITE, DriverMemoryBytes);
 #else
@@ -82,30 +92,38 @@ void MapDriverMemory() {
 #endif
     if (mapped == MAP_FAILED) throw std::system_error(errno, std::generic_category(), "map the AGC driver memory");
 #endif
+#if !(defined(__APPLE__) && defined(__aarch64__))
     if (reinterpret_cast<std::uint64_t>(mapped) != DriverMemoryAddress) {
 #ifndef _WIN32
         munmap(mapped, DriverMemoryBytes);
 #endif
         throw std::runtime_error("the AGC driver memory was not mapped at its fixed address");
     }
-    auto* routineTable = reinterpret_cast<std::uint64_t*>(FsRoutineTableAddress);
+#endif
+    const auto base = reinterpret_cast<std::uint64_t>(mapped);
+    auto* routineTable = reinterpret_cast<std::uint64_t*>(base + FsRoutineTableOffset);
     for (std::uint64_t record = 0; record < FsRoutineRecords; ++record) {
-        routineTable[record * 2u] = FsRoutineAddress;
+        routineTable[record * 2u] = base + FsRoutineOffset;
         routineTable[record * 2u + 1u] = 0u;
     }
-    auto* routine = reinterpret_cast<std::uint32_t*>(FsRoutineAddress);
+    auto* routine = reinterpret_cast<std::uint32_t*>(base + FsRoutineOffset);
     routine[0] = ScalarSetpcB64LinkS14;
     routine[1] = ScalarEndProgram;
-    auto* slot = reinterpret_cast<std::uint64_t*>(FsTableAddress);
-    slot[0] = (FsRoutineTableAddress & 0xffffffffffffull) | 16ull << 48u;
+    auto* slot = reinterpret_cast<std::uint64_t*>(base + FsTableOffset);
+    slot[0] = ((base + FsRoutineTableOffset) & 0xffffffffffffull) | 16ull << 48u;
     slot[1] = FsTableDword3 << 32u | FsRoutineRecords;
 #ifndef _WIN32
     GuestWriteWatch::GuestWriteWatchRegister_nid_postfix(mapped, DriverMemoryBytes);
 #endif
     GuestAllocations::Mutation mutation;
     mutation.Add(mapped, DriverMemoryBytes, true, true, true);
+    return base;
 }
-#endif
+
+std::uint64_t DriverMemory() {
+    static const std::uint64_t base = MapDriverMemory();
+    return base;
+}
 
 bool StackHoldsImport() {
 #ifdef _WIN32
@@ -210,10 +228,7 @@ void Driver::stop() {
 
 Driver::Driver() {
     InstallAsyncLog_nid_no_patch();
-#if !(defined(__APPLE__) && defined(__aarch64__))
-    static const bool driverMemory = (MapDriverMemory(), true);
-    static_cast<void>(driverMemory);
-#endif
+    static_cast<void>(DriverMemory());
     LibcSetExitDrain_nid_no_patch([] {
         const auto current = Driver::Get().device.Load();
         if (current) current->SavePipelineCache();
@@ -362,11 +377,17 @@ std::unique_lock<std::mutex> HoldAsyncLog() {
 
 }
 
-extern "C" void* AgcDriverStaticTable_nid_postfix() {
+std::uint64_t AgcDriver::DriverDetail::DriverMemoryHostAddress(std::uint64_t address) {
 #if defined(__APPLE__) && defined(__aarch64__)
-    throw std::runtime_error("the AGC static table at 0xfe0040000 is in the Apple ARM64 shared region guard and cannot be mapped");
+    if (address < DriverMemoryAddress || address - DriverMemoryAddress >= DriverMemoryBytes) return address;
+    static_cast<void>(Driver::Get());
+    return DriverMemory() + (address - DriverMemoryAddress);
 #else
-    static_cast<void>(AgcDriver::DriverDetail::Driver::Get());
-    return reinterpret_cast<void*>(AgcDriver::DriverDetail::FsTableAddress);
+    return address;
 #endif
+}
+
+extern "C" void* AgcDriverStaticTable_nid_postfix() {
+    static_cast<void>(AgcDriver::DriverDetail::Driver::Get());
+    return reinterpret_cast<void*>(AgcDriver::DriverDetail::DriverMemoryHostAddress(AgcDriver::DriverDetail::FsTableAddress));
 }

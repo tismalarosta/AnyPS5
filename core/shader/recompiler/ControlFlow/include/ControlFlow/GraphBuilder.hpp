@@ -52,6 +52,8 @@ struct TableCall {
     std::uint32_t entryOffset = 0;
     std::uint32_t entryStride = 0;
     std::optional<std::uint64_t> constantPointer;
+    std::uint32_t constantLowProgramCounter = 0;
+    std::uint32_t constantHighProgramCounter = 0;
 };
 
 struct TableCallee {

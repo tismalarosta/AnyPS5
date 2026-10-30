@@ -21,8 +21,8 @@ using AgcDriver::Graphics::Require;
 constexpr std::uint32_t Threads = 64;
 constexpr std::uint32_t Untouched = 0xcafebabeu;
 constexpr std::uint32_t Marker = 0x55u;
-constexpr std::uint64_t FsTable = 0xfe0040000ull;
-constexpr std::uint64_t DriverMemory = 0xfe0000000ull;
+constexpr std::uint64_t PlatformFsTable = 0xfe0040000ull;
+constexpr std::uint64_t FsTableOffset = 0x40000ull;
 constexpr std::size_t DriverMemoryBytes = 2u << 20u;
 
 alignas(256) constexpr std::array<std::uint32_t, 32> Caller{
@@ -70,9 +70,16 @@ std::string Dispatch() {
 
 void CheckTable() {
     AgcDriverWaitIdle_nid_postfix();
-    Require(AgcDriver::GuestMemory::Accessible(reinterpret_cast<const void*>(FsTable), 0x60u), "the FS table at 0xfe0040000 is not mapped");
+    const auto fsTable = reinterpret_cast<std::uint64_t>(AgcDriverStaticTable_nid_postfix());
+    const auto driverMemory = fsTable - FsTableOffset;
+#if defined(__APPLE__) && defined(__aarch64__)
+    Require(fsTable != PlatformFsTable, "the FS table was not moved out of the Apple ARM64 shared region guard");
+#else
+    Require(fsTable == PlatformFsTable, "the FS table is not at 0xfe0040000");
+#endif
+    Require(AgcDriver::GuestMemory::Accessible(reinterpret_cast<const void*>(fsTable), 0x60u), "the FS table is not mapped");
     std::array<std::uint64_t, 12> slots{};
-    std::memcpy(slots.data(), reinterpret_cast<const void*>(FsTable), sizeof(slots));
+    std::memcpy(slots.data(), reinterpret_cast<const void*>(fsTable), sizeof(slots));
     const auto records = slots[0] & 0xffffffffffffull;
     Require(slots[0] >> 48u == 16u, "FS table slot 0 does not have a stride of 16");
     Require(slots[1] == 0x0000520400000008ull, "FS table slot 0 does not describe eight records with dword3 0x5204");
@@ -88,7 +95,7 @@ void CheckTable() {
     std::memcpy(routine.data(), reinterpret_cast<const void*>(table[2]), sizeof(routine));
     Require(routine[0] == 0xbe80200eu, "the FS routine does not start with s_setpc_b64 s[14:15]");
 #ifndef _WIN32
-    if (GuestWriteWatch::GuestWriteWatchAvailable_nid_postfix()) Require(AgcDriver::GuestMemory::Watched(DriverMemory, DriverMemoryBytes), "the AGC driver memory at 0xfe0000000 is not write-watched, so a refused import copies it on every address-based build");
+    if (GuestWriteWatch::GuestWriteWatchAvailable_nid_postfix()) Require(AgcDriver::GuestMemory::Watched(driverMemory, DriverMemoryBytes), "the AGC driver memory is not write-watched, so a refused import copies it on every address-based build");
 #endif
 }
 
@@ -97,10 +104,6 @@ void CheckTable() {
 int main() {
 #ifdef ANYPS5_ENABLE_ASAN
     std::puts("skipped: the shader calls through the FS table at the PS5's fixed 0xfe0040000, which an ANYPS5_ENABLE_ASAN build cannot map");
-    return VulkanTestSkipped;
-#endif
-#if defined(__APPLE__) && defined(__aarch64__)
-    std::puts("skipped: the shader calls through the FS table at the PS5's fixed 0xfe0040000, which is in the Apple ARM64 shared region guard");
     return VulkanTestSkipped;
 #endif
     try {

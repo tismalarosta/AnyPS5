@@ -240,6 +240,12 @@ target_link_libraries(native_agc_static_table_tests PRIVATE anyps5_native_graphi
 add_test(NAME native_agc_static_table COMMAND native_agc_static_table_tests)
 set_tests_properties(native_agc_static_table PROPERTIES TIMEOUT 30)
 
+add_test_executable(native_agc_fs_table_calls_tests ../prx/libSceAgcDriver/tests/execution/ComputeFsTableCalls.cpp)
+target_link_libraries(native_agc_fs_table_calls_tests PRIVATE anyps5_native_graphics)
+target_include_directories(native_agc_fs_table_calls_tests PRIVATE "${CMAKE_SOURCE_DIR}/core/shader/recompiler" "${CMAKE_SOURCE_DIR}/3rdparty/Vulkan-Headers/include")
+add_test(NAME native_agc_fs_table_calls COMMAND native_agc_fs_table_calls_tests)
+set_tests_properties(native_agc_fs_table_calls PROPERTIES SKIP_RETURN_CODE 77 TIMEOUT 30)
+
 add_test_executable(native_load_exec_link_tests ../tests/NativeLoadExecLink.cpp)
 target_link_libraries(native_load_exec_link_tests PRIVATE anyps5_native_graphics)
 add_test(NAME native_load_exec_link COMMAND native_load_exec_link_tests)

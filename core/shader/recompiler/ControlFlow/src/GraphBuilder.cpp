@@ -1534,6 +1534,7 @@ std::vector<TableCall> FindTableCalls(const RdnaProgram& program, const SwappcIn
             (descriptor - loaded) % 4u != 0u || descriptor - loaded + 4u > table.dataDwordCount || pointer == NoScalarRegister || pointer % 2u != 0u || table.source1.kind != RdnaOperandKind::Null ||
             table.memoryOffset >= 0x100000u || (table.memoryOffset & 3u) != 0u) continue;
         std::optional<std::uint64_t> constantPointer;
+        std::uint32_t constantLow = 0, constantHigh = 0;
         if (!(userData(pointer) && userData(pointer + 1u) && unchangedUntil(program, pointer, descriptorLoad, swappc.waveSize) && unchangedUntil(program, pointer + 1u, descriptorLoad, swappc.waveSize))) {
             std::uint32_t lowWriter = 0, highWriter = 0, low = 0, high = 0;
             if (!findLastWriter(program, descriptorLoad, {pointer}, lowWriter, swappc.waveSize, reader) || !findLastWriter(program, descriptorLoad, {pointer + 1u}, highWriter, swappc.waveSize, reader) ||
@@ -1543,6 +1544,8 @@ std::vector<TableCall> FindTableCalls(const RdnaProgram& program, const SwappcIn
             if (lowMove.op != RdnaOpcode::SMovB32 || highMove.op != RdnaOpcode::SMovB32 || !isScalar(lowMove.destination, pointer) || !isScalar(highMove.destination, pointer + 1u) ||
                 !isImmediate(lowMove.source0, low) || !isImmediate(highMove.source0, high)) continue;
             constantPointer = static_cast<std::uint64_t>(high) << 32u | low;
+            constantLow = lowMove.programCounter;
+            constantHigh = highMove.programCounter;
         }
         std::uint32_t stride = 0;
         if (load.source1.kind != RdnaOperandKind::Null) {
@@ -1553,7 +1556,7 @@ std::vector<TableCall> FindTableCalls(const RdnaProgram& program, const SwappcIn
             if (shifted.op != RdnaOpcode::SLshlB32 || !isScalar(shifted.destination, offset) || !isImmediate(shifted.source1, shift) || shift < 2u || shift > 24u) continue;
             stride = 1u << shift;
         }
-        calls.push_back({instruction.programCounter, link, target, constantPointer ? 0u : pointer, table.memoryOffset + (descriptor - loaded) * 4u, load.memoryOffset + lowDword * 4u, stride, constantPointer});
+        calls.push_back({instruction.programCounter, link, target, constantPointer ? 0u : pointer, table.memoryOffset + (descriptor - loaded) * 4u, load.memoryOffset + lowDword * 4u, stride, constantPointer, constantLow, constantHigh});
     }
     return calls;
 }

@@ -225,6 +225,7 @@ static void CheckConstantTableCall() {
     Require(calls.size() == 1u);
     Require(calls[0].constantPointer == std::optional<std::uint64_t>(0xfe0040000ull) && calls[0].descriptorOffset == 0u && calls[0].entryOffset == 0x20u && calls[0].entryStride == 0u);
     Require(calls[0].linkRegister == 14u && calls[0].targetRegister == 14u);
+    Require(calls[0].constantLowProgramCounter == 0u && calls[0].constantHighProgramCounter == 8u);
     auto changedHigh = caller;
     changedHigh[2] = 0xbeeb0380u;
     const auto zero = FindTableCalls(RdnaInstructionDecoder{}.Decode(changedHigh), swappc);
