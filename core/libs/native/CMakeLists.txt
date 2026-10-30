@@ -181,6 +181,33 @@ foreach(test IN ITEMS GuestSocketEvents GuestSocketPair GuestEqueueEvents GuestK
     set_tests_properties(native_${lower} PROPERTIES TIMEOUT 30)
 endforeach()
 
+add_test_executable(native_guest_flexible_memory_budget_tests "${LIBS_INCLUDE_DIR}/tests/GuestFlexibleMemoryBudget.cpp")
+target_link_libraries(native_guest_flexible_memory_budget_tests PRIVATE anyps5_native_graphics)
+add_library(native_guest_flexible_memory_module SHARED "${LIBS_INCLUDE_DIR}/tests/GuestFlexibleMemoryModule.cpp")
+target_include_directories(native_guest_flexible_memory_module PRIVATE "${LIBS_INCLUDE_DIR}")
+set_target_properties(native_guest_flexible_memory_module PROPERTIES PREFIX "" SUFFIX ".guest.prx")
+add_dependencies(native_guest_flexible_memory_budget_tests native_guest_flexible_memory_module)
+target_compile_definitions(native_guest_flexible_memory_budget_tests PRIVATE
+    GUEST_FLEXIBLE_MEMORY_MODULE="$<TARGET_FILE:native_guest_flexible_memory_module>")
+foreach(flexibleMemoryCase IN ITEMS declared:838860800 limited:16777216 none:0 missing:0 invalid:true)
+    string(REPLACE ":" ";" flexibleMemoryCase ${flexibleMemoryCase})
+    list(GET flexibleMemoryCase 0 flexibleMemoryName)
+    list(GET flexibleMemoryCase 1 flexibleMemorySize)
+    set(flexibleMemoryRun "${CMAKE_CURRENT_BINARY_DIR}/guest_flexible_memory_${flexibleMemoryName}")
+    file(MAKE_DIRECTORY "${flexibleMemoryRun}")
+    if(NOT flexibleMemoryName STREQUAL "missing")
+        set(flexibleMemoryField "")
+        if(NOT flexibleMemoryName STREQUAL "none")
+            set(flexibleMemoryField ",\"kernel\":{\"flexibleMemorySize\":${flexibleMemorySize}}")
+        endif()
+        file(WRITE "${flexibleMemoryRun}/app0/sce_sys/param.json"
+            "{\"titleId\":\"PPSA00000\",\"localizedParameters\":{\"en-US\":{\"titleName\":\"Example\"}}${flexibleMemoryField}}")
+    endif()
+    add_test(NAME native_guest_flexible_memory_${flexibleMemoryName}
+        COMMAND native_guest_flexible_memory_budget_tests ${flexibleMemoryName} WORKING_DIRECTORY "${flexibleMemoryRun}")
+    set_tests_properties(native_guest_flexible_memory_${flexibleMemoryName} PROPERTIES TIMEOUT 30)
+endforeach()
+
 add_test_executable(native_writewatch_tests "${LIBS_INCLUDE_DIR}/tests/WriteWatch.cpp")
 target_link_libraries(native_writewatch_tests PRIVATE anyps5_native_graphics)
 foreach(mode IN ITEMS collect fresh armed register mapped host protection threads)

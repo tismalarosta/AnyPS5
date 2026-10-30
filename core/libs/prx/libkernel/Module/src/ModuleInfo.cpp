@@ -27,6 +27,8 @@
 #include <mutex>
 #include <unistd.h>
 #include <unordered_map>
+#else
+#include "prx/libc/include/specifics/linux/ElfTypes.hpp"
 #endif
 
 extern "C" std::int32_t ModuleIdForImage_nid_no_patch(const void* native);
@@ -189,24 +191,6 @@ std::vector<GuestImage> GuestImages() {
     return images;
 }
 
-int AddGuestSegmentBytes(dl_phdr_info* image, std::size_t, void* data) {
-    const std::string_view name = image->dlpi_name ? image->dlpi_name : "";
-    if (!name.empty() && !name.ends_with(GuestModuleSuffix)) return 0;
-    constexpr auto allAccess = PF_R | PF_W | PF_X;
-    for (std::uint16_t i = 0; i < image->dlpi_phnum; ++i) {
-        const auto& header = image->dlpi_phdr[i];
-        if (header.p_type != PT_LOAD || header.p_offset == 0 || (header.p_flags & allAccess) == allAccess) continue;
-        *static_cast<std::uint64_t*>(data) += PageSpan(header.p_vaddr, header.p_memsz);
-    }
-    return 0;
-}
-
-std::uint64_t GuestSegmentBytes() {
-    std::uint64_t bytes = 0;
-    dl_iterate_phdr(AddGuestSegmentBytes, &bytes);
-    return bytes;
-}
-
 bool SystemImage(const GuestImage& image) {
     const auto* name = static_cast<const link_map*>(image.native)->l_name;
     const std::string_view path = name ? name : "";
@@ -354,6 +338,26 @@ bool SystemImage(const GuestImage& image) {
     constexpr std::wstring_view suffix = L".guest.prx";
     const auto path = ModulePath(reinterpret_cast<HMODULE>(image.address));
     return path.size() < suffix.size() || CompareStringOrdinal(path.data() + path.size() - suffix.size(), static_cast<int>(suffix.size()), suffix.data(), static_cast<int>(suffix.size()), TRUE) != CSTR_EQUAL;
+}
+#endif
+
+#ifndef _WIN32
+int AddGuestSegmentBytes(dl_phdr_info* image, std::size_t, void* data) {
+    const std::string_view name = image->dlpi_name ? image->dlpi_name : "";
+    if (!name.empty() && !name.ends_with(GuestModuleSuffix)) return 0;
+    constexpr auto allAccess = PF_R | PF_W | PF_X;
+    for (std::uint16_t i = 0; i < image->dlpi_phnum; ++i) {
+        const auto& header = image->dlpi_phdr[i];
+        if (header.p_type != PT_LOAD || header.p_offset == 0 || (header.p_flags & allAccess) == allAccess || (header.p_flags & allAccess) == 0) continue;
+        *static_cast<std::uint64_t*>(data) += PageSpan(header.p_vaddr, header.p_memsz);
+    }
+    return 0;
+}
+
+std::uint64_t GuestSegmentBytes() {
+    std::uint64_t bytes = 0;
+    dl_iterate_phdr(AddGuestSegmentBytes, &bytes);
+    return bytes;
 }
 #endif
 
@@ -526,11 +530,7 @@ std::int32_t APS5_VABI sceKernelInternalMemoryGetModuleSegmentInfo_nid_postfix(I
 }
 
 std::uint64_t GuestImageSegmentBytes_nid_no_patch() {
-#ifdef __APPLE__
-    throw std::runtime_error("GuestImageSegmentBytes: macOS guest image accounting is not implemented");
-#else
     return GuestSegmentBytes();
-#endif
 }
 
 }
