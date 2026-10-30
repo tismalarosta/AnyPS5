@@ -87,11 +87,15 @@ int main(int argc, char** argv) {
         const std::filesystem::path fixture = GUEST_FLEXIBLE_MEMORY_MODULE;
         AddPathAlias_nid_no_patch("budget_module", fixture.parent_path().string().c_str());
         const auto path = "/budget_module/" + fixture.filename().generic_string();
+        const auto imageBytes = GuestImageSegmentBytes_nid_no_patch();
         module = dlopen_nid_postfix(path.c_str(), 2);
         if (!module) std::fprintf(stderr, "Cannot load budget fixture: %s\n", dlerror_nid_postfix());
         Require(module != nullptr);
         Require(sceKernelAvailableFlexibleMemorySize(&before) == 0);
         Require(GuestImageSegmentBytes_nid_no_patch() > 448u * 1024u * 1024u);
+#ifdef __APPLE__
+        Require(GuestImageSegmentBytes_nid_no_patch() - imageBytes == 512u * 1024u * 1024u);
+#endif
         Require(before + GuestImageSegmentBytes_nid_no_patch() == configured && before > 0x80000);
     }
     constexpr std::size_t length = 0x80000;

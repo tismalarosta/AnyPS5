@@ -348,7 +348,8 @@ int AddGuestSegmentBytes(dl_phdr_info* image, std::size_t, void* data) {
     constexpr auto allAccess = PF_R | PF_W | PF_X;
     for (std::uint16_t i = 0; i < image->dlpi_phnum; ++i) {
         const auto& header = image->dlpi_phdr[i];
-        if (header.p_type != PT_LOAD || header.p_offset == 0 || (header.p_flags & allAccess) == allAccess || (header.p_flags & allAccess) == 0) continue;
+        const auto access = header.p_flags & allAccess;
+        if (header.p_type != PT_LOAD || header.p_offset == 0 || access == 0 || (access | PF_R) == allAccess) continue;
         *static_cast<std::uint64_t*>(data) += PageSpan(header.p_vaddr, header.p_memsz);
     }
     return 0;
