@@ -27,14 +27,14 @@
           },
           "evidence": {
             "path": "core/libs/prx/libc/src/Process.cpp",
-            "sha256": "e6e0ce482d7dd6973461c5cec475e33b36c90735e67045e4d6efc48d276f31a4",
+            "sha256": "261205826f1614e0d1c9c760fdb6dbb65da0d6fe611690ef8fa5c1cbd882eeb9",
             "excerpt": "int APS5_VABI atexit_nid_postfix(GuestExitCallback func) {"
           },
           "reason": "Bind the guest libc export: registration and guest exit preserve callbacks. Process replacement through LoadExec intentionally skips guest exit handlers; native bundle teardown belongs to host shutdown.",
           "dependencies": [
             {
               "path": "core/libs/prx/libc/src/RuntimeSupport.cpp",
-              "sha256": "0111efaefef6ced3e9e0ec77515458f74f3870276ea2583d990e811bda225010",
+              "sha256": "c358879f2c9e5235f6b78351682dc14135d492ee898b78ee9c84cc21aa3b5941",
               "excerpt": "int APS5_VABI __cxa_atexit_nid_postfix(void (APS5_VABI *func)(void*), void* arg, void* dsoHandle) {"
             }
           ]
@@ -48,21 +48,21 @@
       "sources": [
         {
           "path": "core/libs/prx/libc/src/Process.cpp",
-          "sha256": "e6e0ce482d7dd6973461c5cec475e33b36c90735e67045e4d6efc48d276f31a4",
+          "sha256": "261205826f1614e0d1c9c760fdb6dbb65da0d6fe611690ef8fa5c1cbd882eeb9",
           "excerpt": "int APS5_VABI atexit_nid_postfix(GuestExitCallback func) {"
         },
         {
           "path": "core/libs/prx/libc/src/RuntimeSupport.cpp",
-          "sha256": "0111efaefef6ced3e9e0ec77515458f74f3870276ea2583d990e811bda225010",
+          "sha256": "c358879f2c9e5235f6b78351682dc14135d492ee898b78ee9c84cc21aa3b5941",
           "excerpt": "int APS5_VABI __cxa_atexit_nid_postfix(void (APS5_VABI *func)(void*), void* arg, void* dsoHandle) {"
         },
         {
           "path": "core/libs/prx/libc/include/general/VabiMacros.hpp",
-          "sha256": "e5826fe2f933c746e13e0f6ac68d56194ac56a778f92539d15f0d02fd70ed636",
+          "sha256": "36c49140d34d53f8ae5540d8886b2bfff56bc62c39786e359c57f860852c400e",
           "excerpt": "#define APS5_VABI"
         }
       ],
-      "facts_sha256": "4f39491c4416e009fbc6621335202db8123da475b80a2875a3b5e4f03ea2702f"
+      "facts_sha256": "4b6618025d3df4f16a659e8a7a2c316d7ae30384a631bb290c2813c752a0511a"
     },
     {
       "identity": {
@@ -90,7 +90,7 @@
           },
           "evidence": {
             "path": "core/libs/prx/libc/src/Process.cpp",
-            "sha256": "e6e0ce482d7dd6973461c5cec475e33b36c90735e67045e4d6efc48d276f31a4",
+            "sha256": "261205826f1614e0d1c9c760fdb6dbb65da0d6fe611690ef8fa5c1cbd882eeb9",
             "excerpt": "void APS5_VABI exit_nid_postfix(int code) {"
           },
           "reason": "Bind the guest libc export: registration and guest exit preserve callbacks. Process replacement through LoadExec intentionally skips guest exit handlers; native bundle teardown belongs to host shutdown."
@@ -99,16 +99,16 @@
       "sources": [
         {
           "path": "core/libs/prx/libc/src/Process.cpp",
-          "sha256": "e6e0ce482d7dd6973461c5cec475e33b36c90735e67045e4d6efc48d276f31a4",
+          "sha256": "261205826f1614e0d1c9c760fdb6dbb65da0d6fe611690ef8fa5c1cbd882eeb9",
           "excerpt": "void APS5_VABI exit_nid_postfix(int code) {"
         },
         {
           "path": "core/libs/prx/libc/include/general/VabiMacros.hpp",
-          "sha256": "e5826fe2f933c746e13e0f6ac68d56194ac56a778f92539d15f0d02fd70ed636",
+          "sha256": "36c49140d34d53f8ae5540d8886b2bfff56bc62c39786e359c57f860852c400e",
           "excerpt": "#define APS5_VABI"
         }
       ],
-      "facts_sha256": "bf50804638b55ca76b93a7742e99b780ed74f999209b8f28d923203e6ba125aa"
+      "facts_sha256": "844a198799e6c3e086e2e2411fbcb8e0538b87c756b0448e5bc1d297d2399a32"
     },
     {
       "identity": {
@@ -128,16 +128,16 @@
       "sources": [
         {
           "path": "core/libs/prx/libSceUserService/Export.cpp",
-          "sha256": "5300859a15f76b56f05e12fb2989abc59878a35d1fff8547c2dd42f418f56a53",
+          "sha256": "c4a28ab9c0a04058c864e1c27a037cc8e5736567f187fac33722b400ff70279f",
           "excerpt": "int APS5_VABI sceUserServiceInitialize("
         },
         {
           "path": "core/libs/prx/libc/include/general/VabiMacros.hpp",
-          "sha256": "e5826fe2f933c746e13e0f6ac68d56194ac56a778f92539d15f0d02fd70ed636",
+          "sha256": "36c49140d34d53f8ae5540d8886b2bfff56bc62c39786e359c57f860852c400e",
           "excerpt": "#define APS5_VABI"
         }
       ],
-      "facts_sha256": "dc3024fc3a024937967855404902161739054a4f27b255b1dc2bd82704355cda"
+      "facts_sha256": "dd7c4eed42e90c4fdc8eb12268ffada25fc7b26fe12baf614823f87deb1b171b"
     },
     {
       "identity": {
@@ -157,16 +157,16 @@
       "sources": [
         {
           "path": "core/libs/prx/libSceUserService/Export.cpp",
-          "sha256": "5300859a15f76b56f05e12fb2989abc59878a35d1fff8547c2dd42f418f56a53",
+          "sha256": "c4a28ab9c0a04058c864e1c27a037cc8e5736567f187fac33722b400ff70279f",
           "excerpt": "int APS5_VABI sceUserServiceGetInitialUser("
         },
         {
           "path": "core/libs/prx/libc/include/general/VabiMacros.hpp",
-          "sha256": "e5826fe2f933c746e13e0f6ac68d56194ac56a778f92539d15f0d02fd70ed636",
+          "sha256": "36c49140d34d53f8ae5540d8886b2bfff56bc62c39786e359c57f860852c400e",
           "excerpt": "#define APS5_VABI"
         }
       ],
-      "facts_sha256": "22cb5a597e2dd2556af036c12cd07832b2c97af2bcd0cc84837e2a6accdb4d18"
+      "facts_sha256": "c4f4a9bfaeab33fa63aacd6ca78f4a20909a573517a5e542a1f05d38e4d338b0"
     },
     {
       "identity": {
@@ -184,26 +184,26 @@
       "sources": [
         {
           "path": "core/libs/prx/libScePad/Export.cpp",
-          "sha256": "8aa78f7ab58e86a93180ad046ba48fbb9a6fdb41acac7c5de4470afb16151add",
+          "sha256": "d31ce8ecf41cd1c5faf40b2e6e9f997bb20a9680795873e0d34adf24ffc27999",
           "excerpt": "int APS5_VABI scePadInit_nid_postfix("
         },
         {
           "path": "core/libs/SceTypes.hpp",
-          "sha256": "1fb2f8e7f03898bfa7ff1377e6038248bc0cb059696db96ce99fcc04dd554de5",
+          "sha256": "0becb4d511613b9f8f43ef677c0318c4a8c6743814a8f327d2ca199d0547825c",
           "excerpt": "struct PadData"
         },
         {
           "path": "core/libs/prx/libScePad/include/PadState.hpp",
-          "sha256": "bcc8bc46f9ba5a728c9ef491b52c07639c0457bc07a5ce6f73d0222d4195e4b1",
-          "excerpt": "PadData ReadState();"
+          "sha256": "9271b5760dafd6aec84be877f767143b733380b71c9feb6ba9d0ff40a196e072",
+          "excerpt": "PadData ReadState(int port = 0);"
         },
         {
           "path": "core/libs/prx/libc/include/general/VabiMacros.hpp",
-          "sha256": "e5826fe2f933c746e13e0f6ac68d56194ac56a778f92539d15f0d02fd70ed636",
+          "sha256": "36c49140d34d53f8ae5540d8886b2bfff56bc62c39786e359c57f860852c400e",
           "excerpt": "#define APS5_VABI"
         }
       ],
-      "facts_sha256": "e6d76afa6784fd9add338e59b7ae44379bcad76693f8da461bd721a31898b9fa"
+      "facts_sha256": "8a81becfbf1f9293ab744c675e6d0ca856fd8dac23d1ab7f3e126cc2351c5283"
     },
     {
       "identity": {
@@ -226,26 +226,26 @@
       "sources": [
         {
           "path": "core/libs/prx/libScePad/Export.cpp",
-          "sha256": "8aa78f7ab58e86a93180ad046ba48fbb9a6fdb41acac7c5de4470afb16151add",
+          "sha256": "d31ce8ecf41cd1c5faf40b2e6e9f997bb20a9680795873e0d34adf24ffc27999",
           "excerpt": "int APS5_VABI scePadOpen_nid_postfix("
         },
         {
           "path": "core/libs/SceTypes.hpp",
-          "sha256": "1fb2f8e7f03898bfa7ff1377e6038248bc0cb059696db96ce99fcc04dd554de5",
+          "sha256": "0becb4d511613b9f8f43ef677c0318c4a8c6743814a8f327d2ca199d0547825c",
           "excerpt": "struct PadData"
         },
         {
           "path": "core/libs/prx/libScePad/include/PadState.hpp",
-          "sha256": "bcc8bc46f9ba5a728c9ef491b52c07639c0457bc07a5ce6f73d0222d4195e4b1",
-          "excerpt": "PadData ReadState();"
+          "sha256": "9271b5760dafd6aec84be877f767143b733380b71c9feb6ba9d0ff40a196e072",
+          "excerpt": "PadData ReadState(int port = 0);"
         },
         {
           "path": "core/libs/prx/libc/include/general/VabiMacros.hpp",
-          "sha256": "e5826fe2f933c746e13e0f6ac68d56194ac56a778f92539d15f0d02fd70ed636",
+          "sha256": "36c49140d34d53f8ae5540d8886b2bfff56bc62c39786e359c57f860852c400e",
           "excerpt": "#define APS5_VABI"
         }
       ],
-      "facts_sha256": "d2048aaf671d6a066fd8aa0d40adae5d54457df6746c2d797173131a4d92e028"
+      "facts_sha256": "250f77271c027138569641fbccf538a4a75a1b6a4ba94d57f2838e0168314aa7"
     },
     {
       "identity": {
@@ -266,26 +266,26 @@
       "sources": [
         {
           "path": "core/libs/prx/libScePad/Export.cpp",
-          "sha256": "8aa78f7ab58e86a93180ad046ba48fbb9a6fdb41acac7c5de4470afb16151add",
+          "sha256": "d31ce8ecf41cd1c5faf40b2e6e9f997bb20a9680795873e0d34adf24ffc27999",
           "excerpt": "int APS5_VABI scePadReadState("
         },
         {
           "path": "core/libs/SceTypes.hpp",
-          "sha256": "1fb2f8e7f03898bfa7ff1377e6038248bc0cb059696db96ce99fcc04dd554de5",
+          "sha256": "0becb4d511613b9f8f43ef677c0318c4a8c6743814a8f327d2ca199d0547825c",
           "excerpt": "struct PadData"
         },
         {
           "path": "core/libs/prx/libScePad/include/PadState.hpp",
-          "sha256": "bcc8bc46f9ba5a728c9ef491b52c07639c0457bc07a5ce6f73d0222d4195e4b1",
-          "excerpt": "PadData ReadState();"
+          "sha256": "9271b5760dafd6aec84be877f767143b733380b71c9feb6ba9d0ff40a196e072",
+          "excerpt": "PadData ReadState(int port = 0);"
         },
         {
           "path": "core/libs/prx/libc/include/general/VabiMacros.hpp",
-          "sha256": "e5826fe2f933c746e13e0f6ac68d56194ac56a778f92539d15f0d02fd70ed636",
+          "sha256": "36c49140d34d53f8ae5540d8886b2bfff56bc62c39786e359c57f860852c400e",
           "excerpt": "#define APS5_VABI"
         }
       ],
-      "facts_sha256": "9102d05efb52a724433d8deb72f7fc2a8fa9c8e1f1d918289ab5a516d4fae24e"
+      "facts_sha256": "4f3cbb4287ae4e93f141d25e933fc00db6629996e906f14ed92b2ddbf7f24dce"
     },
     {
       "identity": {
@@ -305,21 +305,21 @@
       "sources": [
         {
           "path": "core/libs/prx/libkernel/Time/Time.cpp",
-          "sha256": "c114f078fd61e987c9c1252f717d49ad48256afeba4595fb66574a46108803b9",
+          "sha256": "c977c60b5362af5b0d4f799cc4dc06f73c693f41084028aa299a143bcfb1f2e4",
           "excerpt": "int APS5_VABI sceKernelUsleep_nid_postfix(KernelUseconds microseconds)"
         },
         {
           "path": "core/libs/prx/libkernel/Time/include/Time.hpp",
-          "sha256": "f98d709bce1dc2a06bb74e13c716a09763db413f8c7882914d536dca8fe60f8e",
+          "sha256": "f2121ab91d1792fc0384aa755a3f79e1af139044923e45c70a87c8dc4730b1f4",
           "excerpt": "KernelUseconds"
         },
         {
           "path": "core/libs/prx/libc/include/general/VabiMacros.hpp",
-          "sha256": "e5826fe2f933c746e13e0f6ac68d56194ac56a778f92539d15f0d02fd70ed636",
+          "sha256": "36c49140d34d53f8ae5540d8886b2bfff56bc62c39786e359c57f860852c400e",
           "excerpt": "#define APS5_VABI"
         }
       ],
-      "facts_sha256": "570b8238b96dc4c63e615d8362fa03198de8f4bd0277506bb22835b1facaea70"
+      "facts_sha256": "bbc00d8eca90d1a76a1148402facb814f632824a3a18ff94227d9124ec5e3516"
     },
     {
       "identity": {
@@ -339,26 +339,26 @@
       "sources": [
         {
           "path": "core/libs/prx/libScePad/Export.cpp",
-          "sha256": "8aa78f7ab58e86a93180ad046ba48fbb9a6fdb41acac7c5de4470afb16151add",
+          "sha256": "d31ce8ecf41cd1c5faf40b2e6e9f997bb20a9680795873e0d34adf24ffc27999",
           "excerpt": "int APS5_VABI scePadClose_nid_postfix("
         },
         {
           "path": "core/libs/SceTypes.hpp",
-          "sha256": "1fb2f8e7f03898bfa7ff1377e6038248bc0cb059696db96ce99fcc04dd554de5",
+          "sha256": "0becb4d511613b9f8f43ef677c0318c4a8c6743814a8f327d2ca199d0547825c",
           "excerpt": "struct PadData"
         },
         {
           "path": "core/libs/prx/libScePad/include/PadState.hpp",
-          "sha256": "bcc8bc46f9ba5a728c9ef491b52c07639c0457bc07a5ce6f73d0222d4195e4b1",
-          "excerpt": "PadData ReadState();"
+          "sha256": "9271b5760dafd6aec84be877f767143b733380b71c9feb6ba9d0ff40a196e072",
+          "excerpt": "PadData ReadState(int port = 0);"
         },
         {
           "path": "core/libs/prx/libc/include/general/VabiMacros.hpp",
-          "sha256": "e5826fe2f933c746e13e0f6ac68d56194ac56a778f92539d15f0d02fd70ed636",
+          "sha256": "36c49140d34d53f8ae5540d8886b2bfff56bc62c39786e359c57f860852c400e",
           "excerpt": "#define APS5_VABI"
         }
       ],
-      "facts_sha256": "e004258e5935da562add0149f848bf578d4fe54047452e303127adddf8c07aa1"
+      "facts_sha256": "54393810b355cb78ab68bcb87878cb82ea31647377b60cd3684442e23dbdbdc4"
     },
     {
       "identity": {
@@ -386,16 +386,16 @@
       "sources": [
         {
           "path": "core/libs/prx/libkernel/System/src/Notification.cpp",
-          "sha256": "b6050f45e4d7abf37fc5c11874613d1035c456595b860d6d0cd78d8a811132d2",
+          "sha256": "88fce91b1f7116d80efb3df4f89818a2424759e03b58ebf317d1c888b4b4eadd",
           "excerpt": "sceKernelSendNotificationRequest(int device, const void* request, std::size_t size, int flags)"
         },
         {
           "path": "core/libs/prx/libc/include/general/VabiMacros.hpp",
-          "sha256": "e5826fe2f933c746e13e0f6ac68d56194ac56a778f92539d15f0d02fd70ed636",
+          "sha256": "36c49140d34d53f8ae5540d8886b2bfff56bc62c39786e359c57f860852c400e",
           "excerpt": "#define APS5_VABI"
         }
       ],
-      "facts_sha256": "38e19554f4d94e676c9dcc0e6f888375db358d7312261a567beb4d9947ab5d01"
+      "facts_sha256": "6ddfbe833a6754b185bd3956958cf0e42bd8d8a8f7e308e64bbc85f6dd6bc827"
     },
     {
       "identity": {
@@ -427,11 +427,11 @@
       "sources": [
         {
           "path": "core/libs/prx/libc/src/Strings.cpp",
-          "sha256": "fc3c551af89f114d07aa9a9b1ed76d531f7eae5ebd572b84939bb03ba5fffa37",
+          "sha256": "e78c5b83e4570aa4498316fb5546fad9b4e4b2a044965bf7d535ca7528b525dc",
           "excerpt": "return std::memset(s, c, n);"
         }
       ],
-      "facts_sha256": "80c90a33c1b1703bb92cf540e932c2d2045235fd1e79c4461ab2fa06de56dfad"
+      "facts_sha256": "3a7bf12594967678056a6111e1c3bce0b1446c90dd7aeb585278356f5edb83b9"
     },
     {
       "identity": {
@@ -463,11 +463,11 @@
       "sources": [
         {
           "path": "core/libs/prx/libc/src/Strings.cpp",
-          "sha256": "fc3c551af89f114d07aa9a9b1ed76d531f7eae5ebd572b84939bb03ba5fffa37",
+          "sha256": "e78c5b83e4570aa4498316fb5546fad9b4e4b2a044965bf7d535ca7528b525dc",
           "excerpt": "return std::memcpy(dest, src, n);"
         }
       ],
-      "facts_sha256": "4077fb61e6e2c06f4f8d6f6e23a84ac4c5e3940a8fe5d2d16a043cc1ff79eb09"
+      "facts_sha256": "ced1908714257d6e6858599603aeb044dc9e9407338c12db006cbf1852c83bd2"
     },
     {
       "identity": {

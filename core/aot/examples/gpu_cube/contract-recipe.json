@@ -1244,14 +1244,14 @@
           },
           "evidence": {
             "path": "core/libs/prx/libc/src/Process.cpp",
-            "sha256": "e6e0ce482d7dd6973461c5cec475e33b36c90735e67045e4d6efc48d276f31a4",
+            "sha256": "261205826f1614e0d1c9c760fdb6dbb65da0d6fe611690ef8fa5c1cbd882eeb9",
             "excerpt": "int APS5_VABI atexit_nid_postfix(GuestExitCallback func) {"
           },
           "reason": "Bind the original AnyPS5 guest libc export so guest shutdown and registered callbacks run before host process exit.",
           "dependencies": [
             {
               "path": "core/libs/prx/libc/src/RuntimeSupport.cpp",
-              "sha256": "0111efaefef6ced3e9e0ec77515458f74f3870276ea2583d990e811bda225010",
+              "sha256": "c358879f2c9e5235f6b78351682dc14135d492ee898b78ee9c84cc21aa3b5941",
               "excerpt": "int APS5_VABI __cxa_atexit_nid_postfix(void (APS5_VABI *func)(void*), void* arg, void* dsoHandle) {"
             }
           ]
@@ -1280,7 +1280,7 @@
           },
           "evidence": {
             "path": "core/libs/prx/libc/src/Process.cpp",
-            "sha256": "e6e0ce482d7dd6973461c5cec475e33b36c90735e67045e4d6efc48d276f31a4",
+            "sha256": "261205826f1614e0d1c9c760fdb6dbb65da0d6fe611690ef8fa5c1cbd882eeb9",
             "excerpt": "void APS5_VABI exit_nid_postfix(int code) {"
           },
           "reason": "Bind the original AnyPS5 guest libc export so guest shutdown and registered callbacks run before host process exit."
@@ -1328,7 +1328,7 @@
           "evidence": [
             {
               "path": "core/libs/prx/libkernel/System/src/Notification.cpp",
-              "sha256": "b6050f45e4d7abf37fc5c11874613d1035c456595b860d6d0cd78d8a811132d2",
+              "sha256": "88fce91b1f7116d80efb3df4f89818a2424759e03b58ebf317d1c888b4b4eadd",
               "excerpt": "sceKernelSendNotificationRequest(int device, const void* request, std::size_t size, int flags)"
             }
           ]
@@ -1593,7 +1593,7 @@
           "evidence": [
             {
               "path": "core/libs/prx/libSceAgc/DcbDraw/src/IndexBuffer.cpp",
-              "sha256": "afe31d642da7e7eae9d8db307dd0a4b37895526da0897d8524fa06ffb7cd5c34",
+              "sha256": "0e5dbbbc6b38cb18d9b616608ca02d568306f3c8828a8eefb074040f9844cb14",
               "excerpt": "std::uint32_t* APS5_VABI sceAgcDcbSetIndexBuffer(CommandBuffer* buf, std::uint64_t indexAddress) {"
             }
           ],
@@ -1869,7 +1869,7 @@
     }
   },
   "qualification": {
-    "facts_sha256": "6e1e7f01b585503825e48059353d38791e1cbcbdb72927271d50ef384f4a8e94",
+    "facts_sha256": "7948f7f8dee40046863bf45d621e35317ab740f05400c08cca7951de5d06f8d0",
     "sources": [
       {
         "path": "core/aot/examples/gpu_cube/variant.py",
