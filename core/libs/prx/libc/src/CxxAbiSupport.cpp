@@ -1,3 +1,4 @@
+#include "prx/libc/include/Api.hpp"
 #include "prx/libc/include/exceptions/Runtime.hpp"
 #include <cstddef>
 #ifndef _UNWIND_H
@@ -18,6 +19,8 @@
 #include <regex>
 #include <functional>
 #include <mutex>
+#include <condition_variable>
+#include <unordered_set>
 #include <memory>
 
 #include "prx/libc/include/General.hpp"
@@ -80,7 +83,6 @@ int APS5_VABI __cxa_thread_atexit_impl_nid_postfix(void (APS5_VABI *func)(void*)
         destructor(object);
     };
 #ifdef __APPLE__
-    // libSystem's __cxa_thread_atexit returns void: the register holds whatever the caller left in it.
     __cxxabiv1::__cxa_thread_atexit(run, context, dso);
     return 0;
 #else
@@ -104,12 +106,28 @@ const std::error_category* _ZSt17iostream_categoryv_nid_postfix() { return &std:
 int APS5_VABI _ZSt13_Execute_onceRSt9once_flagPFiPvS1_PS1_ES1__nid_postfix(
     int* flag, int (APS5_VABI *callback)(void*, void*, void**), void* arg
 ) {
-    static std::recursive_mutex mutex;
-    std::lock_guard lock(mutex);
+    static std::mutex mutex;
+    static std::condition_variable changed;
+    static std::unordered_set<int*> running;
+    std::unique_lock lock(mutex);
+    changed.wait(lock, [&] { return *flag != 0 || !running.contains(flag); });
     if (*flag != 0) return 1;
-    if (callback(nullptr, arg, nullptr) == 0) return 0;
-    *flag = 1;
-    return 1;
+    running.insert(flag);
+    lock.unlock();
+    bool initialized;
+    try {
+        initialized = callback(nullptr, arg, nullptr) != 0;
+    } catch (...) {
+        lock.lock();
+        running.erase(flag);
+        changed.notify_all();
+        throw;
+    }
+    lock.lock();
+    if (initialized) *flag = 1;
+    running.erase(flag);
+    changed.notify_all();
+    return initialized ? 1 : 0;
 }
 
 }

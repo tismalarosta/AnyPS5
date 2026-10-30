@@ -1,9 +1,9 @@
 #ifndef CORE_LIBS_PRX_LIBC_INCLUDE_GENERAL_EXPORTMACROS_HPP
 #define CORE_LIBS_PRX_LIBC_INCLUDE_GENERAL_EXPORTMACROS_HPP
 
-#if defined(__APPLE__)
-    // Mach-O C symbols carry a leading underscore, and a name starting with "L" would otherwise be
-    // assembler-local.
+#if defined(__EMSCRIPTEN__) && !defined(APS5_WASM_EXPORT_SCAN)
+    #define APS5_EXPORT(exportName, funcName)
+#elif defined(__APPLE__)
     #define APS5_EXPORT(exportName, funcName) \
     __asm__(".globl \"_" exportName "_nid_no_patch_cut\"\n\t" \
     ".set \"_" exportName "_nid_no_patch_cut\", _" #funcName)

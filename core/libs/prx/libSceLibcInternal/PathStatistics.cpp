@@ -1,22 +1,24 @@
+#include "prx/libSceLibcInternal/include/Api.hpp"
 #include "prx/libc/include/FilesystemError.hpp"
-#include "FilesystemStatistics.hpp"
 #include <cerrno>
 #include <cstdint>
-#include <cstring>
 #include <fcntl.h>
 #include <string_view>
 #include <system_error>
-#ifdef __APPLE__
-#include <sys/statvfs.h>
-#endif
 #ifdef _WIN32
 #include <windows.h>
 #include <io.h>
 #else
 #include <unistd.h>
 #endif
+#ifdef __APPLE__
+#include "prx/libSceLibcInternal/include/Statvfs.hpp"
+#include <cstring>
+#include <sys/stat.h>
+#include <sys/statvfs.h>
+#endif
 
-extern "C" int APS5_VABI fstatvfs_nid_postfix(int, LibcStatvfs*);
+struct LibcStatvfs;
 
 namespace {
 int Fail(int error) {
@@ -42,7 +44,32 @@ int HostError(int error) {
     }
 }
 
-#ifndef __APPLE__
+#ifdef __APPLE__
+int PathVolume(const std::filesystem::path& path, bool directory, LibcStatvfs* output) {
+    struct statvfs host{};
+    if (::statvfs(path.c_str(), &host) != 0) return Fail(HostError(errno));
+    if (directory) {
+        struct stat file{};
+        if (::stat(path.c_str(), &file) != 0) return Fail(HostError(errno));
+        if (!S_ISDIR(file.st_mode)) return Fail(20);
+    }
+    if (output == nullptr) return Fail(14);
+    KernelStatfs volume{};
+    if (host.f_flag & ST_RDONLY) volume.f_flags |= 0x1;
+    if (host.f_flag & ST_NOSUID) volume.f_flags |= 0x8;
+    volume.f_bsize = host.f_frsize != 0 ? host.f_frsize : host.f_bsize;
+    volume.f_iosize = host.f_bsize;
+    volume.f_blocks = host.f_blocks;
+    volume.f_bfree = host.f_bfree;
+    volume.f_bavail = static_cast<std::int64_t>(host.f_bavail);
+    volume.f_files = host.f_files;
+    volume.f_ffree = static_cast<std::int64_t>(host.f_favail);
+    volume.f_namemax = static_cast<std::uint32_t>(host.f_namemax);
+    const LibcStatvfs result = StatvfsFromStatfs(volume);
+    std::memcpy(output, &result, sizeof(result));
+    return 0;
+}
+#else
 struct Descriptor {
     int value;
     ~Descriptor() {
@@ -113,7 +140,7 @@ int OpenMetadata(const std::filesystem::path& path, bool directory) {
 }
 
 extern "C" int APS5_VABI statvfs_nid_postfix(const char* path, LibcStatvfs* output) {
-    if (path == nullptr) return Fail(14);
+    if (path == nullptr || output == nullptr) return Fail(14);
     if (*path == '\0') return Fail(2);
     const int saved = errno;
     const auto last = std::string_view(path).back();
@@ -121,16 +148,7 @@ extern "C" int APS5_VABI statvfs_nid_postfix(const char* path, LibcStatvfs* outp
     std::filesystem::path native;
     if (const int error = ResolvePathError_nid_no_patch(path, native)) return Fail(error);
 #ifdef __APPLE__
-    if (directory) native += "/";
-    struct statvfs host{};
-    if (::statvfs(native.c_str(), &host) != 0) return Fail(HostError(errno));
-    if (output == nullptr) return Fail(14);
-    const LibcStatvfs result{
-        host.f_bavail, host.f_bfree, host.f_blocks, host.f_favail, host.f_favail, host.f_files,
-        host.f_bsize, ((host.f_flag & ST_RDONLY) ? 1ull : 0ull) | ((host.f_flag & ST_NOSUID) ? 2ull : 0ull),
-        host.f_frsize != 0 ? host.f_frsize : host.f_bsize, 0, host.f_namemax
-    };
-    std::memcpy(output, &result, sizeof(result));
+    if (PathVolume(native, directory, output) != 0) return -1;
     errno = saved;
     return 0;
 #else

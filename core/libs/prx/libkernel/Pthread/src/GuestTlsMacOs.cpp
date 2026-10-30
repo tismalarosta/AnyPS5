@@ -40,7 +40,10 @@ void Release(void* threadPointer) {
 extern "C" {
 
 #if defined(__APPLE__) && defined(__x86_64__)
-std::uint8_t Aps5GuestTlsAvx_nid_no_patch = __builtin_cpu_supports("avx") ? 1 : 0;
+std::uint8_t Aps5GuestTlsAvx_nid_no_patch = [] {
+    __builtin_cpu_init();
+    return __builtin_cpu_supports("avx") ? 1 : 0;
+}();
 #endif
 
 void Aps5GuestTlsRegister_nid_no_patch(GuestTlsDescriptor* descriptor) {

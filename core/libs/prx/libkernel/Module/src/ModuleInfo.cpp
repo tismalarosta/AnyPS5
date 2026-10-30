@@ -1,3 +1,4 @@
+#include "prx/libkernel/include/Api.hpp"
 #include <cstdint>
 #include <cstddef>
 #include <cstring>
@@ -357,20 +358,22 @@ bool SystemImage(const GuestImage& image) {
 #endif
 
 #ifndef __APPLE__
-int FillModuleInfo(KernelModule handle, ModuleInfo* info, bool titleOnly) {
+template<typename TInfo>
+int FillModuleInfo(KernelModule handle, TInfo* info, bool titleOnly) {
     if (!info) return SCE_KERNEL_ERROR_EFAULT;
-    if (info->st_size != sizeof(ModuleInfo)) return SCE_KERNEL_ERROR_EINVAL;
+    if (info->st_size != sizeof(TInfo)) return SCE_KERNEL_ERROR_EINVAL;
     for (const auto& image : GuestImages()) {
         if (ModuleIdForImage_nid_no_patch(image.native) != handle) continue;
         if (titleOnly && SystemImage(image)) return SCE_KERNEL_ERROR_EPERM;
-        ModuleInfo result{};
-        result.st_size = sizeof(ModuleInfo);
+        TInfo result{};
+        result.st_size = sizeof(TInfo);
 #ifdef _WIN32
         if (!Fill(image.address, result)) return SCE_KERNEL_ERROR_ESRCH;
 #else
-        ImageSearch<ModuleInfo> search{image.address, &result, false};
-        dl_iterate_phdr(FindImage<ModuleInfo>, &search);
+        ImageSearch<TInfo> search{image.address, &result, false};
+        dl_iterate_phdr(FindImage<TInfo>, &search);
         if (!search.found) return SCE_KERNEL_ERROR_ESRCH;
+        if constexpr (std::is_same_v<TInfo, ModuleInfoEx>) result.id = handle;
 #endif
         *info = result;
         return 0;
@@ -379,11 +382,12 @@ int FillModuleInfo(KernelModule handle, ModuleInfo* info, bool titleOnly) {
 }
 
 int FillModuleList(KernelModule* handles, std::size_t count, std::size_t* actual, bool titleOnly) {
-    if (!handles || !actual) return SCE_KERNEL_ERROR_EFAULT;
+    if (!handles) return SCE_KERNEL_ERROR_EFAULT;
     auto images = GuestImages();
     if (titleOnly) std::erase_if(images, SystemImage);
     for (std::size_t i = 0; i < images.size() && i < count; ++i) handles[i] = ModuleIdForImage_nid_no_patch(images[i].native);
     if (images.size() > count) return SCE_KERNEL_ERROR_ENOMEM;
+    if (!actual) return SCE_KERNEL_ERROR_EFAULT;
     *actual = images.size();
     return 0;
 }
@@ -418,24 +422,44 @@ int APS5_VABI sceKernelGetModuleInfo2(KernelModule, ModuleInfo*) {
     return 0;
 }
 
+KernelModule APS5_VABI sceKernelGetExecutableModuleHandle() {
+    NotImplemented_nid_no_patch(__func__);
+    return 0;
+}
+
+int GetModuleInfoExByHandle_nid_no_patch(KernelModule, ModuleInfoEx*) {
+    NotImplemented_nid_no_patch(__func__);
+    return 0;
+}
+
 #else
 int APS5_VABI sceKernelGetModuleInfoFromAddr(std::uint64_t address, int flags, ModuleInfoEx* info) {
+    if (flags != 1 && flags != 2) {
+        if (!info) throw std::invalid_argument("sceKernelGetModuleInfoFromAddr: null info with flags " + std::to_string(flags));
+        *info = {};
+        return SCE_KERNEL_ERROR_EINVAL;
+    }
     if (!info) return SCE_KERNEL_ERROR_EFAULT;
-    if (flags != 2) throw std::invalid_argument("sceKernelGetModuleInfoFromAddr: unsupported flags " + std::to_string(flags));
     ModuleInfoEx result{};
-    result.st_size = sizeof(ModuleInfoEx);
 #ifdef _WIN32
-    if (!Fill(static_cast<std::uintptr_t>(address), result)) return SCE_KERNEL_ERROR_ESRCH;
+    MEMORY_BASIC_INFORMATION memory{};
+    const bool found = Fill(static_cast<std::uintptr_t>(address), result) &&
+        VirtualQuery(reinterpret_cast<LPCVOID>(address), &memory, sizeof(memory)) == sizeof(memory);
+    const GuestImage image{nullptr, found ? reinterpret_cast<std::uintptr_t>(memory.AllocationBase) : 0};
 #else
     Dl_info symbol{};
     link_map* native = nullptr;
-    if (!dladdr1(reinterpret_cast<const void*>(address), &symbol, reinterpret_cast<void**>(&native), RTLD_DL_LINKMAP) || !native)
-        return SCE_KERNEL_ERROR_ESRCH;
     ImageSearch<ModuleInfoEx> search{static_cast<std::uintptr_t>(address), &result, false};
-    dl_iterate_phdr(FindImage<ModuleInfoEx>, &search);
-    if (!search.found) return SCE_KERNEL_ERROR_ESRCH;
-    result.id = ModuleIdForImage_nid_no_patch(native);
+    if (dladdr1(reinterpret_cast<const void*>(address), &symbol, reinterpret_cast<void**>(&native), RTLD_DL_LINKMAP) && native)
+        dl_iterate_phdr(FindImage<ModuleInfoEx>, &search);
+    const bool found = search.found;
+    if (found) result.id = ModuleIdForImage_nid_no_patch(native);
+    const GuestImage image{native, 0};
 #endif
+    if (!found || (flags == 2 && SystemImage(image))) {
+        *info = {};
+        return SCE_KERNEL_ERROR_ESRCH;
+    }
     *info = result;
     return 0;
 }
@@ -454,6 +478,16 @@ int APS5_VABI sceKernelGetModuleInfo(KernelModule handle, ModuleInfo* info) {
 
 int APS5_VABI sceKernelGetModuleInfo2(KernelModule handle, ModuleInfo* info) {
     return FillModuleInfo(handle, info, true);
+}
+
+KernelModule APS5_VABI sceKernelGetExecutableModuleHandle() {
+    const auto images = GuestImages();
+    if (images.empty()) throw std::runtime_error("sceKernelGetExecutableModuleHandle: the main program is not loaded");
+    return ModuleIdForImage_nid_no_patch(images.front().native);
+}
+
+int GetModuleInfoExByHandle_nid_no_patch(KernelModule handle, ModuleInfoEx* info) {
+    return FillModuleInfo(handle, info, false);
 }
 #endif
 
