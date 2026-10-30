@@ -119,7 +119,7 @@ int main() {
             Require(Output[lane] == Marker, "lane " + std::to_string(lane) + " is " + std::to_string(Output[lane]) + " after the call through the FS table, expected " + std::to_string(Marker));
         }
         AgcDriverShutdown_nid_postfix();
-        std::puts("compute FS table call tests passed");
+        std::printf("compute FS table call tests passed, FS table at 0x%llx\n", static_cast<unsigned long long>(reinterpret_cast<std::uintptr_t>(AgcDriverStaticTable_nid_postfix())));
         return 0;
     } catch (const std::exception& error) {
         std::cerr << error.what() << '\n';

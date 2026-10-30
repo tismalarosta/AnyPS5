@@ -240,6 +240,11 @@ target_link_libraries(native_agc_static_table_tests PRIVATE anyps5_native_graphi
 add_test(NAME native_agc_static_table COMMAND native_agc_static_table_tests)
 set_tests_properties(native_agc_static_table PROPERTIES TIMEOUT 30)
 
+add_test_executable(native_agc_driver_memory_reach_tests ../tests/NativeAgcDriverMemoryReach.cpp)
+target_link_libraries(native_agc_driver_memory_reach_tests PRIVATE anyps5_native_graphics)
+add_test(NAME native_agc_driver_memory_reach COMMAND native_agc_driver_memory_reach_tests)
+set_tests_properties(native_agc_driver_memory_reach PROPERTIES TIMEOUT 30)
+
 add_test_executable(native_agc_fs_table_calls_tests ../prx/libSceAgcDriver/tests/execution/ComputeFsTableCalls.cpp)
 target_link_libraries(native_agc_fs_table_calls_tests PRIVATE anyps5_native_graphics)
 target_include_directories(native_agc_fs_table_calls_tests PRIVATE "${CMAKE_SOURCE_DIR}/core/shader/recompiler" "${CMAKE_SOURCE_DIR}/3rdparty/Vulkan-Headers/include")

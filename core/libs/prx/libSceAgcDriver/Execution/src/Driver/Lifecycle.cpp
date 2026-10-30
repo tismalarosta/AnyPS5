@@ -66,6 +66,7 @@ constexpr std::uint64_t FsRoutineTableBytes = FsRoutineRecords * FsRoutineRecord
 constexpr std::uint64_t FsRoutineTableOffset = FsTableOffset + FsTableSlots * FsTableSlotBytes;
 constexpr std::uint64_t FsRoutineOffset = FsRoutineTableOffset + FsRoutineTableBytes;
 #if defined(__APPLE__) && defined(__aarch64__)
+constexpr std::uint64_t RelocatedDriverMemoryHint = 0x100000000ull;
 constexpr std::uint64_t InlineConstantHighLimit = 64u;
 #endif
 constexpr std::uint32_t ScalarSetpcB64LinkS14 = 0xbe80200eu;
@@ -75,7 +76,7 @@ constexpr std::uint64_t FsTableDword3 = 0x5204u;
 std::uint64_t MapDriverMemory() {
     void* mapped;
 #if defined(__APPLE__) && defined(__aarch64__)
-    mapped = mmap(nullptr, DriverMemoryBytes, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+    mapped = mmap(reinterpret_cast<void*>(RelocatedDriverMemoryHint), DriverMemoryBytes, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
     if (mapped == MAP_FAILED) throw std::system_error(errno, std::generic_category(), "map the AGC driver memory");
     if ((reinterpret_cast<std::uint64_t>(mapped) + DriverMemoryBytes - 1u) >> 32u > InlineConstantHighLimit) {
         munmap(mapped, DriverMemoryBytes);
@@ -228,7 +229,9 @@ void Driver::stop() {
 
 Driver::Driver() {
     InstallAsyncLog_nid_no_patch();
+#if !(defined(__APPLE__) && defined(__aarch64__))
     static_cast<void>(DriverMemory());
+#endif
     LibcSetExitDrain_nid_no_patch([] {
         const auto current = Driver::Get().device.Load();
         if (current) current->SavePipelineCache();
