@@ -422,6 +422,15 @@ class RegistrationTests(unittest.TestCase):
         self.assertIn("requires a Ninja generator", result.stderr)
         self.assertNotIn("Traceback", result.stderr)
 
+    @unittest.skipUnless(shutil.which("cmake"), "CMake is required to configure the write watch tests")
+    def test_write_watch_tests_register_each_name_once(self):
+        source = Path(__file__).resolve().parents[2] / "core" / "libs" / "tests" / "write_watch"
+        with tempfile.TemporaryDirectory() as directory:
+            result = subprocess.run(["cmake", "-S", str(source), "-B", directory],
+                                    capture_output=True, text=True, timeout=300)
+        self.assertNotIn("already exists in this directory", result.stderr)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
 class ScriptRegistrationTests(unittest.TestCase):
     def unrun(self, files):
         with tempfile.TemporaryDirectory() as directory:
