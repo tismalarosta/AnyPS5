@@ -9,7 +9,7 @@ Checked on an M5 Pro with macOS 27.0.1 on 31 October 2026:
 - The PS5 DOOM homebrew (PPSA99666) plays its three demos natively to 5026, 3836 and 2134 final tics, the same as the reference.
 - The SDK GPU cube renders 600 frames, and the compared frames are identical to the reference, pixel for pixel, through MoltenVK.
 - The pad consumer passes, and 1094 of 1096 tests in the native AOT build pass; the other 2 fail only inside a sandbox that blocks `/tmp`.
-- The native build compiles 2,217 of the 27,404 PS5 system library functions AnyPS5 knows as real code (8.1%), and handles all 1,166 known GPU instructions, as measured by [arm64_progress.py](tools/arm64_progress.py).
+- The native build compiles 2,217 of the 27,773 PS5 system library functions AnyPS5 knows as real code (8.0%), and handles all 1,166 known GPU instructions, as measured by [arm64_progress.py](tools/arm64_progress.py).
 
 Only programs with a reviewed bindings manifest run: this is not general game compatibility. Build steps are in [BUILD.md](docs/dev/BUILD.md#experimental-native-apple-arm64-compiler). Rules for changes, including AI use and what never goes in, are in [ARM64.md](docs/dev/ARM64.md).
 
@@ -33,13 +33,13 @@ Includes a [relinker](core/relinker) that converts executable to the target syst
 
 Native Apple ARM64 (Mac) status of this branch:
 
-[![Mac system libraries](https://img.shields.io/badge/Mac%20system%20libraries-8.1%25-2ea043)](tools/arm64_progress.py) [![Mac GPU instructions](https://img.shields.io/badge/Mac%20GPU%20instructions-100%25-2ea043)](tools/arm64_progress.py)
+[![Mac system libraries](https://img.shields.io/badge/Mac%20system%20libraries-8.0%25-2ea043)](tools/arm64_progress.py) [![Mac GPU instructions](https://img.shields.io/badge/Mac%20GPU%20instructions-100%25-2ea043)](tools/arm64_progress.py)
 
 ![Map of the PS5 system libraries in the native Mac build: one box per library, one cell per known function, green cells compile as real code](docs/arm64-libraries.svg)
 
 One box per system library, sized by its known functions; green cells compile as real code in the native Mac build, grey cells do not yet.
 
-- System libraries: 2,217 of the 27,404 known PS5 system library functions compile as real code in the native Mac build (Apple-only stubs are not counted). Each function is compiled, not tested one by one.
+- System libraries: 2,217 of the 27,773 known PS5 system library functions compile as real code in the native Mac build (Apple-only stubs are not counted). Each function is compiled, not tested one by one.
 - GPU: the shader recompiler in the native Mac build handles all 1,166 known GPU instructions. Translated shaders reach Metal through MoltenVK; this counts handled instructions, not shaders checked on screen.
 
 Measured on 31 October 2026 with [arm64_progress.py](tools/arm64_progress.py) on the native ARM64 build. Upstream's Windows and Linux progress is on its [progress page](https://boykopovar.github.io/AnyPS5/progress.html).
