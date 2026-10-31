@@ -136,6 +136,7 @@ static void CheckRegisterDuringUnload() {
         unload.join();
         Require(dlclose_nid_postfix(module) == 0);
     }
+    std::filesystem::remove(copy);
 }
 #endif
 

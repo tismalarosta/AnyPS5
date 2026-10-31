@@ -20,6 +20,7 @@ constexpr std::size_t HeadersOffset = 0x60;
 struct LoadedImage {
     const mach_header_64* header;
     std::intptr_t slide;
+    bool guest;
     std::string name;
 };
 
@@ -35,10 +36,12 @@ std::vector<LoadedImage> images;
 void AddImage(const mach_header* image, intptr_t slide) {
     const auto* header = reinterpret_cast<const mach_header_64*>(image);
     if (header == nullptr || header->magic != MH_MAGIC_64 || (header->flags & MH_DYLIB_IN_CACHE) != 0) return;
+    unsigned long size = 0;
+    const bool guest = getsectiondata(header, "__APS5DATA", "__meta", &size) != nullptr;
     Dl_info info {};
     std::string name = header->filetype != MH_EXECUTE && dladdr(image, &info) != 0 && info.dli_fname != nullptr ? info.dli_fname : "";
     std::lock_guard lock(imagesLock);
-    images.push_back({header, slide, std::move(name)});
+    images.push_back({header, slide, guest, std::move(name)});
 }
 
 void RemoveImage(const mach_header* image, intptr_t) {
@@ -48,8 +51,8 @@ void RemoveImage(const mach_header* image, intptr_t) {
 
 void RegisterImageCallbacks() {
     [[maybe_unused]] static const bool registered = [] {
-        _dyld_register_func_for_add_image(AddImage);
         _dyld_register_func_for_remove_image(RemoveImage);
+        _dyld_register_func_for_add_image(AddImage);
         return true;
     }();
 }
@@ -60,6 +63,7 @@ std::vector<GuestImage> GuestImages() {
     std::lock_guard lock(imagesLock);
     found.reserve(images.size());
     for (const auto& image : images) {
+        if (!image.guest) continue;
         unsigned long size = 0;
         const auto* meta = getsectiondata(image.header, "__APS5DATA", "__meta", &size);
         if (meta == nullptr || size < HeadersOffset) continue;
