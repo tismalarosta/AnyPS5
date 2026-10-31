@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 from datetime import date
+from html import escape
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -20,6 +21,9 @@ HANDLER = re.compile(r"\bcase\s+RdnaOpcode::(\w+)\s*:")
 DECODED = re.compile(r"\{\s*0x[0-9a-fA-F]+u?\s*,\s*RdnaOpcode::(\w+)\s*,")
 CTEST_SUMMARY = re.compile(r"(\d+)% tests passed, (\d+) tests? failed out of (\d+)")
 LINE_MARKER = re.compile(r'^# \d+ "([^"]+)"')
+LIGHT = (f'<style>@media (prefers-color-scheme: light) {{ [fill="{progress.BORDER}"] {{ fill: #ffffff; }} '
+         f'[stroke="{progress.BORDER}"] {{ stroke: #ffffff; }} '
+         f'[stroke="{progress.TODO_COLOR}"] {{ stroke: #d0d7de; }} [fill="{progress.TEXT}"] {{ fill: #1f2328; }} }}</style>')
 
 
 def defined_symbols(nm_output):
@@ -209,6 +213,44 @@ def coverage(libraries, live, stub, symbols):
             "groups": sorted(groups, key=lambda g: (-g["arm64"], g["name"]))}
 
 
+def cell_runs(cells, done):
+    runs = {}
+    for i, (x, y, w, h) in enumerate(cells):
+        color = progress.DONE_COLOR if i < done else progress.TODO_COLOR
+        segments = runs.setdefault((color, w, h), [])
+        if segments and segments[-1][1] == y and abs(segments[-1][2] - x) < 1e-6:
+            segments[-1][2] = x + w
+        else:
+            segments.append([x, y, x + w])
+    parts = []
+    for (color, w, h), segments in runs.items():
+        if w > 0.5 and h > 0.5:
+            line = "".join(f"M{x:.2f} {y + h / 2:.2f}H{end:.2f}" for x, y, end in segments)
+            parts.append(f'<path d="{line}" fill="none" stroke="{color}" stroke-width="{h - 0.5:.2f}" '
+                         f'stroke-dasharray="{w - 0.5:.4f} 0.5" stroke-dashoffset="{w - 0.25:.4f}"/>')
+    return parts
+
+
+def library_map(libraries):
+    groups = sorted((g for g in libraries["groups"] if g["known"]), key=lambda g: -g["known"])
+    width, height = progress.PANEL_WIDTH, progress.HEADER + progress.MAP_HEIGHT
+    parts = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}">', LIGHT,
+             progress.rect(0, 0, width, height, progress.BORDER, 0),
+             progress.text(4, 21, f'Mac system libraries: {libraries["percent"]}% ({libraries["arm64"]}/{libraries["known"]})', 16)]
+    areas = progress.squarify([g["known"] for g in groups], 0, progress.HEADER, width, progress.MAP_HEIGHT)
+    for group, (x, y, w, h) in zip(groups, areas):
+        label = group["name"].removeprefix("libSce")
+        parts.append(f'<g><title>{escape(group["name"])}: {group["arm64"]}/{group["known"]} '
+                     f'({100 * group["arm64"] / group["known"]:.0f}%)</title>')
+        parts += cell_runs(progress.cells(group["known"], x + 1, y + 1, w - 2, h - 2), group["arm64"])
+        parts.append(f'<rect x="{x:.2f}" y="{y:.2f}" width="{w:.2f}" height="{h:.2f}" fill="none" stroke="{progress.BORDER}" stroke-width="2"/>')
+        shown = label[:int((w - 10) / 7)] if int((w - 10) / 7) > 0 else ""
+        if (shown == label or len(shown) >= 3) and h > 22:
+            parts.append(progress.text(x + 5, y + 16, shown, 12))
+        parts.append("</g>")
+    return "\n".join(parts + ["</svg>"]) + "\n"
+
+
 def ctest_result(text):
     found = CTEST_SUMMARY.findall(text)
     if not found:
@@ -228,6 +270,7 @@ def main():
     parser.add_argument("--ref", default="HEAD")
     parser.add_argument("--upstream", help="upstream branch to count commits behind, for example upstream/main")
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--svg", type=Path, help="write the library map as an SVG image")
     arguments = parser.parse_args()
     archives = sorted((arguments.build / "core" / "libs" / "native").glob("*.a")) + sorted((arguments.build / "core" / "aot").glob("*.a"))
     if not archives:
@@ -241,6 +284,8 @@ def main():
         result["tests"] = ctest_result(arguments.ctest_log.read_text(encoding="utf-8", errors="replace"))
     if arguments.upstream:
         result["behind"] = int(git("rev-list", "--count", f"{arguments.ref}..{arguments.upstream}"))
+    if arguments.svg:
+        arguments.svg.write_text(library_map(result["libraries"]), encoding="utf-8")
     text = json.dumps(result, indent=2) + "\n"
     if arguments.output:
         arguments.output.write_text(text, encoding="utf-8")

@@ -1,5 +1,7 @@
+import re
 import sys
 import unittest
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -106,6 +108,31 @@ class ShaderTest(unittest.TestCase):
 
     def test_mentions_outside_case_labels_do_not_count(self):
         self.assertEqual(arm64_progress.HANDLER.findall("if (op == RdnaOpcode::VMulF32) {}"), [])
+
+
+class MapTest(unittest.TestCase):
+    LIBRARIES = {"known": 9, "arm64": 3, "percent": 33.33, "groups": [
+        {"name": "libkernel", "known": 6, "upstream_done": 4, "arm64": 2},
+        {"name": "libSceAgc", "known": 2, "upstream_done": 2, "arm64": 1},
+        {"name": "libScePad", "known": 1, "upstream_done": 0, "arm64": 0}]}
+
+    def test_one_box_per_library_and_one_cell_per_function(self):
+        text = arm64_progress.library_map(self.LIBRARIES)
+        root = ET.fromstring(text)
+        namespace = "{http://www.w3.org/2000/svg}"
+        self.assertNotIn("width", root.attrib)
+        self.assertEqual(root.findall(f".//{namespace}script"), [])
+        boxes = root.findall(f"{namespace}g")
+        self.assertEqual([box.find(f"{namespace}title").text for box in boxes],
+                         ["libkernel: 2/6 (33%)", "libSceAgc: 1/2 (50%)", "libScePad: 0/1 (0%)"])
+        cells = {}
+        for path in root.iter(f"{namespace}path"):
+            step = sum(map(float, path.get("stroke-dasharray").split()))
+            for x, end in re.findall(r"M([\d.]+) [\d.]+H([\d.]+)", path.get("d")):
+                cells[path.get("stroke")] = cells.get(path.get("stroke"), 0) + round((float(end) - float(x)) / step)
+        self.assertEqual(cells, {arm64_progress.progress.DONE_COLOR: 3, arm64_progress.progress.TODO_COLOR: 6})
+        self.assertIn("Mac system libraries: 33.33% (3/9)", text)
+        self.assertIn("prefers-color-scheme: light", text)
 
 
 class CtestTest(unittest.TestCase):
