@@ -126,7 +126,7 @@ struct Port {
     AudioOut2PadLayout padLayout;
     SDL_AudioDeviceID device = 0;
     SDL_AudioSpec spec = {};
-    HostGainRamp hostGain;
+    HostGainRamp hostGain = HostGainRamp();
 };
 
 static std::mutex g_mutex;
