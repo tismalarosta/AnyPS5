@@ -684,6 +684,15 @@ class RepositoryChecksTests(unittest.TestCase):
         self.assertIn(("binary", "a.bin", 0, ""), check.findings)
         self.assertNotIn("README.md", check.added)
 
+    def test_only_the_fork_library_map_image_is_allowed(self):
+        (self.root / "docs").mkdir(exist_ok=True)
+        (self.root / "docs/arm64-libraries.svg").write_text("<svg/>\n", encoding="utf-8")
+        (self.root / "docs/other.svg").write_text("<svg/>\n", encoding="utf-8")
+        self.commit()
+        check = Check("HEAD~1", "HEAD")
+        check.repository()
+        self.assertEqual(check.findings, [("binary", "docs/other.svg", 0, "")])
+
     def test_increment_line_is_not_a_patch_file_header(self):
         path = self.root / "core/example.cpp"
         path.parent.mkdir()

@@ -39,6 +39,7 @@ RULES = {
 
 CPP = {".c", ".cc", ".cpp", ".cxx", ".h", ".hh", ".hpp", ".hxx", ".inl", ".ipp"}
 IMAGES = {".png", ".jpg", ".jpeg", ".gif", ".bmp", ".svg", ".webp", ".ico", ".tga", ".dds"}
+FORK_IMAGES = {"docs/arm64-libraries.svg"}
 NOTES = {".md", ".markdown", ".rst", ".log", ".patch", ".diff"}
 AGENT_FILES = {
     "agents.md", "claude.md", "gemini.md", ".cursorrules", "copilot-instructions.md",
@@ -307,7 +308,7 @@ class Check:
                 self.report("system-dependency", path, 0, "submodule outside 3rdparty/")
                 continue
             suffix = PurePosixPath(path).suffix.lower()
-            if self.status.get(path) != "D" and (added == "-" or suffix in IMAGES or not utf8(self.blob(path))):
+            if self.status.get(path) != "D" and (added == "-" or suffix in IMAGES and path not in FORK_IMAGES or not utf8(self.blob(path))):
                 self.report("binary", path, 0)
             if self.status.get(path) in ("A", "R") and allowed_notes(path) is False:
                 self.report("notes-file", path, 0)
