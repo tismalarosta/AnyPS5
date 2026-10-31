@@ -189,7 +189,7 @@ set_target_properties(native_guest_flexible_memory_module PROPERTIES PREFIX "" S
 add_dependencies(native_guest_flexible_memory_budget_tests native_guest_flexible_memory_module)
 target_compile_definitions(native_guest_flexible_memory_budget_tests PRIVATE
     GUEST_FLEXIBLE_MEMORY_MODULE="$<TARGET_FILE:native_guest_flexible_memory_module>")
-foreach(flexibleMemoryCase IN ITEMS declared:838860800 limited:16777216 none:0 missing:0 invalid:true)
+foreach(flexibleMemoryCase IN ITEMS declared:838860800 unload:838860800 limited:16777216 none:0 missing:0 invalid:true)
     string(REPLACE ":" ";" flexibleMemoryCase ${flexibleMemoryCase})
     list(GET flexibleMemoryCase 0 flexibleMemoryName)
     list(GET flexibleMemoryCase 1 flexibleMemorySize)

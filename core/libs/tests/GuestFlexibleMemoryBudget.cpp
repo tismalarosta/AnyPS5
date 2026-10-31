@@ -11,6 +11,10 @@
 #include <source_location>
 #include <stdexcept>
 #include <string_view>
+#ifdef __APPLE__
+#include "prx/libc/include/specifics/linux/ElfTypes.hpp"
+#include <thread>
+#endif
 
 extern "C" {
 
@@ -64,6 +68,55 @@ static void CheckPosixRelease(std::size_t before) {
     checkBudget("rounded full unmap", before);
 }
 
+static void* LoadFixture() {
+    const std::filesystem::path fixture = GUEST_FLEXIBLE_MEMORY_MODULE;
+    AddPathAlias_nid_no_patch("budget_module", fixture.parent_path().string().c_str());
+    void* module = dlopen_nid_postfix(("/budget_module/" + fixture.filename().generic_string()).c_str(), 2);
+    if (!module) std::fprintf(stderr, "Cannot load budget fixture: %s\n", dlerror_nid_postfix());
+    Require(module != nullptr);
+    return module;
+}
+
+#ifdef __APPLE__
+struct UnloadWalk {
+    void* module;
+    bool unloaded;
+    std::uint64_t bytes;
+};
+
+static int UnloadWhileVisited(dl_phdr_info* image, std::size_t, void* data) {
+    auto& walk = *static_cast<UnloadWalk*>(data);
+    if (walk.unloaded || image->dlpi_phnum != 5 || image->dlpi_phdr[0].p_memsz != 512u * 1024u * 1024u) return 0;
+    std::thread([&walk] { Require(dlclose_nid_postfix(walk.module) == 0); }).join();
+    walk.unloaded = true;
+    walk.bytes = image->dlpi_phdr[0].p_memsz;
+    return 0;
+}
+
+static void CheckUnloadDuringWalk(std::size_t configured) {
+    const auto imageBytes = GuestImageSegmentBytes_nid_no_patch();
+    UnloadWalk walk{LoadFixture(), false, 0};
+    Require(GuestImageSegmentBytes_nid_no_patch() - imageBytes == 512u * 1024u * 1024u);
+    dl_iterate_phdr(UnloadWhileVisited, &walk);
+    Require(walk.unloaded && walk.bytes == 512u * 1024u * 1024u);
+    Require(GuestImageSegmentBytes_nid_no_patch() == imageBytes);
+    std::thread loader([] {
+        for (int round = 0; round < 50; ++round) Require(dlclose_nid_postfix(LoadFixture()) == 0);
+    });
+    std::thread readers[2];
+    for (auto& reader : readers) reader = std::thread([] {
+        for (int round = 0; round < 2000; ++round) {
+            std::size_t available = 0;
+            Require(sceKernelAvailableFlexibleMemorySize(&available) == 0);
+        }
+    });
+    loader.join();
+    for (auto& reader : readers) reader.join();
+    std::size_t available = 0;
+    Require(sceKernelAvailableFlexibleMemorySize(&available) == 0 && available + imageBytes == configured);
+}
+#endif
+
 int main(int argc, char** argv) {
     Require(argc == 2);
     const std::string_view mode = argv[1];
@@ -77,20 +130,21 @@ int main(int argc, char** argv) {
         Require(rejected && configured == 0);
         return 0;
     }
-    const std::size_t expected = (mode == "declared" ? 800u : mode == "limited" ? 16u : 448u) * 1024u * 1024u;
+    const std::size_t expected = (mode == "declared" || mode == "unload" ? 800u : mode == "limited" ? 16u : 448u) * 1024u * 1024u;
     Require(sceKernelConfiguredFlexibleMemorySize(&configured) == 0 && configured == expected);
     std::size_t before = 0;
     Require(sceKernelAvailableFlexibleMemorySize(&before) == 0);
     Require(before + GuestImageSegmentBytes_nid_no_patch() == configured);
+#ifdef __APPLE__
+    if (mode == "unload") {
+        CheckUnloadDuringWalk(configured);
+        return 0;
+    }
+#endif
     void* module = nullptr;
     if (mode == "declared") {
-        const std::filesystem::path fixture = GUEST_FLEXIBLE_MEMORY_MODULE;
-        AddPathAlias_nid_no_patch("budget_module", fixture.parent_path().string().c_str());
-        const auto path = "/budget_module/" + fixture.filename().generic_string();
         const auto imageBytes = GuestImageSegmentBytes_nid_no_patch();
-        module = dlopen_nid_postfix(path.c_str(), 2);
-        if (!module) std::fprintf(stderr, "Cannot load budget fixture: %s\n", dlerror_nid_postfix());
-        Require(module != nullptr);
+        module = LoadFixture();
         Require(sceKernelAvailableFlexibleMemorySize(&before) == 0);
         Require(GuestImageSegmentBytes_nid_no_patch() > 448u * 1024u * 1024u);
 #ifdef __APPLE__
