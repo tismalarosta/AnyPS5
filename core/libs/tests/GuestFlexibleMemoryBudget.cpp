@@ -12,7 +12,9 @@
 #include <stdexcept>
 #include <string_view>
 #ifdef __APPLE__
+#include "prx/libc/include/GuestAllocations.hpp"
 #include "prx/libc/include/specifics/linux/ElfTypes.hpp"
+#include <dlfcn.h>
 #include <thread>
 #endif
 
@@ -115,6 +117,26 @@ static void CheckUnloadDuringWalk(std::size_t configured) {
     std::size_t available = 0;
     Require(sceKernelAvailableFlexibleMemorySize(&available) == 0 && available + imageBytes == configured);
 }
+
+static void CheckRegisterDuringUnload() {
+    const auto copy = std::filesystem::current_path() / "budget_module_copy.guest.prx";
+    std::filesystem::copy_file(GUEST_FLEXIBLE_MEMORY_MODULE, copy, std::filesystem::copy_options::overwrite_existing);
+    for (int round = 0; round < 1000; ++round) {
+        void* other = dlopen(copy.c_str(), RTLD_NOW | RTLD_LOCAL);
+        Require(other != nullptr);
+        void* module = LoadFixture();
+        Dl_info info{};
+        Require(dladdr(dlsym_nid_postfix(module, "guestFlexibleMemoryModuleData"), &info) != 0);
+        std::thread unload([other] { Require(dlclose(other) == 0); });
+        {
+            GuestAllocations::Mutation mutation;
+            mutation.UnregisterImage(info.dli_fbase);
+            mutation.RegisterImage(info.dli_fbase);
+        }
+        unload.join();
+        Require(dlclose_nid_postfix(module) == 0);
+    }
+}
 #endif
 
 int main(int argc, char** argv) {
@@ -138,6 +160,7 @@ int main(int argc, char** argv) {
 #ifdef __APPLE__
     if (mode == "unload") {
         CheckUnloadDuringWalk(configured);
+        CheckRegisterDuringUnload();
         return 0;
     }
 #endif

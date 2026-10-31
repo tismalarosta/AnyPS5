@@ -17,7 +17,6 @@
 #include <windows.h>
 #elif defined(__APPLE__)
 #include "prx/libc/include/specifics/linux/ElfTypes.hpp"
-#include <mach-o/dyld.h>
 #include <mach-o/loader.h>
 #include <mach/mach.h>
 #include <mach/mach_vm.h>
@@ -41,6 +40,8 @@
 #endif
 #ifdef __APPLE__
 #include "prx/libc/include/specifics/linux/ElfTypes.hpp"
+
+extern "C" int ForEachMachImage_nid_no_patch(int (*visit)(const mach_header_64*, std::intptr_t, void*), void* data);
 #endif
 
 namespace GuestAllocations {
@@ -298,25 +299,20 @@ void addSegmentPages(ImagePages& collected, std::uintptr_t address, std::uint64_
     }
 }
 
-void collectMachImagePages(ImagePages& collected) {
-    const auto count = _dyld_image_count();
-    for (std::uint32_t index = 0; index < count; ++index) {
-        const auto* header = reinterpret_cast<const mach_header_64*>(_dyld_get_image_header(index));
-        if (header == nullptr || header->magic != MH_MAGIC_64) continue;
-        if (collected.main ? header->filetype != MH_EXECUTE : reinterpret_cast<std::uintptr_t>(header) != collected.base) continue;
-        collected.found = true;
-        const auto slide = static_cast<std::uintptr_t>(_dyld_get_image_vmaddr_slide(index));
-        const auto* command = reinterpret_cast<const load_command*>(header + 1);
-        for (std::uint32_t loaded = 0; loaded < header->ncmds; ++loaded) {
-            if (command->cmd == LC_SEGMENT_64) {
-                const auto& segment = *reinterpret_cast<const segment_command_64*>(command);
-                if (segment.vmsize != 0 && segment.initprot != VM_PROT_NONE)
-                    addSegmentPages(collected, slide + segment.vmaddr, segment.vmsize, (segment.initprot & (VM_PROT_READ | VM_PROT_WRITE)) != 0, (segment.initprot & VM_PROT_WRITE) != 0);
-            }
-            command = reinterpret_cast<const load_command*>(reinterpret_cast<const std::uint8_t*>(command) + command->cmdsize);
+int collectMachImagePages(const mach_header_64* header, std::intptr_t slide, void* data) {
+    auto& collected = *static_cast<ImagePages*>(data);
+    if (collected.main ? header->filetype != MH_EXECUTE : reinterpret_cast<std::uintptr_t>(header) != collected.base) return 0;
+    collected.found = true;
+    const auto* command = reinterpret_cast<const load_command*>(header + 1);
+    for (std::uint32_t loaded = 0; loaded < header->ncmds; ++loaded) {
+        if (command->cmd == LC_SEGMENT_64) {
+            const auto& segment = *reinterpret_cast<const segment_command_64*>(command);
+            if (segment.vmsize != 0 && segment.initprot != VM_PROT_NONE)
+                addSegmentPages(collected, static_cast<std::uintptr_t>(slide) + segment.vmaddr, segment.vmsize, (segment.initprot & (VM_PROT_READ | VM_PROT_WRITE)) != 0, (segment.initprot & VM_PROT_WRITE) != 0);
         }
-        return;
+        command = reinterpret_cast<const load_command*>(reinterpret_cast<const std::uint8_t*>(command) + command->cmdsize);
     }
+    return 1;
 }
 #else
 int collectImagePages(dl_phdr_info* image, std::size_t, void* data) {
@@ -367,7 +363,7 @@ void GuestAllocationsRegisterMainImage_nid_postfix(void*) {
     if (state.mainImageRegistered) return;
     ImagePages collected{.main = true, .pageSize = static_cast<std::uint64_t>(::sysconf(_SC_PAGESIZE))};
 #ifdef __APPLE__
-    collectMachImagePages(collected);
+    ForEachMachImage_nid_no_patch(collectMachImagePages, &collected);
 #else
     dl_iterate_phdr(collectImagePages, &collected);
 #endif
@@ -383,7 +379,7 @@ void GuestAllocationsRegisterImage_nid_postfix(void*, const void* image) {
     if (state.registeredImages.contains(base)) return;
     ImagePages collected{.base = base, .pageSize = static_cast<std::uint64_t>(::sysconf(_SC_PAGESIZE))};
 #ifdef __APPLE__
-    collectMachImagePages(collected);
+    ForEachMachImage_nid_no_patch(collectMachImagePages, &collected);
 #else
     dl_iterate_phdr(collectImagePages, &collected);
 #endif

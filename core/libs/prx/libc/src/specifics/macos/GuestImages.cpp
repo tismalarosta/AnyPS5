@@ -19,6 +19,7 @@ constexpr std::size_t HeadersOffset = 0x60;
 
 struct LoadedImage {
     const mach_header_64* header;
+    std::intptr_t slide;
     std::string name;
 };
 
@@ -31,15 +32,13 @@ struct GuestImage {
 std::mutex imagesLock;
 std::vector<LoadedImage> images;
 
-void AddImage(const mach_header* image, intptr_t) {
+void AddImage(const mach_header* image, intptr_t slide) {
     const auto* header = reinterpret_cast<const mach_header_64*>(image);
     if (header == nullptr || header->magic != MH_MAGIC_64 || (header->flags & MH_DYLIB_IN_CACHE) != 0) return;
-    unsigned long size = 0;
-    if (getsectiondata(header, "__APS5DATA", "__meta", &size) == nullptr) return;
     Dl_info info {};
     std::string name = header->filetype != MH_EXECUTE && dladdr(image, &info) != 0 && info.dli_fname != nullptr ? info.dli_fname : "";
     std::lock_guard lock(imagesLock);
-    images.push_back({header, std::move(name)});
+    images.push_back({header, slide, std::move(name)});
 }
 
 void RemoveImage(const mach_header* image, intptr_t) {
@@ -47,12 +46,16 @@ void RemoveImage(const mach_header* image, intptr_t) {
     std::erase_if(images, [image](const LoadedImage& loaded) { return loaded.header == reinterpret_cast<const mach_header_64*>(image); });
 }
 
-std::vector<GuestImage> GuestImages() {
+void RegisterImageCallbacks() {
     [[maybe_unused]] static const bool registered = [] {
         _dyld_register_func_for_add_image(AddImage);
         _dyld_register_func_for_remove_image(RemoveImage);
         return true;
     }();
+}
+
+std::vector<GuestImage> GuestImages() {
+    RegisterImageCallbacks();
     std::vector<GuestImage> found;
     std::lock_guard lock(imagesLock);
     found.reserve(images.size());
@@ -73,8 +76,17 @@ std::vector<GuestImage> GuestImages() {
     return found;
 }
 
-[[maybe_unused]] const bool registeredAtLoad = (GuestImages(), true);
+[[maybe_unused]] const bool registeredAtLoad = (RegisterImageCallbacks(), true);
 
+}
+
+extern "C" int ForEachMachImage_nid_no_patch(int (*visit)(const mach_header_64*, std::intptr_t, void*), void* data) {
+    RegisterImageCallbacks();
+    std::lock_guard lock(imagesLock);
+    for (const auto& image : images) {
+        if (const int result = visit(image.header, image.slide, data); result != 0) return result;
+    }
+    return 0;
 }
 
 extern "C" int dl_iterate_phdr(int (*callback)(dl_phdr_info*, std::size_t, void*), void* data) {
