@@ -9,7 +9,7 @@ CALLBACKS = [
     ('ptr', ['ptr', 'u64']), ('ptr', ['u64', 'u64']),
     ('ptr', ['ptr', 'u64', 'u64']), ('i32', ['ptr', 'u64', 'u64']),
 ]
-RESERVED = {'__aps5_aot_ranges', '__aps5_aot_functions', '__aps5_aot_image', 'NativeAotRegisterImage_nid_no_patch'}
+RESERVED = {'__aps5_aot_ranges', '__aps5_aot_functions', '__aps5_aot_headers', '__aps5_aot_image', 'NativeAotRegisterImage_nid_no_patch'}
 
 
 def require(condition, message):
@@ -67,8 +67,8 @@ def describe(image):
         require(all(entries[2:9]), 'allocator API replacement is incomplete')
     names = list(dict.fromkeys(spec['name'] for spec in list(image.functions.values()) + list(image.imports.values())))
     require(not RESERVED.intersection(names), 'native image registration symbol is reserved')
-    return {'version': 1, 'process_parameters': process, 'process_parameter_bytes': size,
-            'allocator_callbacks': entries, 'native_functions': names}
+    return {'version': 2, 'process_parameters': process, 'process_parameter_bytes': size,
+            'allocator_callbacks': entries, 'native_functions': names, 'program_headers': image.elf['e_phnum']}
 
 
 def declarations(image, descriptor):
@@ -76,7 +76,10 @@ def declarations(image, descriptor):
     functions = ', '.join(f'ptr @{name}' for name in descriptor['native_functions'])
     count = len(descriptor['native_functions'])
     process, size = descriptor['process_parameters'], descriptor['process_parameter_bytes']
+    offset, headers = image.elf['e_phoff'], descriptor['program_headers']
+    table = ''.join(f'\\{byte:02X}' for byte in image.bytes[offset:offset + headers * 56])
     return [f'@__aps5_aot_ranges = private constant [{len(image.data)} x {{ ptr, i64 }}] [{ranges}], align 8',
             f'@__aps5_aot_functions = private constant [{count} x ptr] [{functions}], align 8',
-            f'@__aps5_aot_image = private constant {{ i64, ptr, i64, ptr, i64, ptr, i64 }} {{ i64 1, ptr @__aps5_aot_ranges, i64 {len(image.data)}, ptr @__aps5_aot_functions, i64 {count}, ptr {image.pointer(process)}, i64 {size} }}, align 8',
+            f'@__aps5_aot_headers = private constant [{headers * 56} x i8] c"{table}", align 8',
+            f'@__aps5_aot_image = private constant {{ i64, ptr, i64, ptr, i64, ptr, i64, ptr, i64 }} {{ i64 2, ptr @__aps5_aot_ranges, i64 {len(image.data)}, ptr @__aps5_aot_functions, i64 {count}, ptr {image.pointer(process)}, i64 {size}, ptr @__aps5_aot_headers, i64 {headers} }}, align 8',
             'declare void @NativeAotRegisterImage_nid_no_patch(ptr)']

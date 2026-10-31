@@ -44,6 +44,7 @@ def main():
     subprocess.run(['cmake', '--build', str(build), '--target', 'anyps5_native_services', 'capstone_shared', '-j', str(args.jobs)], check=True)
     os.environ['LIBCAPSTONE_PATH'] = str(build / 'core/aot/capstone')
     import guest_emit
+    import elf_segments
     import guest_lift
     output.mkdir(parents=True)
     programs, reports = {}, {}
@@ -83,7 +84,8 @@ def main():
     tags = programs['shim'].dynamic['tags']
     require(tags.get('DT_INIT_ARRAYSZ', 0) == tags.get('DT_FINI_ARRAYSZ', 0) == 0, 'module initializer arrays changed')
     for key, value in [('INIT_ADDRESS', tags['DT_INIT']), ('FINI_ADDRESS', tags['DT_FINI']),
-                       ('PROCESS_ADDRESS', process['vaddr']), ('PROCESS_BYTES', process['memsz'])]:
+                       ('PROCESS_ADDRESS', process['vaddr']), ('PROCESS_BYTES', process['memsz']),
+                       ('PROGRAM_HEADERS', elf_segments.program_header_rows(programs['app'].raw))]:
         source = source.replace(key, str(value))
     source = source.replace('ROWS', '\n'.join(rows))
     source = source.replace('    NativeAotSce::Register(bindings);',

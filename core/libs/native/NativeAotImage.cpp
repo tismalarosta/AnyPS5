@@ -3,11 +3,15 @@
 #include <atomic>
 #include <cstring>
 #include <limits>
+#include <mutex>
 #include <stdexcept>
+#include <vector>
 
 namespace {
 
 std::atomic<const void*> processParameters{nullptr};
+std::mutex registration;
+std::vector<Elf64_Phdr> programHeaders;
 
 void Require(bool condition, const char* reason) {
     if (!condition) throw std::invalid_argument(reason);
@@ -46,7 +50,9 @@ void CheckFunction(const NativeAotImage& image, const void* function) {
 }
 
 extern "C" void NativeAotRegisterImage_nid_no_patch(const NativeAotImage* image) {
-    Require(image != nullptr && image->version == 1, "unsupported native AOT image descriptor");
+    Require(image != nullptr && image->version == 2, "unsupported native AOT image descriptor");
+    Require(image->programHeaderCount <= 0xffff && (image->programHeaderCount == 0 || image->programHeaders != nullptr),
+        "invalid native AOT program headers");
     Require(image->ranges != nullptr && image->rangeCount != 0, "native AOT image has no data ranges");
     Require(image->functionCount == 0 || image->functions != nullptr, "native AOT image has no function table");
     for (std::size_t index = 0; index < image->rangeCount; ++index) {
@@ -69,9 +75,18 @@ extern "C" void NativeAotRegisterImage_nid_no_patch(const NativeAotImage* image)
         Read<std::uint64_t>(*image, replacement, 8) == 2, "unsupported native AOT allocator table");
     for (std::size_t offset = 0x10; offset < 0x70; offset += sizeof(void*))
         CheckFunction(*image, Read<const void*>(*image, replacement, offset));
+    std::lock_guard lock(registration);
     const void* previous = nullptr;
     if (!processParameters.compare_exchange_strong(previous, parameters, std::memory_order_acq_rel, std::memory_order_acquire))
         Require(previous == parameters, "a different native AOT main image is already registered");
+    else
+        programHeaders.assign(image->programHeaders, image->programHeaders + image->programHeaderCount);
+}
+
+extern "C" std::size_t NativeAotImageProgramHeaders_nid_no_patch(const Elf64_Phdr** headers) {
+    std::lock_guard lock(registration);
+    *headers = programHeaders.data();
+    return programHeaders.size();
 }
 
 const void* ApplicationProcessParameters_nid_no_patch() {

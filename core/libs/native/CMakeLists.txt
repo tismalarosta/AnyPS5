@@ -15,6 +15,7 @@ add_library(anyps5_native_graphics STATIC NativeAotThreads.cpp
 add_dependencies(anyps5_native_graphics agc_shader_headers agc_trace_revision)
 set_source_files_properties("${LIBS_INCLUDE_DIR}/prx/libkernel/System/src/Process.cpp"
     "${LIBS_INCLUDE_DIR}/prx/libc/src/ApplicationProcessParameters.cpp"
+    "${LIBS_INCLUDE_DIR}/prx/libkernel/Module/src/ModuleInfo.cpp"
     TARGET_DIRECTORY anyps5_native_graphics PROPERTIES COMPILE_DEFINITIONS APS5_NATIVE_AGGREGATE=1)
 set(nativeComponents libc libkernel libSceAgc libSceAgcDriver
     libSceVideoOut libScePad libSceMouse libSceKeyboard libSceIme)
@@ -188,8 +189,8 @@ target_include_directories(native_guest_flexible_memory_module PRIVATE "${LIBS_I
 set_target_properties(native_guest_flexible_memory_module PROPERTIES PREFIX "" SUFFIX ".guest.prx")
 add_dependencies(native_guest_flexible_memory_budget_tests native_guest_flexible_memory_module)
 target_compile_definitions(native_guest_flexible_memory_budget_tests PRIVATE
-    GUEST_FLEXIBLE_MEMORY_MODULE="$<TARGET_FILE:native_guest_flexible_memory_module>")
-foreach(flexibleMemoryCase IN ITEMS declared:838860800 unload:838860800 limited:16777216 none:0 missing:0 invalid:true)
+    GUEST_FLEXIBLE_MEMORY_MODULE="$<TARGET_FILE:native_guest_flexible_memory_module>" GUEST_FLEXIBLE_MEMORY_NATIVE_TITLE=1)
+foreach(flexibleMemoryCase IN ITEMS declared:838860800 unload:838860800 native:838860800 limited:16777216 none:0 missing:0 invalid:true)
     string(REPLACE ":" ";" flexibleMemoryCase ${flexibleMemoryCase})
     list(GET flexibleMemoryCase 0 flexibleMemoryName)
     list(GET flexibleMemoryCase 1 flexibleMemorySize)

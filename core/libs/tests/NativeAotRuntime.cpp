@@ -40,7 +40,7 @@ int main() {
     replacement[1] = 2;
     const NativeAotDataRange ranges[]{{process.data(), sizeof(process)}, {libc.data(), sizeof(libc)},
         {replacement.data(), sizeof(replacement)}};
-    const NativeAotImage image{1, ranges, 3, nullptr, 0, process.data(), sizeof(process)};
+    const NativeAotImage image{2, ranges, 3, nullptr, 0, process.data(), sizeof(process), nullptr, 0};
     NativeAotRegisterImage_nid_no_patch(&image);
     _init_env_nid_postfix();
     _init_env_nid_postfix();

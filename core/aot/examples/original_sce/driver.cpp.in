@@ -7,6 +7,7 @@
 #include <cerrno>
 #include <cstdlib>
 #include <cstring>
+#include <iterator>
 #include <memory>
 #include <vector>
 #include <sys/sysctl.h>
@@ -47,7 +48,8 @@ ROWS
         auto& ranges=image==&app___aps5_guest_image ? appRanges : shimRanges;
         for(std::uint64_t i=0;i<image->SegmentCount;++i) ranges.push_back({reinterpret_cast<const void*>(*image->Base+image->Segments[i].Address),image->Segments[i].MemorySize});
     }
-    const NativeAotImage metadata{1,appRanges.data(),appRanges.size(),nullptr,0,reinterpret_cast<const void*>(*app___aps5_guest_image.Base+PROCESS_ADDRESS),PROCESS_BYTES};
+    static const Elf64_Phdr programHeaders[]={PROGRAM_HEADERS};
+    const NativeAotImage metadata{2,appRanges.data(),appRanges.size(),nullptr,0,reinterpret_cast<const void*>(*app___aps5_guest_image.Base+PROCESS_ADDRESS),PROCESS_BYTES,programHeaders,std::size(programHeaders)};
     NativeAotRegisterImage_nid_no_patch(&metadata);
     const NativeAotModuleDependency dependency{1,257};
     const void* functions[]={reinterpret_cast<const void*>(InitializeModule),reinterpret_cast<const void*>(FinalizeModule)};

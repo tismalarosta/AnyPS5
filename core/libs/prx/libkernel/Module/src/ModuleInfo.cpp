@@ -30,6 +30,9 @@
 #else
 #include "prx/libc/include/specifics/linux/ElfTypes.hpp"
 #endif
+#ifdef APS5_NATIVE_AGGREGATE
+#include "prx/libc/include/NativeAotImage.hpp"
+#endif
 
 extern "C" std::int32_t ModuleIdForImage_nid_no_patch(const void* native);
 
@@ -358,6 +361,11 @@ int AddGuestSegmentBytes(dl_phdr_info* image, std::size_t, void* data) {
 std::uint64_t GuestSegmentBytes() {
     std::uint64_t bytes = 0;
     dl_iterate_phdr(AddGuestSegmentBytes, &bytes);
+#ifdef APS5_NATIVE_AGGREGATE
+    dl_phdr_info title{};
+    title.dlpi_phnum = static_cast<std::uint16_t>(NativeAotImageProgramHeaders_nid_no_patch(&title.dlpi_phdr));
+    AddGuestSegmentBytes(&title, sizeof(title), &bytes);
+#endif
     return bytes;
 }
 #endif

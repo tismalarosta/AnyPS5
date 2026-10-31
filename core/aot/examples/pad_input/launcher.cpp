@@ -58,7 +58,7 @@ int main(int argc, char** argv) {
     replacement[1] = 2;
     const NativeAotDataRange ranges[]{{metadata.data(), sizeof(metadata)},
         {libc.data(), sizeof(libc)}, {replacement.data(), sizeof(replacement)}};
-    const NativeAotImage image{1, ranges, 3, nullptr, 0, metadata.data(), sizeof(metadata)};
+    const NativeAotImage image{2, ranges, 3, nullptr, 0, metadata.data(), sizeof(metadata), nullptr, 0};
     NativeAotRegisterImage_nid_no_patch(&image);
     _init_env_nid_postfix();
     if (atexit_nid_postfix(Teardown) != 0) return 92;

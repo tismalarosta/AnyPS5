@@ -28,6 +28,7 @@ def main():
     capstone = args.native_library.resolve().parents[3]/'core/aot/capstone'
     if capstone.is_dir():
         os.environ.setdefault('LIBCAPSTONE_PATH', str(capstone))
+    import elf_segments
     import guest_lift
     import guest_emit
     from nid_names import compute_nid
@@ -89,7 +90,7 @@ def main():
     require(programs['shim'].dynamic['tags'].get('DT_INIT_ARRAYSZ',0)==0, 'module initializer array changed')
     require(programs['shim'].dynamic['tags'].get('DT_FINI_ARRAYSZ',0)==0, 'module finalizer array changed')
     source=(HERE/'driver.cpp.in').read_text()
-    source=source.replace('INIT_ADDRESS',str(init)).replace('FINI_ADDRESS',str(fini)).replace('PROCESS_ADDRESS',str(process['vaddr'])).replace('PROCESS_BYTES',str(process['memsz'])).replace('ROWS','\n'.join(rows))
+    source=source.replace('INIT_ADDRESS',str(init)).replace('FINI_ADDRESS',str(fini)).replace('PROCESS_ADDRESS',str(process['vaddr'])).replace('PROCESS_BYTES',str(process['memsz'])).replace('PROGRAM_HEADERS',elf_segments.program_header_rows(programs['app'].raw)).replace('ROWS','\n'.join(rows))
     (OUT/'driver.cpp').write_text(source)
     receipt={'inputs':{name:{'path':str(path),'sha256':hashlib.sha256(path.read_bytes()).hexdigest()} for name,path in [('app',app),('shim',shim)]},'binding_count':len(records),'native_symbols':names,'bindings':list(records.values()),'reports':reports,
              'lifecycle':{'main_owner':'original entry code','module_init':init,'module_fini':fini,'module_preinit_array':'retained as module data; not scheduled as executable preinit; DT_INIT performs the original call'},'frame_limit':'optional host test shutdown at completed provider boundary, not a claim that guest main returns'}

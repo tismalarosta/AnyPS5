@@ -17,6 +17,10 @@
 #include <dlfcn.h>
 #include <thread>
 #endif
+#ifdef GUEST_FLEXIBLE_MEMORY_NATIVE_TITLE
+#include "prx/libc/include/NativeAotImage.hpp"
+#include <array>
+#endif
 
 extern "C" {
 
@@ -140,6 +144,40 @@ static void CheckRegisterDuringUnload() {
 }
 #endif
 
+#ifdef GUEST_FLEXIBLE_MEMORY_NATIVE_TITLE
+static void CheckNativeTitle(std::size_t configured) {
+    std::array<std::uint64_t, 8> process{};
+    std::array<std::uint64_t, 7> libc{};
+    std::array<std::uint64_t, 15> replacement{};
+    process[0] = sizeof(process);
+    process[1] = 0x4942524f;
+    process[7] = reinterpret_cast<std::uint64_t>(libc.data());
+    libc[0] = sizeof(libc);
+    libc[6] = reinterpret_cast<std::uint64_t>(replacement.data());
+    replacement[0] = sizeof(replacement);
+    replacement[1] = 2;
+    const NativeAotDataRange ranges[]{{process.data(), sizeof(process)}, {libc.data(), sizeof(libc)}, {replacement.data(), sizeof(replacement)}};
+    const Elf64_Phdr headers[]{
+        {PT_LOAD, PF_R | PF_X, 0x4000, 0, 0, 0x10001, 0x10001, 0x4000},
+        {PT_LOAD, PF_R | PF_W, 0x18000, 0x1c010, 0x1c010, 0x100, 0x4000000, 0x4000},
+        {PT_LOAD, 0, 0x20000, 0x8000000, 0x8000000, 0, 0x100000, 0x4000},
+        {PT_LOAD, PF_W | PF_X, 0x24000, 0x9000000, 0x9000000, 0, 0x100000, 0x4000},
+        {PT_LOAD, PF_R | PF_W | PF_X, 0x28000, 0xa000000, 0xa000000, 0, 0x100000, 0x4000},
+        {PT_LOAD, PF_R, 0, 0xb000000, 0xb000000, 0x100, 0x100000, 0x4000},
+        {7, PF_R, 0x2c000, 0xc000000, 0xc000000, 0x100, 0x100000, 0x10}};
+    const NativeAotImage image{2, ranges, 3, nullptr, 0, process.data(), sizeof(process), headers, std::size(headers)};
+    const auto imageBytes = GuestImageSegmentBytes_nid_no_patch();
+    NativeAotRegisterImage_nid_no_patch(&image);
+    Require(GuestImageSegmentBytes_nid_no_patch() - imageBytes == 0x14000u + 0x4004000u);
+    std::size_t available = 0;
+    Require(sceKernelAvailableFlexibleMemorySize(&available) == 0 && available + imageBytes + 0x4018000u == configured);
+    void* mapped = nullptr;
+    Require(sceKernelMapFlexibleMemory(&mapped, (available + PS5_PAGE_SIZE) & ~(PS5_PAGE_SIZE - 1), 3, 0) == SCE_KERNEL_ERROR_ENOMEM && mapped == nullptr);
+    Require(sceKernelMapFlexibleMemory(&mapped, available & ~(PS5_PAGE_SIZE - 1), 3, 0) == 0 && mapped != nullptr);
+    Require(sceKernelReleaseFlexibleMemory(mapped, available & ~(PS5_PAGE_SIZE - 1)) == 0);
+}
+#endif
+
 int main(int argc, char** argv) {
     Require(argc == 2);
     const std::string_view mode = argv[1];
@@ -153,11 +191,18 @@ int main(int argc, char** argv) {
         Require(rejected && configured == 0);
         return 0;
     }
-    const std::size_t expected = (mode == "declared" || mode == "unload" ? 800u : mode == "limited" ? 16u : 448u) * 1024u * 1024u;
+    const std::size_t expected = (mode == "declared" || mode == "unload" || mode == "native" ? 800u : mode == "limited" ? 16u : 448u) * 1024u * 1024u;
     Require(sceKernelConfiguredFlexibleMemorySize(&configured) == 0 && configured == expected);
     std::size_t before = 0;
     Require(sceKernelAvailableFlexibleMemorySize(&before) == 0);
     Require(before + GuestImageSegmentBytes_nid_no_patch() == configured);
+#ifdef GUEST_FLEXIBLE_MEMORY_NATIVE_TITLE
+    if (mode == "native") {
+        CheckNativeTitle(configured);
+        std::puts("Flexible memory budget checks passed");
+        return 0;
+    }
+#endif
 #ifdef __APPLE__
     if (mode == "unload") {
         CheckUnloadDuringWalk(configured);

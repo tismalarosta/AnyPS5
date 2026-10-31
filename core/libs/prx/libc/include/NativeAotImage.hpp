@@ -3,6 +3,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include "prx/libc/include/specifics/linux/ElfTypes.hpp"
 
 struct NativeAotDataRange {
     const void* address;
@@ -17,9 +18,12 @@ struct NativeAotImage {
     std::size_t functionCount;
     const void* processParameters;
     std::size_t processParameterBytes;
+    const Elf64_Phdr* programHeaders;
+    std::size_t programHeaderCount;
 };
 
 extern "C" void NativeAotRegisterImage_nid_no_patch(const NativeAotImage* image);
+extern "C" std::size_t NativeAotImageProgramHeaders_nid_no_patch(const Elf64_Phdr** headers);
 extern "C" void NativeAotRequireReadOnly_nid_no_patch(const NativeAotDataRange* ranges, std::size_t count);
 
 #endif

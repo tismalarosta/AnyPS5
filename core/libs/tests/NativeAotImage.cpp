@@ -24,6 +24,7 @@ struct Fixture {
     std::array<std::uint64_t, 7> libc{};
     std::array<std::uint64_t, 15> replacement{};
     NativeAotDataRange ranges[3]{};
+    Elf64_Phdr headers[2]{{PT_LOAD, PF_R | PF_X, 0x4000, 0, 0, 0x100, 0x100, 0x4000}, {PT_LOAD, PF_R | PF_W, 0x8000, 0x8000, 0x8000, 0x10, 0x20000, 0x4000}};
     NativeAotImage image{};
 
     Fixture() {
@@ -37,7 +38,7 @@ struct Fixture {
         ranges[0] = {process.data(), sizeof(process)};
         ranges[1] = {libc.data(), sizeof(libc)};
         ranges[2] = {replacement.data(), sizeof(replacement)};
-        image = {1, ranges, 3, nullptr, 0, process.data(), sizeof(process)};
+        image = {2, ranges, 3, nullptr, 0, process.data(), sizeof(process), headers, 2};
     }
 };
 
@@ -48,9 +49,21 @@ int main() {
     Reject([] { NativeAotRegisterImage_nid_no_patch(nullptr); });
     {
         Fixture value;
-        value.image.version = 2;
+        value.image.version = 1;
         Reject([&] { NativeAotRegisterImage_nid_no_patch(&value.image); });
     }
+    {
+        Fixture value;
+        value.image.programHeaders = nullptr;
+        Reject([&] { NativeAotRegisterImage_nid_no_patch(&value.image); });
+    }
+    {
+        Fixture value;
+        value.image.programHeaderCount = 0x10000;
+        Reject([&] { NativeAotRegisterImage_nid_no_patch(&value.image); });
+    }
+    const Elf64_Phdr* headers = nullptr;
+    Require(NativeAotImageProgramHeaders_nid_no_patch(&headers) == 0, "no program headers before registration");
     {
         Fixture value;
         value.image.processParameterBytes = 65;
@@ -92,8 +105,12 @@ int main() {
     valid.image.functionCount = 1;
     valid.replacement[2] = reinterpret_cast<std::uint64_t>(&AllocatorInitializer);
     NativeAotRegisterImage_nid_no_patch(&valid.image);
+    valid.headers[0].p_memsz = 1;
+    valid.image.programHeaderCount = 1;
     NativeAotRegisterImage_nid_no_patch(&valid.image);
     Require(ApplicationProcessParameters_nid_no_patch() == valid.process.data(), "registered process parameters");
+    Require(NativeAotImageProgramHeaders_nid_no_patch(&headers) == 2 && headers != valid.headers, "program headers copied once");
+    Require(headers[0].p_memsz == 0x100 && headers[1].p_flags == (PF_R | PF_W) && headers[1].p_memsz == 0x20000, "program header fields");
     Fixture another;
     Reject([&] { NativeAotRegisterImage_nid_no_patch(&another.image); });
 }

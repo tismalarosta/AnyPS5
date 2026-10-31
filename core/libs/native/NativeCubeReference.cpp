@@ -30,7 +30,7 @@ int main() {
     replacement[1] = 2;
     const NativeAotDataRange ranges[]{{parameters.data(), sizeof(parameters)},
         {libc.data(), sizeof(libc)}, {replacement.data(), sizeof(replacement)}};
-    const NativeAotImage image{1, ranges, 3, nullptr, 0, parameters.data(), sizeof(parameters)};
+    const NativeAotImage image{2, ranges, 3, nullptr, 0, parameters.data(), sizeof(parameters), nullptr, 0};
     NativeAotRegisterImage_nid_no_patch(&image);
     _init_env_nid_postfix();
     std::fprintf(stderr,"source-native baseline arm64; AOT not used\n");
