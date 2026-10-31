@@ -1,0 +1,1497 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 495 310">
+<style>@media (prefers-color-scheme: light) { [fill="#0d1117"] { fill: #ffffff; } [stroke="#0d1117"] { stroke: #ffffff; } [stroke="#6e7681"] { stroke: #d0d7de; } [fill="#ffffff"] { fill: #1f2328; } }</style>
+<rect x="0.00" y="0.00" width="495.00" height="310.00" fill="#0d1117" stroke="#0d1117" stroke-width="0"/>
+<text x="4.00" y="21.00" font-family="sans-serif" font-size="16" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">Mac system libraries: 8.09% (2217/27404)</text>
+<g><title>libSceNKWebKit: 0/8853 (0%)</title>
+<path d="M1.00 32.11H158.91M1.00 34.34H158.91M1.00 36.56H158.91M1.00 38.78H158.91M1.00 41.01H158.91M1.00 43.23H158.91M1.00 45.46H158.91M1.00 47.68H158.91M1.00 49.90H158.91M1.00 52.13H158.91M1.00 54.35H158.91M1.00 56.58H158.91M1.00 58.80H158.91M1.00 61.02H158.91M1.00 63.25H158.91M1.00 65.47H158.91M1.00 67.70H158.91M1.00 69.92H158.91M1.00 72.14H158.91M1.00 74.37H158.91M1.00 76.59H158.91M1.00 78.82H158.91M1.00 81.04H158.91M1.00 83.26H158.91M1.00 85.49H158.91M1.00 87.71H158.91M1.00 89.94H158.91M1.00 92.16H158.91M1.00 94.38H158.91M1.00 96.61H158.91M1.00 98.83H158.91M1.00 101.06H158.91M1.00 103.28H158.91M1.00 105.50H158.91M1.00 107.73H158.91M1.00 109.95H158.91M1.00 112.18H158.91M1.00 114.40H158.91M1.00 116.62H158.91M1.00 118.85H158.91M1.00 121.07H158.91M1.00 123.30H158.91M1.00 125.52H158.91M1.00 127.74H158.91M1.00 129.97H158.91M1.00 132.19H158.91M1.00 134.42H158.91M1.00 136.64H158.91M1.00 138.86H158.91M1.00 141.09H158.91M1.00 143.31H158.91M1.00 145.54H158.91M1.00 147.76H158.91M1.00 149.98H158.91M1.00 152.21H158.91M1.00 154.43H158.91M1.00 156.66H158.91M1.00 158.88H158.91M1.00 161.10H158.91M1.00 163.33H158.91M1.00 165.55H158.91M1.00 167.78H158.91M1.00 170.00H158.91M1.00 172.22H158.91M1.00 174.45H158.91M1.00 176.67H158.91M1.00 178.90H158.91M1.00 181.12H158.91M1.00 183.34H158.91M1.00 185.57H158.91M1.00 187.79H158.91M1.00 190.02H158.91M1.00 192.24H158.91M1.00 194.46H158.91M1.00 196.69H158.91M1.00 198.91H158.91M1.00 201.14H158.91M1.00 203.36H158.91M1.00 205.58H158.91M1.00 207.81H158.91M1.00 210.03H158.91M1.00 212.26H158.91M1.00 214.48H158.91M1.00 216.70H158.91M1.00 218.93H158.91M1.00 221.15H158.91M1.00 223.38H158.91M1.00 225.60H158.91M1.00 227.82H158.91M1.00 230.05H158.91M1.00 232.27H158.91M1.00 234.50H158.91M1.00 236.72H158.91M1.00 238.94H158.91M1.00 241.17H158.91M1.00 243.39H158.91M1.00 245.62H158.91M1.00 247.84H158.91M1.00 250.06H158.91M1.00 252.29H158.91M1.00 254.51H158.91M1.00 256.74H158.91M1.00 258.96H158.91" fill="none" stroke="#6e7681" stroke-width="1.72" stroke-dasharray="1.7241 0.5" stroke-dashoffset="1.9741"/>
+<path d="M1.00 261.18H158.91M1.00 263.41H158.91M1.00 265.63H158.91M1.00 267.86H158.91M1.00 270.08H158.91M1.00 272.30H158.91M1.00 274.53H158.91M1.00 276.75H158.91M1.00 278.98H158.91M1.00 281.20H158.91M1.00 283.42H158.91M1.00 285.65H158.91M1.00 287.87H158.91M1.00 290.10H158.91M1.00 292.32H158.91M1.00 294.54H158.91M1.00 296.77H158.91M1.00 298.99H158.91M1.00 301.22H158.91M1.00 303.44H158.91M1.00 305.66H158.91M1.00 307.89H158.91" fill="none" stroke="#6e7681" stroke-width="1.72" stroke-dasharray="1.7559 0.5" stroke-dashoffset="2.0059"/>
+<rect x="0.00" y="30.00" width="159.91" height="280.00" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="5.00" y="46.00" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">NKWebKit</text>
+</g>
+<g><title>libc: 676/1496 (45%)</title>
+<path d="M160.91 32.11H230.35M160.91 34.32H230.35M160.91 36.53H230.35M160.91 38.74H230.35M160.91 40.95H230.35M160.91 43.16H230.35M160.91 45.37H230.35M160.91 47.58H230.35M160.91 49.79H230.35M160.91 52.00H230.35M160.91 54.21H230.35M160.91 56.43H230.35M160.91 58.64H230.35M160.91 60.85H230.35M160.91 63.06H230.35M160.91 65.27H230.35M160.91 67.48H230.35M160.91 69.69H230.35M160.91 71.90H230.35M160.91 74.11H230.35M160.91 76.32H230.35M160.91 78.53H169.59" fill="none" stroke="#2ea043" stroke-width="1.71" stroke-dasharray="1.6700 0.5" stroke-dashoffset="1.9200"/>
+<path d="M169.59 78.53H230.35M160.91 80.74H230.35M160.91 82.96H230.35M160.91 85.17H230.35M160.91 87.38H230.35M160.91 89.59H230.35M160.91 91.80H230.35M160.91 94.01H230.35M160.91 96.22H230.35M160.91 98.43H230.35M160.91 100.64H230.35M160.91 102.85H230.35M160.91 105.06H230.35M160.91 107.28H230.35M160.91 109.49H230.35M160.91 111.70H230.35M160.91 113.91H230.35M160.91 116.12H230.35" fill="none" stroke="#6e7681" stroke-width="1.71" stroke-dasharray="1.6700 0.5" stroke-dashoffset="1.9200"/>
+<path d="M160.91 118.33H230.35M160.91 120.54H230.35M160.91 122.75H230.35M160.91 124.96H230.35M160.91 127.17H230.35M160.91 129.38H230.35M160.91 131.60H230.35M160.91 133.81H230.35" fill="none" stroke="#6e7681" stroke-width="1.71" stroke-dasharray="1.7400 0.5" stroke-dashoffset="1.9900"/>
+<rect x="159.91" y="30.00" width="71.44" height="105.91" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="164.91" y="46.00" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">libc</text>
+</g>
+<g><title>libSceNpCppWebApi: 0/877 (0%)</title>
+<path d="M160.91 137.98H230.35M160.91 140.13H230.35M160.91 142.28H230.35M160.91 144.42H230.35M160.91 146.57H230.35M160.91 148.71H230.35M160.91 150.86H230.35M160.91 153.01H230.35M160.91 155.15H230.35" fill="none" stroke="#6e7681" stroke-width="1.65" stroke-dasharray="1.6700 0.5" stroke-dashoffset="1.9200"/>
+<path d="M160.91 157.30H230.35M160.91 159.44H230.35M160.91 161.59H230.35M160.91 163.74H230.35M160.91 165.88H230.35M160.91 168.03H230.35M160.91 170.17H230.35M160.91 172.32H230.35M160.91 174.47H230.35M160.91 176.61H230.35M160.91 178.76H230.35M160.91 180.90H230.35M160.91 183.05H230.35M160.91 185.20H230.35M160.91 187.34H230.35M160.91 189.49H230.35M160.91 191.63H230.35M160.91 193.78H230.35M160.91 195.93H230.35" fill="none" stroke="#6e7681" stroke-width="1.65" stroke-dasharray="1.7400 0.5" stroke-dashoffset="1.9900"/>
+<rect x="159.91" y="135.91" width="71.44" height="62.09" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="164.91" y="151.91" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">NpCppWeb</text>
+</g>
+<g><title>libkernel_sys: 54/833 (6%)</title>
+<path d="M160.91 200.10H230.35" fill="none" stroke="#2ea043" stroke-width="1.69" stroke-dasharray="1.6042 0.5" stroke-dashoffset="1.8542"/>
+<path d="M160.91 202.29H206.48" fill="none" stroke="#2ea043" stroke-width="1.69" stroke-dasharray="1.6700 0.5" stroke-dashoffset="1.9200"/>
+<path d="M206.48 202.29H230.35M160.91 204.48H230.35M160.91 206.67H230.35M160.91 208.86H230.35M160.91 211.05H230.35M160.91 213.24H230.35M160.91 215.43H230.35M160.91 217.63H230.35M160.91 219.82H230.35M160.91 222.01H230.35M160.91 224.20H230.35M160.91 226.39H230.35M160.91 228.58H230.35M160.91 230.77H230.35M160.91 232.96H230.35M160.91 235.16H230.35M160.91 237.35H230.35M160.91 239.54H230.35M160.91 241.73H230.35M160.91 243.92H230.35M160.91 246.11H230.35M160.91 248.30H230.35M160.91 250.50H230.35M160.91 252.69H230.35M160.91 254.88H230.35" fill="none" stroke="#6e7681" stroke-width="1.69" stroke-dasharray="1.6700 0.5" stroke-dashoffset="1.9200"/>
+<rect x="159.91" y="198.00" width="71.44" height="58.97" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="164.91" y="214.00" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">libkerne</text>
+</g>
+<g><title>libkernel: 686/749 (92%)</title>
+<path d="M160.91 259.08H230.35M160.91 261.30H230.35M160.91 263.52H230.35M160.91 265.74H230.35M160.91 267.96H230.35M160.91 270.18H230.35M160.91 272.39H230.35M160.91 274.61H230.35M160.91 276.83H230.35M160.91 279.05H230.35M160.91 281.27H230.35M160.91 283.49H230.35M160.91 285.71H230.35" fill="none" stroke="#2ea043" stroke-width="1.72" stroke-dasharray="1.6042 0.5" stroke-dashoffset="1.8542"/>
+<path d="M160.91 287.92H230.35M160.91 290.14H230.35M160.91 292.36H230.35M160.91 294.58H230.35M160.91 296.80H230.35M160.91 299.02H230.35M160.91 301.24H230.35M160.91 303.45H230.35M160.91 305.67H163.08" fill="none" stroke="#2ea043" stroke-width="1.72" stroke-dasharray="1.6700 0.5" stroke-dashoffset="1.9200"/>
+<path d="M163.08 305.67H230.35M160.91 307.89H230.35" fill="none" stroke="#6e7681" stroke-width="1.72" stroke-dasharray="1.6700 0.5" stroke-dashoffset="1.9200"/>
+<rect x="159.91" y="256.97" width="71.44" height="53.03" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="164.91" y="272.97" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">libkerne</text>
+</g>
+<g><title>libSceLibcInternal: 3/652 (0%)</title>
+<path d="M232.35 32.06H238.80" fill="none" stroke="#2ea043" stroke-width="1.62" stroke-dasharray="1.6481 0.5" stroke-dashoffset="1.8981"/>
+<path d="M238.80 32.06H301.09" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.6481 0.5" stroke-dashoffset="1.8981"/>
+<path d="M232.35 34.19H301.09M232.35 36.31H301.09M232.35 38.44H301.09M232.35 40.56H301.09M232.35 42.69H301.09M232.35 44.81H301.09M232.35 46.93H301.09M232.35 49.06H301.09M232.35 51.18H301.09M232.35 53.31H301.09M232.35 55.43H301.09M232.35 57.56H301.09M232.35 59.68H301.09M232.35 61.81H301.09M232.35 63.93H301.09M232.35 66.06H301.09M232.35 68.18H301.09M232.35 70.30H301.09M232.35 72.43H301.09M232.35 74.55H301.09" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.7174 0.5" stroke-dashoffset="1.9674"/>
+<rect x="231.35" y="30.00" width="70.74" height="46.62" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="236.35" y="46.00" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">LibcInte</text>
+</g>
+<g><title>libSceSystemService: 27/584 (5%)</title>
+<path d="M303.09 32.06H362.26" fill="none" stroke="#2ea043" stroke-width="1.62" stroke-dasharray="1.6915 0.5" stroke-dashoffset="1.9415"/>
+<path d="M362.26 32.06H364.45M303.09 34.19H364.45M303.09 36.31H364.45M303.09 38.44H364.45M303.09 40.56H364.45M303.09 42.69H364.45M303.09 44.81H364.45M303.09 46.93H364.45M303.09 49.06H364.45M303.09 51.18H364.45M303.09 53.31H364.45M303.09 55.43H364.45M303.09 57.56H364.45M303.09 59.68H364.45M303.09 61.81H364.45M303.09 63.93H364.45M303.09 66.06H364.45" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.6915 0.5" stroke-dashoffset="1.9415"/>
+<path d="M303.09 68.18H364.45M303.09 70.30H364.45M303.09 72.43H364.45M303.09 74.55H364.45" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.7727 0.5" stroke-dashoffset="2.0227"/>
+<rect x="302.09" y="30.00" width="63.36" height="46.62" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="307.09" y="46.00" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">SystemS</text>
+</g>
+<g><title>libwebrtc: 0/412 (0%)</title>
+<path d="M366.45 32.06H409.16M366.45 34.19H409.16M366.45 36.31H409.16M366.45 38.44H409.16M366.45 40.56H409.16M366.45 42.69H409.16M366.45 44.81H409.16M366.45 46.93H409.16M366.45 49.06H409.16M366.45 51.18H409.16M366.45 53.31H409.16M366.45 55.43H409.16M366.45 57.56H409.16" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.6350 0.5" stroke-dashoffset="1.8850"/>
+<path d="M366.45 59.68H409.16M366.45 61.81H409.16M366.45 63.93H409.16M366.45 66.06H409.16M366.45 68.18H409.16M366.45 70.30H409.16M366.45 72.43H409.16M366.45 74.55H409.16" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.7474 0.5" stroke-dashoffset="1.9974"/>
+<rect x="365.45" y="30.00" width="44.70" height="46.62" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="370.45" y="46.00" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">libw</text>
+</g>
+<g><title>libSceLibreSsl: 0/401 (0%)</title>
+<path d="M411.16 32.06H452.66M411.16 34.19H452.66" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.5754 0.5" stroke-dashoffset="1.8254"/>
+<path d="M411.16 36.31H452.66M411.16 38.44H452.66M411.16 40.56H452.66M411.16 42.69H452.66M411.16 44.81H452.66M411.16 46.93H452.66M411.16 49.06H452.66M411.16 51.18H452.66M411.16 53.31H452.66M411.16 55.43H452.66M411.16 57.56H452.66M411.16 59.68H452.66M411.16 61.81H452.66M411.16 63.93H452.66M411.16 66.06H452.66M411.16 68.18H452.66M411.16 70.30H452.66M411.16 72.43H452.66M411.16 74.55H452.66" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.6846 0.5" stroke-dashoffset="1.9346"/>
+<rect x="410.16" y="30.00" width="43.51" height="46.62" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="415.16" y="46.00" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">Libr</text>
+</g>
+<g><title>libSceNpCommon: 0/381 (0%)</title>
+<path d="M454.66 32.06H494.00M454.66 34.19H494.00M454.66 36.31H494.00" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.5704 0.5" stroke-dashoffset="1.8204"/>
+<path d="M454.66 38.44H494.00M454.66 40.56H494.00M454.66 42.69H494.00M454.66 44.81H494.00M454.66 46.93H494.00M454.66 49.06H494.00M454.66 51.18H494.00M454.66 53.31H494.00M454.66 55.43H494.00M454.66 57.56H494.00M454.66 59.68H494.00M454.66 61.81H494.00M454.66 63.93H494.00M454.66 66.06H494.00M454.66 68.18H494.00M454.66 70.30H494.00M454.66 72.43H494.00M454.66 74.55H494.00" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.6854 0.5" stroke-dashoffset="1.9354"/>
+<rect x="453.66" y="30.00" width="41.34" height="46.62" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="458.66" y="46.00" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">NpCo</text>
+</g>
+<g><title>libSceAddressSanitizer: 0/301 (0%)</title>
+<path d="M232.35 78.67H264.66" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.5191 0.5" stroke-dashoffset="1.7691"/>
+<path d="M232.35 80.79H264.66M232.35 82.91H264.66M232.35 85.03H264.66M232.35 87.15H264.66M232.35 89.27H264.66M232.35 91.39H264.66M232.35 93.51H264.66M232.35 95.63H264.66M232.35 97.74H264.66M232.35 99.86H264.66M232.35 101.98H264.66M232.35 104.10H264.66M232.35 106.22H264.66M232.35 108.34H264.66M232.35 110.46H264.66M232.35 112.58H264.66M232.35 114.70H264.66M232.35 116.81H264.66M232.35 118.93H264.66" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.6537 0.5" stroke-dashoffset="1.9037"/>
+<rect x="231.35" y="76.62" width="34.31" height="44.38" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="236.35" y="92.62" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">Add</text>
+</g>
+<g><title>libSceCesCs: 0/287 (0%)</title>
+<path d="M232.35 123.05H264.66M232.35 125.18H264.66" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.5191 0.5" stroke-dashoffset="1.7691"/>
+<path d="M232.35 127.30H264.66M232.35 129.42H264.66M232.35 131.54H264.66M232.35 133.66H264.66M232.35 135.78H264.66M232.35 137.91H264.66M232.35 140.03H264.66M232.35 142.15H264.66M232.35 144.27H264.66M232.35 146.39H264.66M232.35 148.51H264.66M232.35 150.64H264.66M232.35 152.76H264.66M232.35 154.88H264.66M232.35 157.00H264.66M232.35 159.12H264.66M232.35 161.24H264.66" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.6537 0.5" stroke-dashoffset="1.9037"/>
+<rect x="231.35" y="120.99" width="34.31" height="42.31" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="236.35" y="136.99" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">Ces</text>
+</g>
+<g><title>libSceLibreSsl3: 0/270 (0%)</title>
+<path d="M232.35 165.36H264.66M232.35 167.46H264.66M232.35 169.56H264.66M232.35 171.66H264.66M232.35 173.76H264.66M232.35 175.86H264.66M232.35 177.96H264.66M232.35 180.06H264.66M232.35 182.16H264.66M232.35 184.26H264.66M232.35 186.36H264.66M232.35 188.46H264.66M232.35 190.56H264.66M232.35 192.66H264.66M232.35 194.76H264.66M232.35 196.86H264.66M232.35 198.96H264.66M232.35 201.06H264.66" fill="none" stroke="#6e7681" stroke-width="1.60" stroke-dasharray="1.6537 0.5" stroke-dashoffset="1.9037"/>
+<rect x="231.35" y="163.31" width="34.31" height="39.81" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="236.35" y="179.31" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">Lib</text>
+</g>
+<g><title>libSceVideoOut: 55/245 (22%)</title>
+<path d="M232.35 205.18H264.66M232.35 207.31H264.66M232.35 209.44H264.66M232.35 211.58H246.49" fill="none" stroke="#2ea043" stroke-width="1.63" stroke-dasharray="1.5191 0.5" stroke-dashoffset="1.7691"/>
+<path d="M246.49 211.58H264.66M232.35 213.71H264.66" fill="none" stroke="#6e7681" stroke-width="1.63" stroke-dasharray="1.5191 0.5" stroke-dashoffset="1.7691"/>
+<path d="M232.35 215.84H264.66M232.35 217.97H264.66M232.35 220.11H264.66M232.35 222.24H264.66M232.35 224.37H264.66M232.35 226.50H264.66M232.35 228.64H264.66M232.35 230.77H264.66M232.35 232.90H264.66M232.35 235.03H264.66M232.35 237.17H264.66" fill="none" stroke="#6e7681" stroke-width="1.63" stroke-dasharray="1.6537 0.5" stroke-dashoffset="1.9037"/>
+<rect x="231.35" y="203.11" width="34.31" height="36.12" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="236.35" y="219.11" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">Vid</text>
+</g>
+<g><title>libSceAgc: 233/240 (97%)</title>
+<path d="M232.35 241.28H264.66M232.35 243.36H264.66M232.35 245.45H264.66M232.35 247.54H264.66M232.35 249.62H264.66M232.35 251.71H264.66M232.35 253.79H264.66M232.35 255.88H264.66M232.35 257.97H264.66M232.35 260.05H264.66M232.35 262.14H264.66M232.35 264.23H264.66M232.35 266.31H264.66M232.35 268.40H264.66M232.35 270.49H264.66M232.35 272.57H249.58" fill="none" stroke="#2ea043" stroke-width="1.59" stroke-dasharray="1.6537 0.5" stroke-dashoffset="1.9037"/>
+<path d="M249.58 272.57H264.66" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.6537 0.5" stroke-dashoffset="1.9037"/>
+<rect x="231.35" y="239.23" width="34.31" height="35.38" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="236.35" y="255.23" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">Agc</text>
+</g>
+<g><title>libSceFont: 0/240 (0%)</title>
+<path d="M232.35 276.66H264.66M232.35 278.75H264.66M232.35 280.83H264.66M232.35 282.92H264.66M232.35 285.01H264.66M232.35 287.09H264.66M232.35 289.18H264.66M232.35 291.26H264.66M232.35 293.35H264.66M232.35 295.44H264.66M232.35 297.52H264.66M232.35 299.61H264.66M232.35 301.70H264.66M232.35 303.78H264.66M232.35 305.87H264.66M232.35 307.96H264.66" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.6537 0.5" stroke-dashoffset="1.9037"/>
+<rect x="231.35" y="274.62" width="34.31" height="35.38" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="236.35" y="290.62" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">Fon</text>
+</g>
+<g><title>libSceNet: 82/232 (35%)</title>
+<path d="M266.66 78.66H302.23M266.66 80.75H302.23M266.66 82.83H302.23M266.66 84.92H302.23M266.66 87.01H295.95" fill="none" stroke="#2ea043" stroke-width="1.59" stroke-dasharray="1.5927 0.5" stroke-dashoffset="1.8427"/>
+<path d="M295.95 87.01H302.23M266.66 89.10H302.23M266.66 91.19H302.23M266.66 93.27H302.23" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.5927 0.5" stroke-dashoffset="1.8427"/>
+<path d="M266.66 95.36H302.23M266.66 97.45H302.23M266.66 99.54H302.23M266.66 101.62H302.23M266.66 103.71H302.23M266.66 105.80H302.23" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.7235 0.5" stroke-dashoffset="1.9735"/>
+<rect x="265.66" y="76.62" width="37.58" height="31.23" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="270.66" y="92.62" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">Net</text>
+</g>
+<g><title>libSceJson2: 0/217 (0%)</title>
+<path d="M304.23 78.66H337.38M304.23 80.75H337.38M304.23 82.83H337.38M304.23 84.92H337.38M304.23 87.01H337.38M304.23 89.10H337.38M304.23 91.19H337.38" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.5717 0.5" stroke-dashoffset="1.8217"/>
+<path d="M304.23 93.27H337.38M304.23 95.36H337.38M304.23 97.45H337.38M304.23 99.54H337.38M304.23 101.62H337.38M304.23 103.71H337.38M304.23 105.80H337.38" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.7098 0.5" stroke-dashoffset="1.9598"/>
+<rect x="303.23" y="76.62" width="35.15" height="31.23" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="308.23" y="92.62" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">Jso</text>
+</g>
+<g><title>libSceNpManager: 0/207 (0%)</title>
+<path d="M339.38 78.66H370.91M339.38 80.75H370.91M339.38 82.83H370.91M339.38 84.92H370.91M339.38 87.01H370.91M339.38 89.10H370.91M339.38 91.19H370.91M339.38 93.27H370.91M339.38 95.36H370.91M339.38 97.45H370.91M339.38 99.54H370.91" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.6018 0.5" stroke-dashoffset="1.8518"/>
+<path d="M339.38 101.62H370.91M339.38 103.71H370.91M339.38 105.80H370.91" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.7519 0.5" stroke-dashoffset="2.0019"/>
+<rect x="338.38" y="76.62" width="33.53" height="31.23" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="343.38" y="92.62" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">NpM</text>
+</g>
+<g><title>libScePad: 43/205 (21%)</title>
+<path d="M372.91 78.66H404.11M372.91 80.75H404.11M372.91 82.83H399.95" fill="none" stroke="#2ea043" stroke-width="1.59" stroke-dasharray="1.5802 0.5" stroke-dashoffset="1.8302"/>
+<path d="M399.95 82.83H404.11M372.91 84.92H404.11M372.91 87.01H404.11M372.91 89.10H404.11M372.91 91.19H404.11M372.91 93.27H404.11M372.91 95.36H404.11" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.5802 0.5" stroke-dashoffset="1.8302"/>
+<path d="M372.91 97.45H404.11M372.91 99.54H404.11M372.91 101.62H404.11M372.91 103.71H404.11M372.91 105.80H404.11" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.7288 0.5" stroke-dashoffset="1.9788"/>
+<rect x="371.91" y="76.62" width="33.20" height="31.23" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="376.91" y="92.62" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">Pad</text>
+</g>
+<g><title>libSceAudioOut: 68/192 (35%)</title>
+<path d="M406.11 78.66H435.21M406.11 80.75H435.21M406.11 82.83H435.21M406.11 84.92H435.21M406.11 87.01H431.05" fill="none" stroke="#2ea043" stroke-width="1.59" stroke-dasharray="1.5784 0.5" stroke-dashoffset="1.8284"/>
+<path d="M431.05 87.01H435.21M406.11 89.10H435.21M406.11 91.19H435.21M406.11 93.27H435.21M406.11 95.36H435.21M406.11 97.45H435.21" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.5784 0.5" stroke-dashoffset="1.8284"/>
+<path d="M406.11 99.54H435.21M406.11 101.62H435.21M406.11 103.71H435.21M406.11 105.80H435.21" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.7383 0.5" stroke-dashoffset="1.9883"/>
+<rect x="405.11" y="76.62" width="31.10" height="31.23" fill="none" stroke="#0d1117" stroke-width="2"/>
+<text x="410.11" y="92.62" font-family="sans-serif" font-size="12" fill="#ffffff" stroke="#0d1117" stroke-width="3" paint-order="stroke">Aud</text>
+</g>
+<g><title>libSceHmd: 0/187 (0%)</title>
+<path d="M437.21 78.66H465.49M437.21 80.75H465.49M437.21 82.83H465.49M437.21 84.92H465.49M437.21 87.01H465.49" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.5205 0.5" stroke-dashoffset="1.7705"/>
+<path d="M437.21 89.10H465.49M437.21 91.19H465.49M437.21 93.27H465.49M437.21 95.36H465.49M437.21 97.45H465.49M437.21 99.54H465.49M437.21 101.62H465.49M437.21 103.71H465.49M437.21 105.80H465.49" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.6760 0.5" stroke-dashoffset="1.9260"/>
+<rect x="436.21" y="76.62" width="30.29" height="31.23" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceFsInternalForVsh: 0/176 (0%)</title>
+<path d="M467.49 78.66H494.00M467.49 80.75H494.00M467.49 82.83H494.00M467.49 84.92H494.00M467.49 87.01H494.00M467.49 89.10H494.00M467.49 91.19H494.00M467.49 93.27H494.00" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.5389 0.5" stroke-dashoffset="1.7889"/>
+<path d="M467.49 95.36H494.00M467.49 97.45H494.00M467.49 99.54H494.00M467.49 101.62H494.00M467.49 103.71H494.00M467.49 105.80H494.00" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.7088 0.5" stroke-dashoffset="1.9588"/>
+<rect x="466.49" y="76.62" width="28.51" height="31.23" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceFios2: 0/168 (0%)</title>
+<path d="M266.66 109.87H292.38M266.66 111.91H292.38M266.66 113.96H292.38M266.66 116.01H292.38M266.66 118.05H292.38M266.66 120.10H292.38M266.66 122.14H292.38M266.66 124.19H292.38M266.66 126.24H292.38M266.66 128.28H292.38M266.66 130.33H292.38M266.66 132.38H292.38M266.66 134.42H292.38M266.66 136.47H292.38" fill="none" stroke="#6e7681" stroke-width="1.55" stroke-dasharray="1.6434 0.5" stroke-dashoffset="1.8934"/>
+<rect x="265.66" y="107.84" width="27.72" height="30.65" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNKWebKitRequirements: 0/165 (0%)</title>
+<path d="M266.66 140.58H292.38M266.66 142.74H292.38M266.66 144.90H292.38M266.66 147.06H292.38M266.66 149.22H292.38M266.66 151.38H292.38M266.66 153.55H292.38M266.66 155.71H292.38M266.66 157.87H292.38" fill="none" stroke="#6e7681" stroke-width="1.66" stroke-dasharray="1.4785 0.5" stroke-dashoffset="1.7285"/>
+<path d="M266.66 160.03H292.38M266.66 162.19H292.38M266.66 164.36H292.38M266.66 166.52H292.38" fill="none" stroke="#6e7681" stroke-width="1.66" stroke-dasharray="1.6434 0.5" stroke-dashoffset="1.8934"/>
+<rect x="265.66" y="138.49" width="27.72" height="30.10" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceGLSlimVSH: 0/163 (0%)</title>
+<path d="M266.66 170.67H292.38M266.66 172.80H292.38M266.66 174.93H292.38M266.66 177.07H292.38M266.66 179.20H292.38M266.66 181.34H292.38M266.66 183.47H292.38" fill="none" stroke="#6e7681" stroke-width="1.63" stroke-dasharray="1.4785 0.5" stroke-dashoffset="1.7285"/>
+<path d="M266.66 185.60H292.38M266.66 187.74H292.38M266.66 189.87H292.38M266.66 192.00H292.38M266.66 194.14H292.38M266.66 196.27H292.38" fill="none" stroke="#6e7681" stroke-width="1.63" stroke-dasharray="1.6434 0.5" stroke-dashoffset="1.8934"/>
+<rect x="265.66" y="168.60" width="27.72" height="29.74" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceJsc: 0/160 (0%)</title>
+<path d="M266.66 200.38H292.38M266.66 202.48H292.38M266.66 204.57H292.38M266.66 206.66H292.38" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.4785 0.5" stroke-dashoffset="1.7285"/>
+<path d="M266.66 208.75H292.38M266.66 210.84H292.38M266.66 212.94H292.38M266.66 215.03H292.38M266.66 217.12H292.38M266.66 219.21H292.38M266.66 221.30H292.38M266.66 223.39H292.38M266.66 225.49H292.38" fill="none" stroke="#6e7681" stroke-width="1.59" stroke-dasharray="1.6434 0.5" stroke-dashoffset="1.8934"/>
+<rect x="265.66" y="198.34" width="27.72" height="29.19" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceHmd2: 0/152 (0%)</title>
+<path d="M266.66 229.60H292.38M266.66 231.75H292.38M266.66 233.89H292.38M266.66 236.04H292.38M266.66 238.18H292.38M266.66 240.33H292.38M266.66 242.47H292.38M266.66 244.61H292.38" fill="none" stroke="#6e7681" stroke-width="1.64" stroke-dasharray="1.4785 0.5" stroke-dashoffset="1.7285"/>
+<path d="M266.66 246.76H292.38M266.66 248.90H292.38M266.66 251.05H292.38M266.66 253.19H292.38" fill="none" stroke="#6e7681" stroke-width="1.64" stroke-dasharray="1.6434 0.5" stroke-dashoffset="1.8934"/>
+<rect x="265.66" y="227.53" width="27.72" height="27.73" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAgcVsh: 0/150 (0%)</title>
+<path d="M266.66 257.32H292.38M266.66 259.44H292.38M266.66 261.55H292.38M266.66 263.66H292.38M266.66 265.78H292.38M266.66 267.89H292.38" fill="none" stroke="#6e7681" stroke-width="1.61" stroke-dasharray="1.4785 0.5" stroke-dashoffset="1.7285"/>
+<path d="M266.66 270.01H292.38M266.66 272.12H292.38M266.66 274.23H292.38M266.66 276.35H292.38M266.66 278.46H292.38M266.66 280.58H292.38" fill="none" stroke="#6e7681" stroke-width="1.61" stroke-dasharray="1.6434 0.5" stroke-dashoffset="1.8934"/>
+<rect x="265.66" y="255.26" width="27.72" height="27.37" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceXml: 0/150 (0%)</title>
+<path d="M266.66 284.69H292.38M266.66 286.80H292.38M266.66 288.92H292.38M266.66 291.03H292.38M266.66 293.15H292.38M266.66 295.26H292.38" fill="none" stroke="#6e7681" stroke-width="1.61" stroke-dasharray="1.4785 0.5" stroke-dashoffset="1.7285"/>
+<path d="M266.66 297.37H292.38M266.66 299.49H292.38M266.66 301.60H292.38M266.66 303.72H292.38M266.66 305.83H292.38M266.66 307.94H292.38" fill="none" stroke="#6e7681" stroke-width="1.61" stroke-dasharray="1.6434 0.5" stroke-dashoffset="1.8934"/>
+<rect x="265.66" y="282.63" width="27.72" height="27.37" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceFreeTypeOt: 0/148 (0%)</title>
+<path d="M294.38 109.85H318.85M294.38 111.87H318.85M294.38 113.89H318.85M294.38 115.92H318.85M294.38 117.94H318.85" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.5398 0.5" stroke-dashoffset="1.7898"/>
+<path d="M294.38 119.96H318.85M294.38 121.98H318.85M294.38 124.00H318.85M294.38 126.02H318.85M294.38 128.04H318.85M294.38 130.06H318.85M294.38 132.08H318.85M294.38 134.10H318.85" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.7252 0.5" stroke-dashoffset="1.9752"/>
+<rect x="293.38" y="107.84" width="26.48" height="28.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libmdbg_syscore: 0/148 (0%)</title>
+<path d="M320.85 109.85H345.33M320.85 111.87H345.33M320.85 113.89H345.33M320.85 115.92H345.33M320.85 117.94H345.33" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.5398 0.5" stroke-dashoffset="1.7898"/>
+<path d="M320.85 119.96H345.33M320.85 121.98H345.33M320.85 124.00H345.33M320.85 126.02H345.33M320.85 128.04H345.33M320.85 130.06H345.33M320.85 132.08H345.33M320.85 134.10H345.33" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.7252 0.5" stroke-dashoffset="1.9752"/>
+<rect x="319.85" y="107.84" width="26.48" height="28.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAgcDriver: 91/146 (62%)</title>
+<path d="M347.33 109.85H371.45M347.33 111.87H371.45M347.33 113.89H371.45" fill="none" stroke="#2ea043" stroke-width="1.52" stroke-dasharray="1.5100 0.5" stroke-dashoffset="1.7600"/>
+<path d="M347.33 115.92H371.45M347.33 117.94H371.45M347.33 119.96H371.45M347.33 121.98H371.45M347.33 124.00H371.45" fill="none" stroke="#2ea043" stroke-width="1.52" stroke-dasharray="1.6927 0.5" stroke-dashoffset="1.9427"/>
+<path d="M347.33 126.02H371.45M347.33 128.04H371.45M347.33 130.06H371.45M347.33 132.08H371.45M347.33 134.10H371.45" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.6927 0.5" stroke-dashoffset="1.9427"/>
+<rect x="346.33" y="107.84" width="26.12" height="28.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpTus: 0/142 (0%)</title>
+<path d="M373.45 109.85H396.86M373.45 111.87H396.86M373.45 113.89H396.86M373.45 115.92H396.86M373.45 117.94H396.86M373.45 119.96H396.86M373.45 121.98H396.86M373.45 124.00H396.86M373.45 126.02H396.86M373.45 128.04H396.86M373.45 130.06H396.86M373.45 132.08H396.86" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.6276 0.5" stroke-dashoffset="1.8776"/>
+<path d="M373.45 134.10H396.86" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.8404 0.5" stroke-dashoffset="2.0904"/>
+<rect x="372.45" y="107.84" width="25.40" height="28.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceGnmDriverForNeoMode: 0/138 (0%)</title>
+<path d="M398.86 109.85H421.54M398.86 111.87H421.54M398.86 113.89H421.54M398.86 115.92H421.54M398.86 117.94H421.54M398.86 119.96H421.54M398.86 121.98H421.54M398.86 124.00H421.54" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.5626 0.5" stroke-dashoffset="1.8126"/>
+<path d="M398.86 126.02H421.54M398.86 128.04H421.54M398.86 130.06H421.54M398.86 132.08H421.54M398.86 134.10H421.54" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.7689 0.5" stroke-dashoffset="2.0189"/>
+<rect x="397.86" y="107.84" width="24.69" height="28.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAmpr: 0/137 (0%)</title>
+<path d="M423.54 109.85H446.05M423.54 111.87H446.05M423.54 113.89H446.05M423.54 115.92H446.05M423.54 117.94H446.05M423.54 119.96H446.05M423.54 121.98H446.05" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.5463 0.5" stroke-dashoffset="1.7963"/>
+<path d="M423.54 124.00H446.05M423.54 126.02H446.05M423.54 128.04H446.05M423.54 130.06H446.05M423.54 132.08H446.05M423.54 134.10H446.05" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.7510 0.5" stroke-dashoffset="2.0010"/>
+<rect x="422.54" y="107.84" width="24.51" height="28.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceMbus: 0/136 (0%)</title>
+<path d="M448.05 109.85H470.38M448.05 111.87H470.38M448.05 113.89H470.38M448.05 115.92H470.38M448.05 117.94H470.38M448.05 119.96H470.38" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.5301 0.5" stroke-dashoffset="1.7801"/>
+<path d="M448.05 121.98H470.38M448.05 124.00H470.38M448.05 126.02H470.38M448.05 128.04H470.38M448.05 130.06H470.38M448.05 132.08H470.38M448.05 134.10H470.38" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.7331 0.5" stroke-dashoffset="1.9831"/>
+<rect x="447.05" y="107.84" width="24.33" height="28.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAppInstUtil: 0/132 (0%)</title>
+<path d="M472.38 109.85H494.00M472.38 111.87H494.00" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.4650 0.5" stroke-dashoffset="1.7150"/>
+<path d="M472.38 113.89H494.00M472.38 115.92H494.00M472.38 117.94H494.00M472.38 119.96H494.00M472.38 121.98H494.00M472.38 124.00H494.00M472.38 126.02H494.00M472.38 128.04H494.00M472.38 130.06H494.00M472.38 132.08H494.00M472.38 134.10H494.00" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.6615 0.5" stroke-dashoffset="1.9115"/>
+<rect x="471.38" y="107.84" width="23.62" height="28.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAbstractStorage: 0/131 (0%)</title>
+<path d="M294.38 138.14H317.16M294.38 140.20H317.16M294.38 142.27H317.16M294.38 144.33H317.16M294.38 146.39H317.16M294.38 148.45H317.16M294.38 150.51H317.16M294.38 152.57H317.16M294.38 154.63H317.16M294.38 156.70H317.16M294.38 158.76H317.16" fill="none" stroke="#6e7681" stroke-width="1.56" stroke-dasharray="1.5710 0.5" stroke-dashoffset="1.8210"/>
+<path d="M294.38 160.82H317.16" fill="none" stroke="#6e7681" stroke-width="1.56" stroke-dasharray="1.7781 0.5" stroke-dashoffset="2.0281"/>
+<rect x="293.38" y="136.11" width="24.78" height="26.74" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAvSetting: 0/129 (0%)</title>
+<path d="M294.38 164.86H317.16M294.38 166.89H317.16M294.38 168.92H317.16M294.38 170.94H317.16M294.38 172.97H317.16M294.38 175.00H317.16M294.38 177.03H317.16M294.38 179.05H317.16M294.38 181.08H317.16" fill="none" stroke="#6e7681" stroke-width="1.53" stroke-dasharray="1.5710 0.5" stroke-dashoffset="1.8210"/>
+<path d="M294.38 183.11H317.16M294.38 185.14H317.16M294.38 187.16H317.16" fill="none" stroke="#6e7681" stroke-width="1.53" stroke-dasharray="1.7781 0.5" stroke-dashoffset="2.0281"/>
+<rect x="293.38" y="162.85" width="24.78" height="26.33" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceCamera: 0/125 (0%)</title>
+<path d="M294.38 191.25H317.16M294.38 193.38H317.16M294.38 195.52H317.16M294.38 197.66H317.16" fill="none" stroke="#6e7681" stroke-width="1.64" stroke-dasharray="1.3984 0.5" stroke-dashoffset="1.6484"/>
+<path d="M294.38 199.80H317.16M294.38 201.93H317.16M294.38 204.07H317.16M294.38 206.21H317.16M294.38 208.34H317.16M294.38 210.48H317.16M294.38 212.62H317.16" fill="none" stroke="#6e7681" stroke-width="1.64" stroke-dasharray="1.5710 0.5" stroke-dashoffset="1.8210"/>
+<rect x="293.38" y="189.18" width="24.78" height="25.51" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceIcu: 0/124 (0%)</title>
+<path d="M294.38 216.75H317.16M294.38 218.87H317.16M294.38 220.99H317.16" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.3984 0.5" stroke-dashoffset="1.6484"/>
+<path d="M294.38 223.10H317.16M294.38 225.22H317.16M294.38 227.34H317.16M294.38 229.46H317.16M294.38 231.58H317.16M294.38 233.70H317.16M294.38 235.82H317.16M294.38 237.94H317.16" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.5710 0.5" stroke-dashoffset="1.8210"/>
+<rect x="293.38" y="214.69" width="24.78" height="25.31" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSaveData.native: 0/118 (0%)</title>
+<path d="M294.38 242.00H317.16M294.38 244.01H317.16M294.38 246.01H317.16M294.38 248.02H317.16M294.38 250.03H317.16M294.38 252.04H317.16M294.38 254.05H317.16M294.38 256.05H317.16" fill="none" stroke="#6e7681" stroke-width="1.51" stroke-dasharray="1.5710 0.5" stroke-dashoffset="1.8210"/>
+<path d="M294.38 258.06H317.16M294.38 260.07H317.16M294.38 262.08H317.16" fill="none" stroke="#6e7681" stroke-width="1.51" stroke-dasharray="1.7781 0.5" stroke-dashoffset="2.0281"/>
+<rect x="293.38" y="240.00" width="24.78" height="24.08" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceHttp: 86/115 (75%)</title>
+<path d="M294.38 266.15H317.16M294.38 268.30H317.16M294.38 270.45H317.16M294.38 272.59H317.16M294.38 274.74H317.16" fill="none" stroke="#2ea043" stroke-width="1.65" stroke-dasharray="1.3984 0.5" stroke-dashoffset="1.6484"/>
+<path d="M294.38 276.89H317.16M294.38 279.04H317.16M294.38 281.18H302.66" fill="none" stroke="#2ea043" stroke-width="1.65" stroke-dasharray="1.5710 0.5" stroke-dashoffset="1.8210"/>
+<path d="M302.66 281.18H317.16M294.38 283.33H317.16M294.38 285.48H317.16" fill="none" stroke="#6e7681" stroke-width="1.65" stroke-dasharray="1.5710 0.5" stroke-dashoffset="1.8210"/>
+<rect x="293.38" y="264.08" width="24.78" height="23.47" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpTrophy: 0/110 (0%)</title>
+<path d="M294.38 289.57H317.16M294.38 291.62H317.16M294.38 293.66H317.16M294.38 295.71H317.16M294.38 297.75H317.16M294.38 299.80H317.16M294.38 301.84H317.16M294.38 303.89H317.16M294.38 305.93H317.16M294.38 307.98H317.16" fill="none" stroke="#6e7681" stroke-width="1.55" stroke-dasharray="1.5710 0.5" stroke-dashoffset="1.8210"/>
+<rect x="293.38" y="287.55" width="24.78" height="22.45" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNetCtl: 0/105 (0%)</title>
+<path d="M319.16 138.09H339.67M319.16 140.06H339.67M319.16 142.02H339.67M319.16 143.98H339.67M319.16 145.94H339.67M319.16 147.91H339.67" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.5512 0.5" stroke-dashoffset="1.8012"/>
+<path d="M319.16 149.87H339.67M319.16 151.83H339.67M319.16 153.80H339.67M319.16 155.76H339.67M319.16 157.72H339.67" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.7792 0.5" stroke-dashoffset="2.0292"/>
+<rect x="318.16" y="136.11" width="22.51" height="23.59" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceBgft: 0/101 (0%)</title>
+<path d="M319.16 161.74H339.67" fill="none" stroke="#6e7681" stroke-width="1.57" stroke-dasharray="1.3648 0.5" stroke-dashoffset="1.6148"/>
+<path d="M319.16 163.81H339.67M319.16 165.87H339.67M319.16 167.94H339.67M319.16 170.01H339.67M319.16 172.08H339.67M319.16 174.15H339.67M319.16 176.22H339.67M319.16 178.29H339.67M319.16 180.36H339.67" fill="none" stroke="#6e7681" stroke-width="1.57" stroke-dasharray="1.5512 0.5" stroke-dashoffset="1.8012"/>
+<rect x="318.16" y="159.70" width="22.51" height="22.69" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceComposite: 0/101 (0%)</title>
+<path d="M319.16 184.43H339.67" fill="none" stroke="#6e7681" stroke-width="1.57" stroke-dasharray="1.3648 0.5" stroke-dashoffset="1.6148"/>
+<path d="M319.16 186.50H339.67M319.16 188.57H339.67M319.16 190.63H339.67M319.16 192.70H339.67M319.16 194.77H339.67M319.16 196.84H339.67M319.16 198.91H339.67M319.16 200.98H339.67M319.16 203.05H339.67" fill="none" stroke="#6e7681" stroke-width="1.57" stroke-dasharray="1.5512 0.5" stroke-dashoffset="1.8012"/>
+<rect x="318.16" y="182.39" width="22.51" height="22.69" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceIpmi: 0/97 (0%)</title>
+<path d="M319.16 207.07H339.67M319.16 209.05H339.67M319.16 211.03H339.67M319.16 213.01H339.67M319.16 214.99H339.67M319.16 216.97H339.67M319.16 218.95H339.67" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.5512 0.5" stroke-dashoffset="1.8012"/>
+<path d="M319.16 220.93H339.67M319.16 222.91H339.67M319.16 224.89H339.67" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.7792 0.5" stroke-dashoffset="2.0292"/>
+<rect x="318.16" y="205.08" width="22.51" height="21.79" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpUtility: 0/96 (0%)</title>
+<path d="M319.16 228.85H339.67M319.16 230.81H339.67M319.16 232.77H339.67M319.16 234.72H339.67M319.16 236.68H339.67M319.16 238.64H339.67" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.5512 0.5" stroke-dashoffset="1.8012"/>
+<path d="M319.16 240.59H339.67M319.16 242.55H339.67M319.16 244.51H339.67M319.16 246.46H339.67" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.7792 0.5" stroke-dashoffset="2.0292"/>
+<rect x="318.16" y="226.88" width="22.51" height="21.57" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpUniversalDataSystem: 0/93 (0%)</title>
+<path d="M319.16 250.49H339.67M319.16 252.59H339.67M319.16 254.69H339.67" fill="none" stroke="#6e7681" stroke-width="1.60" stroke-dasharray="1.3648 0.5" stroke-dashoffset="1.6148"/>
+<path d="M319.16 256.79H339.67M319.16 258.89H339.67M319.16 260.99H339.67M319.16 263.09H339.67M319.16 265.19H339.67M319.16 267.29H339.67" fill="none" stroke="#6e7681" stroke-width="1.60" stroke-dasharray="1.5512 0.5" stroke-dashoffset="1.8012"/>
+<rect x="318.16" y="248.44" width="22.51" height="20.89" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceFreeTypeOl: 0/92 (0%)</title>
+<path d="M319.16 271.37H339.67M319.16 273.45H339.67" fill="none" stroke="#6e7681" stroke-width="1.57" stroke-dasharray="1.3648 0.5" stroke-dashoffset="1.6148"/>
+<path d="M319.16 275.52H339.67M319.16 277.60H339.67M319.16 279.67H339.67M319.16 281.75H339.67M319.16 283.82H339.67M319.16 285.89H339.67M319.16 287.97H339.67" fill="none" stroke="#6e7681" stroke-width="1.57" stroke-dasharray="1.5512 0.5" stroke-dashoffset="1.8012"/>
+<rect x="318.16" y="269.34" width="22.51" height="20.67" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVrTracker2: 0/89 (0%)</title>
+<path d="M319.16 292.00H339.67M319.16 294.00H339.67M319.16 296.00H339.67M319.16 298.00H339.67M319.16 300.00H339.67M319.16 302.00H339.67M319.16 304.00H339.67M319.16 306.00H339.67" fill="none" stroke="#6e7681" stroke-width="1.50" stroke-dasharray="1.5512 0.5" stroke-dashoffset="1.8012"/>
+<path d="M319.16 308.00H339.67" fill="none" stroke="#6e7681" stroke-width="1.50" stroke-dasharray="1.7792 0.5" stroke-dashoffset="2.0292"/>
+<rect x="318.16" y="290.01" width="22.51" height="19.99" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceDataTransfer: 0/88 (0%)</title>
+<path d="M341.67 138.09H362.31M341.67 140.06H362.31M341.67 142.02H362.31M341.67 143.98H362.31M341.67 145.94H362.31M341.67 147.91H362.31M341.67 149.87H362.31" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.5635 0.5" stroke-dashoffset="1.8135"/>
+<path d="M341.67 151.83H362.31M341.67 153.79H362.31" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.7928 0.5" stroke-dashoffset="2.0428"/>
+<rect x="340.67" y="136.11" width="22.63" height="19.66" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpWebApi: 0/88 (0%)</title>
+<path d="M364.31 138.09H384.94M364.31 140.06H384.94M364.31 142.02H384.94M364.31 143.98H384.94M364.31 145.94H384.94M364.31 147.91H384.94M364.31 149.87H384.94" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.5635 0.5" stroke-dashoffset="1.8135"/>
+<path d="M364.31 151.83H384.94M364.31 153.79H384.94" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.7928 0.5" stroke-dashoffset="2.0428"/>
+<rect x="363.31" y="136.11" width="22.63" height="19.66" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceUlt: 0/88 (0%)</title>
+<path d="M386.94 138.09H407.58M386.94 140.06H407.58M386.94 142.02H407.58M386.94 143.98H407.58M386.94 145.94H407.58M386.94 147.91H407.58M386.94 149.87H407.58" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.5635 0.5" stroke-dashoffset="1.8135"/>
+<path d="M386.94 151.83H407.58M386.94 153.79H407.58" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.7928 0.5" stroke-dashoffset="2.0428"/>
+<rect x="385.94" y="136.11" width="22.63" height="19.66" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePlayReady4: 0/87 (0%)</title>
+<path d="M409.58 138.09H429.95M409.58 140.06H429.95M409.58 142.02H429.95M409.58 143.98H429.95M409.58 145.94H429.95M409.58 147.91H429.95" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.5378 0.5" stroke-dashoffset="1.7878"/>
+<path d="M409.58 149.87H429.95M409.58 151.83H429.95M409.58 153.79H429.95" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.7642 0.5" stroke-dashoffset="2.0142"/>
+<rect x="408.58" y="136.11" width="22.38" height="19.66" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSysCore: 0/84 (0%)</title>
+<path d="M431.95 138.09H451.56M431.95 140.06H451.56M431.95 142.02H451.56" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.4606 0.5" stroke-dashoffset="1.7106"/>
+<path d="M431.95 143.98H451.56M431.95 145.94H451.56M431.95 147.91H451.56M431.95 149.87H451.56M431.95 151.83H451.56M431.95 153.79H451.56" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.6785 0.5" stroke-dashoffset="1.9285"/>
+<rect x="430.95" y="136.11" width="21.61" height="19.66" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceFreeType: 0/83 (0%)</title>
+<path d="M453.56 138.09H472.91M453.56 140.06H472.91" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.4349 0.5" stroke-dashoffset="1.6849"/>
+<path d="M453.56 142.02H472.91M453.56 143.98H472.91M453.56 145.94H472.91M453.56 147.91H472.91M453.56 149.87H472.91M453.56 151.83H472.91M453.56 153.79H472.91" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.6499 0.5" stroke-dashoffset="1.8999"/>
+<rect x="452.56" y="136.11" width="21.35" height="19.66" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceHidControl: 0/82 (0%)</title>
+<path d="M474.91 138.09H494.00" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.4092 0.5" stroke-dashoffset="1.6592"/>
+<path d="M474.91 140.06H494.00M474.91 142.02H494.00M474.91 143.98H494.00M474.91 145.94H494.00M474.91 147.91H494.00M474.91 149.87H494.00M474.91 151.83H494.00M474.91 153.79H494.00" fill="none" stroke="#6e7681" stroke-width="1.46" stroke-dasharray="1.6213 0.5" stroke-dashoffset="1.8713"/>
+<rect x="473.91" y="136.11" width="21.09" height="19.66" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libwvoec: 0/77 (0%)</title>
+<path d="M341.67 157.84H358.07M341.67 159.97H358.07M341.67 162.10H358.07M341.67 164.23H358.07M341.67 166.36H358.07" fill="none" stroke="#6e7681" stroke-width="1.63" stroke-dasharray="1.3219 0.5" stroke-dashoffset="1.5719"/>
+<path d="M341.67 168.49H358.07M341.67 170.62H358.07M341.67 172.75H358.07M341.67 174.88H358.07" fill="none" stroke="#6e7681" stroke-width="1.63" stroke-dasharray="1.5497 0.5" stroke-dashoffset="1.7997"/>
+<rect x="340.67" y="155.78" width="18.40" height="21.17" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceRegMgr: 0/74 (0%)</title>
+<path d="M341.67 178.96H358.07M341.67 181.00H358.07" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.3219 0.5" stroke-dashoffset="1.5719"/>
+<path d="M341.67 183.04H358.07M341.67 185.08H358.07M341.67 187.12H358.07M341.67 189.15H358.07M341.67 191.19H358.07M341.67 193.23H358.07M341.67 195.27H358.07" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.5497 0.5" stroke-dashoffset="1.7997"/>
+<rect x="340.67" y="176.94" width="18.40" height="20.34" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceHttp2: 0/71 (0%)</title>
+<path d="M341.67 199.26H358.07M341.67 201.21H358.07M341.67 203.15H358.07M341.67 205.10H358.07M341.67 207.05H358.07M341.67 208.99H358.07M341.67 210.94H358.07M341.67 212.89H358.07" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.5497 0.5" stroke-dashoffset="1.7997"/>
+<path d="M341.67 214.83H358.07" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.8425 0.5" stroke-dashoffset="2.0925"/>
+<rect x="340.67" y="197.29" width="18.40" height="19.52" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNgs2.native: 0/71 (0%)</title>
+<path d="M341.67 218.78H358.07M341.67 220.73H358.07M341.67 222.67H358.07M341.67 224.62H358.07M341.67 226.56H358.07M341.67 228.51H358.07M341.67 230.46H358.07M341.67 232.40H358.07" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.5497 0.5" stroke-dashoffset="1.7997"/>
+<path d="M341.67 234.35H358.07" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.8425 0.5" stroke-dashoffset="2.0925"/>
+<rect x="340.67" y="216.81" width="18.40" height="19.52" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVideoStreamingEngine: 0/70 (0%)</title>
+<path d="M341.67 238.28H358.07M341.67 240.20H358.07M341.67 242.11H358.07M341.67 244.03H358.07M341.67 245.95H358.07M341.67 247.86H358.07M341.67 249.78H358.07" fill="none" stroke="#6e7681" stroke-width="1.42" stroke-dasharray="1.5497 0.5" stroke-dashoffset="1.7997"/>
+<path d="M341.67 251.69H358.07M341.67 253.61H358.07" fill="none" stroke="#6e7681" stroke-width="1.42" stroke-dasharray="1.8425 0.5" stroke-dashoffset="2.0925"/>
+<rect x="340.67" y="236.32" width="18.40" height="19.24" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpMatching2: 0/69 (0%)</title>
+<path d="M341.67 257.63H358.07M341.67 259.75H358.07M341.67 261.87H358.07M341.67 263.99H358.07M341.67 266.11H358.07" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.3219 0.5" stroke-dashoffset="1.5719"/>
+<path d="M341.67 268.23H358.07M341.67 270.36H358.07M341.67 272.48H358.07" fill="none" stroke="#6e7681" stroke-width="1.62" stroke-dasharray="1.5497 0.5" stroke-dashoffset="1.7997"/>
+<rect x="340.67" y="255.57" width="18.40" height="18.97" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePsm: 0/65 (0%)</title>
+<path d="M341.67 276.53H358.07" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.3219 0.5" stroke-dashoffset="1.5719"/>
+<path d="M341.67 278.51H358.07M341.67 280.50H358.07M341.67 282.48H358.07M341.67 284.46H358.07M341.67 286.45H358.07M341.67 288.43H358.07M341.67 290.41H358.07" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.5497 0.5" stroke-dashoffset="1.7997"/>
+<rect x="340.67" y="274.54" width="18.40" height="17.87" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceIme: 16/64 (25%)</title>
+<path d="M341.67 294.38H358.07M341.67 296.33H358.07" fill="none" stroke="#2ea043" stroke-width="1.45" stroke-dasharray="1.5497 0.5" stroke-dashoffset="1.7997"/>
+<path d="M341.67 298.28H358.07M341.67 300.23H358.07M341.67 302.18H358.07M341.67 304.13H358.07M341.67 306.08H358.07M341.67 308.03H358.07" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.5497 0.5" stroke-dashoffset="1.7997"/>
+<rect x="340.67" y="292.41" width="18.40" height="17.59" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVisionManager: 0/63 (0%)</title>
+<path d="M360.07 157.75H376.17M360.07 159.70H376.17M360.07 161.65H376.17M360.07 163.60H376.17M360.07 165.55H376.17M360.07 167.50H376.17M360.07 169.45H376.17" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.5131 0.5" stroke-dashoffset="1.7631"/>
+<path d="M360.07 171.40H376.17" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.8007 0.5" stroke-dashoffset="2.0507"/>
+<rect x="359.07" y="155.78" width="18.11" height="17.60" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceUserService: 24/62 (39%)</title>
+<path d="M378.17 157.75H393.99M378.17 159.70H393.99M378.17 161.65H393.99" fill="none" stroke="#2ea043" stroke-width="1.45" stroke-dasharray="1.4772 0.5" stroke-dashoffset="1.7272"/>
+<path d="M378.17 163.60H393.99M378.17 165.55H393.99M378.17 167.50H393.99" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.4772 0.5" stroke-dashoffset="1.7272"/>
+<path d="M378.17 169.45H393.99M378.17 171.40H393.99" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.7597 0.5" stroke-dashoffset="2.0097"/>
+<rect x="377.17" y="155.78" width="17.82" height="17.60" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVoiceChat: 0/62 (0%)</title>
+<path d="M395.99 157.75H411.81M395.99 159.70H411.81M395.99 161.65H411.81M395.99 163.60H411.81M395.99 165.55H411.81M395.99 167.50H411.81" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.4772 0.5" stroke-dashoffset="1.7272"/>
+<path d="M395.99 169.45H411.81M395.99 171.40H411.81" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.7597 0.5" stroke-dashoffset="2.0097"/>
+<rect x="394.99" y="155.78" width="17.82" height="17.60" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceUsbd: 0/61 (0%)</title>
+<path d="M413.81 157.75H429.34M413.81 159.70H429.34M413.81 161.65H429.34M413.81 163.60H429.34M413.81 165.55H429.34" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.4413 0.5" stroke-dashoffset="1.6913"/>
+<path d="M413.81 167.50H429.34M413.81 169.45H429.34M413.81 171.40H429.34" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.7186 0.5" stroke-dashoffset="1.9686"/>
+<rect x="412.81" y="155.78" width="17.53" height="17.60" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceEsvmEngine: 0/58 (0%)</title>
+<path d="M431.34 157.75H446.01M431.34 159.70H446.01" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.3335 0.5" stroke-dashoffset="1.5835"/>
+<path d="M431.34 161.65H446.01M431.34 163.60H446.01M431.34 165.55H446.01M431.34 167.50H446.01M431.34 169.45H446.01M431.34 171.40H446.01" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.5955 0.5" stroke-dashoffset="1.8455"/>
+<rect x="430.34" y="155.78" width="16.67" height="17.60" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpTrophy2: 0/56 (0%)</title>
+<path d="M448.01 157.75H462.10M448.01 159.70H462.10M448.01 161.65H462.10M448.01 163.60H462.10M448.01 165.55H462.10M448.01 167.50H462.10M448.01 169.45H462.10M448.01 171.40H462.10" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.5133 0.5" stroke-dashoffset="1.7633"/>
+<rect x="447.01" y="155.78" width="16.09" height="17.60" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceUpdateService: 0/56 (0%)</title>
+<path d="M464.10 157.75H478.19M464.10 159.70H478.19M464.10 161.65H478.19M464.10 163.60H478.19M464.10 165.55H478.19M464.10 167.50H478.19M464.10 169.45H478.19M464.10 171.40H478.19" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.5133 0.5" stroke-dashoffset="1.7633"/>
+<rect x="463.10" y="155.78" width="16.09" height="17.60" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSsl: 35/55 (64%)</title>
+<path d="M480.19 157.75H494.00M480.19 159.70H494.00M480.19 161.65H494.00M480.19 163.60H494.00M480.19 165.55H494.00" fill="none" stroke="#2ea043" stroke-width="1.45" stroke-dasharray="1.4723 0.5" stroke-dashoffset="1.7223"/>
+<path d="M480.19 167.50H494.00M480.19 169.45H494.00" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.4723 0.5" stroke-dashoffset="1.7223"/>
+<path d="M480.19 171.40H494.00" fill="none" stroke="#6e7681" stroke-width="1.45" stroke-dasharray="1.8010 0.5" stroke-dashoffset="2.0510"/>
+<rect x="479.19" y="155.78" width="15.81" height="17.60" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceWebTransport: 0/53 (0%)</title>
+<path d="M360.07 175.43H374.08M360.07 177.53H374.08M360.07 179.64H374.08M360.07 181.75H374.08" fill="none" stroke="#6e7681" stroke-width="1.61" stroke-dasharray="1.2512 0.5" stroke-dashoffset="1.5012"/>
+<path d="M360.07 183.85H374.08M360.07 185.96H374.08M360.07 188.07H374.08" fill="none" stroke="#6e7681" stroke-width="1.61" stroke-dasharray="1.5014 0.5" stroke-dashoffset="1.7514"/>
+<rect x="359.07" y="173.37" width="16.01" height="16.74" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAjm.native: 0/52 (0%)</title>
+<path d="M376.08 175.43H389.79M376.08 177.53H389.79M376.08 179.64H389.79" fill="none" stroke="#6e7681" stroke-width="1.61" stroke-dasharray="1.2135 0.5" stroke-dashoffset="1.4635"/>
+<path d="M376.08 181.75H389.79M376.08 183.85H389.79M376.08 185.96H389.79M376.08 188.07H389.79" fill="none" stroke="#6e7681" stroke-width="1.61" stroke-dasharray="1.4582 0.5" stroke-dashoffset="1.7082"/>
+<rect x="375.08" y="173.37" width="15.71" height="16.74" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceRtc: 0/52 (0%)</title>
+<path d="M391.79 175.43H405.49M391.79 177.53H405.49M391.79 179.64H405.49" fill="none" stroke="#6e7681" stroke-width="1.61" stroke-dasharray="1.2135 0.5" stroke-dashoffset="1.4635"/>
+<path d="M391.79 181.75H405.49M391.79 183.85H405.49M391.79 185.96H405.49M391.79 188.07H405.49" fill="none" stroke="#6e7681" stroke-width="1.61" stroke-dasharray="1.4582 0.5" stroke-dashoffset="1.7082"/>
+<rect x="390.79" y="173.37" width="15.71" height="16.74" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpScoreRanking: 0/51 (0%)</title>
+<path d="M407.49 175.43H420.90M407.49 177.53H420.90" fill="none" stroke="#6e7681" stroke-width="1.61" stroke-dasharray="1.1757 0.5" stroke-dashoffset="1.4257"/>
+<path d="M407.49 179.64H420.90M407.49 181.75H420.90M407.49 183.85H420.90M407.49 185.96H420.90M407.49 188.07H420.90" fill="none" stroke="#6e7681" stroke-width="1.61" stroke-dasharray="1.4151 0.5" stroke-dashoffset="1.6651"/>
+<rect x="406.49" y="173.37" width="15.41" height="16.74" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePlayReady: 0/50 (0%)</title>
+<path d="M422.90 175.30H436.00M422.90 177.14H436.00" fill="none" stroke="#6e7681" stroke-width="1.34" stroke-dasharray="1.3719 0.5" stroke-dashoffset="1.6219"/>
+<path d="M422.90 178.98H436.00M422.90 180.83H436.00M422.90 182.67H436.00M422.90 184.51H436.00M422.90 186.35H436.00M422.90 188.20H436.00" fill="none" stroke="#6e7681" stroke-width="1.34" stroke-dasharray="1.6839 0.5" stroke-dashoffset="1.9339"/>
+<rect x="421.90" y="173.37" width="15.10" height="16.74" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAudioIn: 0/48 (0%)</title>
+<path d="M438.00 175.30H450.50M438.00 177.14H450.50M438.00 178.98H450.50M438.00 180.83H450.50M438.00 182.67H450.50M438.00 184.51H450.50M438.00 186.35H450.50M438.00 188.20H450.50" fill="none" stroke="#6e7681" stroke-width="1.34" stroke-dasharray="1.5832 0.5" stroke-dashoffset="1.8332"/>
+<rect x="437.00" y="173.37" width="14.50" height="16.74" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceEsvm: 0/48 (0%)</title>
+<path d="M452.50 175.30H465.00M452.50 177.14H465.00M452.50 178.98H465.00M452.50 180.83H465.00M452.50 182.67H465.00M452.50 184.51H465.00M452.50 186.35H465.00M452.50 188.20H465.00" fill="none" stroke="#6e7681" stroke-width="1.34" stroke-dasharray="1.5832 0.5" stroke-dashoffset="1.8332"/>
+<rect x="451.50" y="173.37" width="14.50" height="16.74" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceRemoteplay: 0/48 (0%)</title>
+<path d="M467.00 175.30H479.50M467.00 177.14H479.50M467.00 178.98H479.50M467.00 180.83H479.50M467.00 182.67H479.50M467.00 184.51H479.50M467.00 186.35H479.50M467.00 188.20H479.50" fill="none" stroke="#6e7681" stroke-width="1.34" stroke-dasharray="1.5832 0.5" stroke-dashoffset="1.8332"/>
+<rect x="466.00" y="173.37" width="14.50" height="16.74" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSpSysCallWrapper: 0/48 (0%)</title>
+<path d="M481.50 175.30H494.00M481.50 177.14H494.00M481.50 178.98H494.00M481.50 180.83H494.00M481.50 182.67H494.00M481.50 184.51H494.00M481.50 186.35H494.00M481.50 188.20H494.00" fill="none" stroke="#6e7681" stroke-width="1.34" stroke-dasharray="1.5832 0.5" stroke-dashoffset="1.8332"/>
+<rect x="480.50" y="173.37" width="14.50" height="16.74" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceGameLiveStreaming: 0/47 (0%)</title>
+<path d="M360.07 192.11H373.09M360.07 194.08H373.09M360.07 196.06H373.09M360.07 198.03H373.09M360.07 200.01H373.09" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.3599 0.5" stroke-dashoffset="1.6099"/>
+<path d="M360.07 201.98H373.09M360.07 203.96H373.09" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.6699 0.5" stroke-dashoffset="1.9199"/>
+<rect x="359.07" y="190.12" width="15.02" height="15.83" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceMetadataReaderWriter: 0/47 (0%)</title>
+<path d="M360.07 207.93H373.09M360.07 209.91H373.09M360.07 211.88H373.09M360.07 213.86H373.09M360.07 215.83H373.09" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.3599 0.5" stroke-dashoffset="1.6099"/>
+<path d="M360.07 217.81H373.09M360.07 219.78H373.09" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.6699 0.5" stroke-dashoffset="1.9199"/>
+<rect x="359.07" y="205.95" width="15.02" height="15.83" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVideoCoreServerInterface: 0/47 (0%)</title>
+<path d="M360.07 223.76H373.09M360.07 225.74H373.09M360.07 227.71H373.09M360.07 229.69H373.09M360.07 231.66H373.09" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.3599 0.5" stroke-dashoffset="1.6099"/>
+<path d="M360.07 233.64H373.09M360.07 235.61H373.09" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.6699 0.5" stroke-dashoffset="1.9199"/>
+<rect x="359.07" y="221.77" width="15.02" height="15.83" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceFontFt: 0/45 (0%)</title>
+<path d="M360.07 239.54H373.09M360.07 241.42H373.09M360.07 243.30H373.09" fill="none" stroke="#6e7681" stroke-width="1.38" stroke-dasharray="1.3599 0.5" stroke-dashoffset="1.6099"/>
+<path d="M360.07 245.18H373.09M360.07 247.06H373.09M360.07 248.93H373.09M360.07 250.81H373.09" fill="none" stroke="#6e7681" stroke-width="1.38" stroke-dasharray="1.6699 0.5" stroke-dashoffset="1.9199"/>
+<rect x="359.07" y="237.60" width="15.02" height="15.15" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpWebApi2: 0/43 (0%)</title>
+<path d="M360.07 254.79H373.09" fill="none" stroke="#6e7681" stroke-width="1.58" stroke-dasharray="1.1274 0.5" stroke-dashoffset="1.3774"/>
+<path d="M360.07 256.87H373.09M360.07 258.95H373.09M360.07 261.03H373.09M360.07 263.11H373.09M360.07 265.19H373.09" fill="none" stroke="#6e7681" stroke-width="1.58" stroke-dasharray="1.3599 0.5" stroke-dashoffset="1.6099"/>
+<rect x="359.07" y="252.75" width="15.02" height="14.48" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libkernel_web: 0/43 (0%)</title>
+<path d="M360.07 269.27H373.09" fill="none" stroke="#6e7681" stroke-width="1.58" stroke-dasharray="1.1274 0.5" stroke-dashoffset="1.3774"/>
+<path d="M360.07 271.35H373.09M360.07 273.43H373.09M360.07 275.51H373.09M360.07 277.59H373.09M360.07 279.67H373.09" fill="none" stroke="#6e7681" stroke-width="1.58" stroke-dasharray="1.3599 0.5" stroke-dashoffset="1.6099"/>
+<rect x="359.07" y="267.23" width="15.02" height="14.48" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAvcap2: 0/42 (0%)</title>
+<path d="M360.07 283.73H373.09M360.07 285.75H373.09M360.07 287.77H373.09M360.07 289.80H373.09M360.07 291.82H373.09M360.07 293.84H373.09" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.3599 0.5" stroke-dashoffset="1.6099"/>
+<rect x="359.07" y="281.71" width="15.02" height="14.14" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceRazorCpu: 0/42 (0%)</title>
+<path d="M360.07 297.87H373.09M360.07 299.89H373.09M360.07 301.92H373.09M360.07 303.94H373.09M360.07 305.96H373.09M360.07 307.99H373.09" fill="none" stroke="#6e7681" stroke-width="1.52" stroke-dasharray="1.3599 0.5" stroke-dashoffset="1.6099"/>
+<rect x="359.07" y="295.86" width="15.02" height="14.14" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAudioPropagation: 0/41 (0%)</title>
+<path d="M375.09 192.02H387.26M375.09 193.82H387.26M375.09 195.63H387.26M375.09 197.43H387.26M375.09 199.24H387.26M375.09 201.04H387.26" fill="none" stroke="#6e7681" stroke-width="1.30" stroke-dasharray="1.5292 0.5" stroke-dashoffset="1.7792"/>
+<path d="M375.09 202.84H387.26" fill="none" stroke="#6e7681" stroke-width="1.30" stroke-dasharray="1.9351 0.5" stroke-dashoffset="2.1851"/>
+<rect x="374.09" y="190.12" width="14.18" height="14.63" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVrTracker: 0/39 (0%)</title>
+<path d="M375.09 206.74H387.26M375.09 208.73H387.26M375.09 210.71H387.26" fill="none" stroke="#6e7681" stroke-width="1.49" stroke-dasharray="1.2393 0.5" stroke-dashoffset="1.4893"/>
+<path d="M375.09 212.70H387.26M375.09 214.68H387.26M375.09 216.67H387.26" fill="none" stroke="#6e7681" stroke-width="1.49" stroke-dasharray="1.5292 0.5" stroke-dashoffset="1.7792"/>
+<rect x="374.09" y="204.75" width="14.18" height="13.91" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceDepth: 0/38 (0%)</title>
+<path d="M375.09 220.62H387.26M375.09 222.55H387.26" fill="none" stroke="#6e7681" stroke-width="1.43" stroke-dasharray="1.2393 0.5" stroke-dashoffset="1.4893"/>
+<path d="M375.09 224.48H387.26M375.09 226.40H387.26M375.09 228.33H387.26M375.09 230.26H387.26" fill="none" stroke="#6e7681" stroke-width="1.43" stroke-dasharray="1.5292 0.5" stroke-dashoffset="1.7792"/>
+<rect x="374.09" y="218.66" width="14.18" height="13.56" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceLoginMgrServer: 0/37 (0%)</title>
+<path d="M375.09 234.15H387.26" fill="none" stroke="#6e7681" stroke-width="1.37" stroke-dasharray="1.2393 0.5" stroke-dashoffset="1.4893"/>
+<path d="M375.09 236.02H387.26M375.09 237.89H387.26M375.09 239.75H387.26M375.09 241.62H387.26M375.09 243.49H387.26" fill="none" stroke="#6e7681" stroke-width="1.37" stroke-dasharray="1.5292 0.5" stroke-dashoffset="1.7792"/>
+<rect x="374.09" y="232.22" width="14.18" height="13.20" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceMusicFrameworkInterface: 0/37 (0%)</title>
+<path d="M375.09 247.35H387.26" fill="none" stroke="#6e7681" stroke-width="1.37" stroke-dasharray="1.2393 0.5" stroke-dashoffset="1.4893"/>
+<path d="M375.09 249.22H387.26M375.09 251.09H387.26M375.09 252.95H387.26M375.09 254.82H387.26M375.09 256.69H387.26" fill="none" stroke="#6e7681" stroke-width="1.37" stroke-dasharray="1.5292 0.5" stroke-dashoffset="1.7792"/>
+<rect x="374.09" y="245.42" width="14.18" height="13.20" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePosixForWebKit: 0/37 (0%)</title>
+<path d="M375.09 260.56H387.26" fill="none" stroke="#6e7681" stroke-width="1.37" stroke-dasharray="1.2393 0.5" stroke-dashoffset="1.4893"/>
+<path d="M375.09 262.42H387.26M375.09 264.29H387.26M375.09 266.16H387.26M375.09 268.02H387.26M375.09 269.89H387.26" fill="none" stroke="#6e7681" stroke-width="1.37" stroke-dasharray="1.5292 0.5" stroke-dashoffset="1.7792"/>
+<rect x="374.09" y="258.62" width="14.18" height="13.20" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAppContent: 0/36 (0%)</title>
+<path d="M375.09 273.73H387.26M375.09 275.53H387.26M375.09 277.34H387.26M375.09 279.15H387.26M375.09 280.96H387.26M375.09 282.76H387.26" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="1.5292 0.5" stroke-dashoffset="1.7792"/>
+<rect x="374.09" y="271.82" width="14.18" height="12.84" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVoice: 0/36 (0%)</title>
+<path d="M375.09 286.57H387.26M375.09 288.38H387.26M375.09 290.19H387.26M375.09 291.99H387.26M375.09 293.80H387.26M375.09 295.61H387.26" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="1.5292 0.5" stroke-dashoffset="1.7792"/>
+<rect x="374.09" y="284.67" width="14.18" height="12.84" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libCprm: 0/35 (0%)</title>
+<path d="M375.09 299.56H387.26M375.09 301.66H387.26M375.09 303.76H387.26M375.09 305.85H387.26M375.09 307.95H387.26" fill="none" stroke="#6e7681" stroke-width="1.60" stroke-dasharray="1.2393 0.5" stroke-dashoffset="1.4893"/>
+<rect x="374.09" y="297.51" width="14.18" height="12.49" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceRnpsAppMgr: 0/35 (0%)</title>
+<path d="M389.26 192.01H401.20M389.26 193.79H401.20M389.26 195.58H401.20M389.26 197.36H401.20M389.26 199.14H401.20" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.4899 0.5" stroke-dashoffset="1.7399"/>
+<path d="M389.26 200.93H401.20" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.8879 0.5" stroke-dashoffset="2.1379"/>
+<rect x="388.26" y="190.12" width="13.94" height="12.70" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceRudp: 0/35 (0%)</title>
+<path d="M403.20 192.01H415.14M403.20 193.79H415.14M403.20 195.58H415.14M403.20 197.36H415.14M403.20 199.14H415.14" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.4899 0.5" stroke-dashoffset="1.7399"/>
+<path d="M403.20 200.93H415.14" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.8879 0.5" stroke-dashoffset="2.1379"/>
+<rect x="402.20" y="190.12" width="13.94" height="12.70" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAvPlayerStreaming: 0/34 (0%)</title>
+<path d="M417.14 192.01H428.68M417.14 193.79H428.68M417.14 195.58H428.68M417.14 197.36H428.68" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.4236 0.5" stroke-dashoffset="1.6736"/>
+<path d="M417.14 199.14H428.68M417.14 200.93H428.68" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.8083 0.5" stroke-dashoffset="2.0583"/>
+<rect x="416.14" y="190.12" width="13.54" height="12.70" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVorbisDec: 0/34 (0%)</title>
+<path d="M430.68 192.01H442.22M430.68 193.79H442.22M430.68 195.58H442.22M430.68 197.36H442.22" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.4236 0.5" stroke-dashoffset="1.6736"/>
+<path d="M430.68 199.14H442.22M430.68 200.93H442.22" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.8083 0.5" stroke-dashoffset="2.0583"/>
+<rect x="429.68" y="190.12" width="13.54" height="12.70" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVsePlugin: 0/34 (0%)</title>
+<path d="M444.22 192.01H455.77M444.22 193.79H455.77M444.22 195.58H455.77M444.22 197.36H455.77" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.4236 0.5" stroke-dashoffset="1.6736"/>
+<path d="M444.22 199.14H455.77M444.22 200.93H455.77" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.8083 0.5" stroke-dashoffset="2.0583"/>
+<rect x="443.22" y="190.12" width="13.54" height="12.70" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceBemp2sys: 0/33 (0%)</title>
+<path d="M457.77 192.01H468.91M457.77 193.79H468.91M457.77 195.58H468.91" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.3572 0.5" stroke-dashoffset="1.6072"/>
+<path d="M457.77 197.36H468.91M457.77 199.14H468.91M457.77 200.93H468.91" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.7286 0.5" stroke-dashoffset="1.9786"/>
+<rect x="456.77" y="190.12" width="13.14" height="12.70" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAudio3d: 0/32 (0%)</title>
+<path d="M470.91 192.01H481.65M470.91 193.79H481.65" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.2908 0.5" stroke-dashoffset="1.5408"/>
+<path d="M470.91 195.58H481.65M470.91 197.36H481.65M470.91 199.14H481.65M470.91 200.93H481.65" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.6490 0.5" stroke-dashoffset="1.8990"/>
+<rect x="469.91" y="190.12" width="12.74" height="12.70" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpSessionSignaling: 0/31 (0%)</title>
+<path d="M483.65 192.01H494.00" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.2244 0.5" stroke-dashoffset="1.4744"/>
+<path d="M483.65 193.79H494.00M483.65 195.58H494.00M483.65 197.36H494.00M483.65 199.14H494.00M483.65 200.93H494.00" fill="none" stroke="#6e7681" stroke-width="1.28" stroke-dasharray="1.5693 0.5" stroke-dashoffset="1.8193"/>
+<rect x="482.65" y="190.12" width="12.35" height="12.70" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePsml_debug: 0/31 (0%)</title>
+<path d="M389.26 204.83H400.14" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.0536 0.5" stroke-dashoffset="1.3036"/>
+<path d="M389.26 206.87H400.14M389.26 208.91H400.14M389.26 210.94H400.14M389.26 212.98H400.14" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.3125 0.5" stroke-dashoffset="1.5625"/>
+<rect x="388.26" y="202.82" width="12.87" height="12.18" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceMouse: 5/29 (17%)</title>
+<path d="M402.14 204.83H410.51" fill="none" stroke="#2ea043" stroke-width="1.54" stroke-dasharray="1.1740 0.5" stroke-dashoffset="1.4240"/>
+<path d="M410.51 204.83H412.18M402.14 206.87H412.18M402.14 208.91H412.18M402.14 210.94H412.18" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.1740 0.5" stroke-dashoffset="1.4240"/>
+<path d="M402.14 212.98H412.18" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.5089 0.5" stroke-dashoffset="1.7589"/>
+<rect x="401.14" y="202.82" width="12.04" height="12.18" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceContentSearch: 0/29 (0%)</title>
+<path d="M414.18 204.83H424.23M414.18 206.87H424.23M414.18 208.91H424.23M414.18 210.94H424.23" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.1740 0.5" stroke-dashoffset="1.4240"/>
+<path d="M414.18 212.98H424.23" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.5089 0.5" stroke-dashoffset="1.7589"/>
+<rect x="413.18" y="202.82" width="12.04" height="12.18" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVideodec2: 0/29 (0%)</title>
+<path d="M426.23 204.83H436.27M426.23 206.87H436.27M426.23 208.91H436.27M426.23 210.94H436.27" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.1740 0.5" stroke-dashoffset="1.4240"/>
+<path d="M426.23 212.98H436.27" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.5089 0.5" stroke-dashoffset="1.7589"/>
+<rect x="425.23" y="202.82" width="12.04" height="12.18" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceCommonDialog: 2/28 (7%)</title>
+<path d="M438.27 204.83H441.48" fill="none" stroke="#2ea043" stroke-width="1.54" stroke-dasharray="1.1048 0.5" stroke-dashoffset="1.3548"/>
+<path d="M441.48 204.83H447.90M438.27 206.87H447.90M438.27 208.91H447.90" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.1048 0.5" stroke-dashoffset="1.3548"/>
+<path d="M438.27 210.94H447.90M438.27 212.98H447.90" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.4258 0.5" stroke-dashoffset="1.6758"/>
+<rect x="437.27" y="202.82" width="11.63" height="12.18" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAcm: 0/28 (0%)</title>
+<path d="M449.90 204.83H459.53M449.90 206.87H459.53M449.90 208.91H459.53" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.1048 0.5" stroke-dashoffset="1.3548"/>
+<path d="M449.90 210.94H459.53M449.90 212.98H459.53" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.4258 0.5" stroke-dashoffset="1.6758"/>
+<rect x="448.90" y="202.82" width="11.63" height="12.18" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAppDbShellCoreClient: 0/28 (0%)</title>
+<path d="M461.53 204.83H471.16M461.53 206.87H471.16M461.53 208.91H471.16" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.1048 0.5" stroke-dashoffset="1.3548"/>
+<path d="M461.53 210.94H471.16M461.53 212.98H471.16" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.4258 0.5" stroke-dashoffset="1.6758"/>
+<rect x="460.53" y="202.82" width="11.63" height="12.18" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAvPlayer: 0/28 (0%)</title>
+<path d="M473.16 204.83H482.79M473.16 206.87H482.79M473.16 208.91H482.79" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.1048 0.5" stroke-dashoffset="1.3548"/>
+<path d="M473.16 210.94H482.79M473.16 212.98H482.79" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.4258 0.5" stroke-dashoffset="1.6758"/>
+<rect x="472.16" y="202.82" width="11.63" height="12.18" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceKeyboard: 8/27 (30%)</title>
+<path d="M484.79 204.83H494.00M484.79 206.87H487.86" fill="none" stroke="#2ea043" stroke-width="1.54" stroke-dasharray="1.0356 0.5" stroke-dashoffset="1.2856"/>
+<path d="M487.86 206.87H494.00" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.0356 0.5" stroke-dashoffset="1.2856"/>
+<path d="M484.79 208.91H494.00M484.79 210.94H494.00M484.79 212.98H494.00" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.3427 0.5" stroke-dashoffset="1.5927"/>
+<rect x="483.79" y="202.82" width="11.21" height="12.18" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceHttpCache: 0/27 (0%)</title>
+<path d="M389.26 216.86H398.34M389.26 218.58H398.34M389.26 220.30H398.34" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.3146 0.5" stroke-dashoffset="1.5646"/>
+<path d="M389.26 222.02H398.34M389.26 223.74H398.34M389.26 225.47H398.34" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.7682 0.5" stroke-dashoffset="2.0182"/>
+<rect x="388.26" y="214.99" width="11.07" height="12.33" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceImeBackend: 0/27 (0%)</title>
+<path d="M389.26 229.19H398.34M389.26 230.91H398.34M389.26 232.63H398.34" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.3146 0.5" stroke-dashoffset="1.5646"/>
+<path d="M389.26 234.35H398.34M389.26 236.08H398.34M389.26 237.80H398.34" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.7682 0.5" stroke-dashoffset="2.0182"/>
+<rect x="388.26" y="227.33" width="11.07" height="12.33" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSdma: 0/27 (0%)</title>
+<path d="M389.26 241.52H398.34M389.26 243.24H398.34M389.26 244.96H398.34" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.3146 0.5" stroke-dashoffset="1.5646"/>
+<path d="M389.26 246.69H398.34M389.26 248.41H398.34M389.26 250.13H398.34" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.7682 0.5" stroke-dashoffset="2.0182"/>
+<rect x="388.26" y="239.66" width="11.07" height="12.33" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpParty: 0/26 (0%)</title>
+<path d="M389.26 253.98H398.34" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.0122 0.5" stroke-dashoffset="1.2622"/>
+<path d="M389.26 255.95H398.34M389.26 257.93H398.34M389.26 259.90H398.34M389.26 261.88H398.34" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.3146 0.5" stroke-dashoffset="1.5646"/>
+<rect x="388.26" y="251.99" width="11.07" height="11.88" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVideoRecordingP: 0/26 (0%)</title>
+<path d="M389.26 265.86H398.34" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.0122 0.5" stroke-dashoffset="1.2622"/>
+<path d="M389.26 267.83H398.34M389.26 269.81H398.34M389.26 271.78H398.34M389.26 273.76H398.34" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.3146 0.5" stroke-dashoffset="1.5646"/>
+<rect x="388.26" y="263.87" width="11.07" height="11.88" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceJson: 0/25 (0%)</title>
+<path d="M389.26 277.69H398.34M389.26 279.57H398.34M389.26 281.45H398.34M389.26 283.34H398.34M389.26 285.22H398.34" fill="none" stroke="#6e7681" stroke-width="1.38" stroke-dasharray="1.3146 0.5" stroke-dashoffset="1.5646"/>
+<rect x="388.26" y="275.74" width="11.07" height="11.42" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpEntitlementAccess: 0/25 (0%)</title>
+<path d="M389.26 289.10H398.34M389.26 290.99H398.34M389.26 292.87H398.34M389.26 294.76H398.34M389.26 296.64H398.34" fill="none" stroke="#6e7681" stroke-width="1.38" stroke-dasharray="1.3146 0.5" stroke-dashoffset="1.5646"/>
+<rect x="388.26" y="287.16" width="11.07" height="11.42" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSharePlay: 0/25 (0%)</title>
+<path d="M389.26 300.52H398.34M389.26 302.41H398.34M389.26 304.29H398.34M389.26 306.17H398.34M389.26 308.06H398.34" fill="none" stroke="#6e7681" stroke-width="1.38" stroke-dasharray="1.3146 0.5" stroke-dashoffset="1.5646"/>
+<rect x="388.26" y="298.58" width="11.07" height="11.42" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVoiceQoS: 0/25 (0%)</title>
+<path d="M400.34 216.90H409.78M400.34 218.71H409.78M400.34 220.52H409.78M400.34 222.33H409.78M400.34 224.14H409.78" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="1.3891 0.5" stroke-dashoffset="1.6391"/>
+<rect x="399.34" y="214.99" width="11.45" height="11.05" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceGvMp4Parser: 0/24 (0%)</title>
+<path d="M400.34 227.90H409.78M400.34 229.62H409.78M400.34 231.34H409.78M400.34 233.07H409.78" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.3891 0.5" stroke-dashoffset="1.6391"/>
+<path d="M400.34 234.79H409.78" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.8614 0.5" stroke-dashoffset="2.1114"/>
+<rect x="399.34" y="226.04" width="11.45" height="10.61" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpSignaling: 0/24 (0%)</title>
+<path d="M400.34 238.51H409.78M400.34 240.23H409.78M400.34 241.95H409.78M400.34 243.67H409.78" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.3891 0.5" stroke-dashoffset="1.6391"/>
+<path d="M400.34 245.39H409.78" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.8614 0.5" stroke-dashoffset="2.1114"/>
+<rect x="399.34" y="236.65" width="11.45" height="10.61" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePlayGo: 0/24 (0%)</title>
+<path d="M400.34 249.11H409.78M400.34 250.83H409.78M400.34 252.55H409.78M400.34 254.28H409.78" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.3891 0.5" stroke-dashoffset="1.6391"/>
+<path d="M400.34 256.00H409.78" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.8614 0.5" stroke-dashoffset="2.1114"/>
+<rect x="399.34" y="247.25" width="11.45" height="10.61" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSysUtil: 0/24 (0%)</title>
+<path d="M400.34 259.72H409.78M400.34 261.44H409.78M400.34 263.16H409.78M400.34 264.88H409.78" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.3891 0.5" stroke-dashoffset="1.6391"/>
+<path d="M400.34 266.60H409.78" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.8614 0.5" stroke-dashoffset="2.1114"/>
+<rect x="399.34" y="257.86" width="11.45" height="10.61" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceUsbStorage: 0/24 (0%)</title>
+<path d="M400.34 270.32H409.78M400.34 272.04H409.78M400.34 273.77H409.78M400.34 275.49H409.78" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.3891 0.5" stroke-dashoffset="1.6391"/>
+<path d="M400.34 277.21H409.78" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.8614 0.5" stroke-dashoffset="2.1114"/>
+<rect x="399.34" y="268.46" width="11.45" height="10.61" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libfreetype: 0/24 (0%)</title>
+<path d="M400.34 280.93H409.78M400.34 282.65H409.78M400.34 284.37H409.78M400.34 286.09H409.78" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.3891 0.5" stroke-dashoffset="1.6391"/>
+<path d="M400.34 287.81H409.78" fill="none" stroke="#6e7681" stroke-width="1.22" stroke-dasharray="1.8614 0.5" stroke-dashoffset="2.1114"/>
+<rect x="399.34" y="279.07" width="11.45" height="10.61" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceShare: 0/23 (0%)</title>
+<path d="M400.34 291.69H409.78M400.34 293.73H409.78M400.34 295.78H409.78" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.0743 0.5" stroke-dashoffset="1.3243"/>
+<path d="M400.34 297.82H409.78" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.3891 0.5" stroke-dashoffset="1.6391"/>
+<rect x="399.34" y="289.67" width="11.45" height="10.16" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSystemGesture: 0/23 (0%)</title>
+<path d="M400.34 301.86H409.78M400.34 303.90H409.78M400.34 305.94H409.78" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.0743 0.5" stroke-dashoffset="1.3243"/>
+<path d="M400.34 307.98H409.78" fill="none" stroke="#6e7681" stroke-width="1.54" stroke-dasharray="1.3891 0.5" stroke-dashoffset="1.6391"/>
+<rect x="399.34" y="299.84" width="11.45" height="10.16" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVenc: 0/23 (0%)</title>
+<path d="M411.78 216.83H420.98M411.78 218.51H420.98M411.78 220.19H420.98" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.3393 0.5" stroke-dashoffset="1.5893"/>
+<path d="M411.78 221.87H420.98M411.78 223.55H420.98" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.7992 0.5" stroke-dashoffset="2.0492"/>
+<rect x="410.78" y="214.99" width="11.20" height="10.39" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAsyncStorageInternal: 0/22 (0%)</title>
+<path d="M422.98 216.83H431.69M422.98 218.51H431.69" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.2420 0.5" stroke-dashoffset="1.4920"/>
+<path d="M422.98 220.19H431.69M422.98 221.87H431.69M422.98 223.55H431.69" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.6775 0.5" stroke-dashoffset="1.9275"/>
+<rect x="421.98" y="214.99" width="10.71" height="10.39" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceContentExport: 0/22 (0%)</title>
+<path d="M433.69 216.83H442.40M433.69 218.51H442.40" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.2420 0.5" stroke-dashoffset="1.4920"/>
+<path d="M433.69 220.19H442.40M433.69 221.87H442.40M433.69 223.55H442.40" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.6775 0.5" stroke-dashoffset="1.9275"/>
+<rect x="432.69" y="214.99" width="10.71" height="10.39" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceShareUtility: 0/22 (0%)</title>
+<path d="M444.40 216.83H453.11M444.40 218.51H453.11" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.2420 0.5" stroke-dashoffset="1.4920"/>
+<path d="M444.40 220.19H453.11M444.40 221.87H453.11M444.40 223.55H453.11" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.6775 0.5" stroke-dashoffset="1.9275"/>
+<rect x="443.40" y="214.99" width="10.71" height="10.39" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSysmodule: 10/21 (48%)</title>
+<path d="M455.11 216.83H463.33" fill="none" stroke="#2ea043" stroke-width="1.18" stroke-dasharray="1.1446 0.5" stroke-dashoffset="1.3946"/>
+<path d="M455.11 218.51H463.33M455.11 220.19H457.16" fill="none" stroke="#2ea043" stroke-width="1.18" stroke-dasharray="1.5558 0.5" stroke-dashoffset="1.8058"/>
+<path d="M457.16 220.19H463.33M455.11 221.87H463.33M455.11 223.55H463.33" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.5558 0.5" stroke-dashoffset="1.8058"/>
+<rect x="454.11" y="214.99" width="10.22" height="10.39" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceBackupRestoreUtil: 0/21 (0%)</title>
+<path d="M465.33 216.83H473.55" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.1446 0.5" stroke-dashoffset="1.3946"/>
+<path d="M465.33 218.51H473.55M465.33 220.19H473.55M465.33 221.87H473.55M465.33 223.55H473.55" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.5558 0.5" stroke-dashoffset="1.8058"/>
+<rect x="464.33" y="214.99" width="10.22" height="10.39" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceIdu: 0/21 (0%)</title>
+<path d="M475.55 216.83H483.78" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.1446 0.5" stroke-dashoffset="1.3946"/>
+<path d="M475.55 218.51H483.78M475.55 220.19H483.78M475.55 221.87H483.78M475.55 223.55H483.78" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.5558 0.5" stroke-dashoffset="1.8058"/>
+<rect x="474.55" y="214.99" width="10.22" height="10.39" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceMove: 0/21 (0%)</title>
+<path d="M485.78 216.83H494.00" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.1446 0.5" stroke-dashoffset="1.3946"/>
+<path d="M485.78 218.51H494.00M485.78 220.19H494.00M485.78 221.87H494.00M485.78 223.55H494.00" fill="none" stroke="#6e7681" stroke-width="1.18" stroke-dasharray="1.5558 0.5" stroke-dashoffset="1.8058"/>
+<rect x="484.78" y="214.99" width="10.22" height="10.39" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpSns: 0/21 (0%)</title>
+<path d="M411.78 227.21H420.12" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.1685 0.5" stroke-dashoffset="1.4185"/>
+<path d="M411.78 228.86H420.12M411.78 230.52H420.12M411.78 232.17H420.12M411.78 233.83H420.12" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.5857 0.5" stroke-dashoffset="1.8357"/>
+<rect x="410.78" y="225.38" width="10.34" height="10.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVdecCore: 0/21 (0%)</title>
+<path d="M422.12 227.21H430.47" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.1685 0.5" stroke-dashoffset="1.4185"/>
+<path d="M422.12 228.86H430.47M422.12 230.52H430.47M422.12 232.17H430.47M422.12 233.83H430.47" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.5857 0.5" stroke-dashoffset="1.8357"/>
+<rect x="421.12" y="225.38" width="10.34" height="10.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceShareInternal.native: 0/20 (0%)</title>
+<path d="M432.47 227.21H440.32M432.47 228.86H440.32M432.47 230.52H440.32M432.47 232.17H440.32M432.47 233.83H440.32" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.4625 0.5" stroke-dashoffset="1.7125"/>
+<rect x="431.47" y="225.38" width="9.85" height="10.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceContentListController: 0/19 (0%)</title>
+<path d="M442.32 227.21H449.67M442.32 228.86H449.67M442.32 230.52H449.67M442.32 232.17H449.67" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.3394 0.5" stroke-dashoffset="1.5894"/>
+<path d="M442.32 233.83H449.67" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.9525 0.5" stroke-dashoffset="2.2025"/>
+<rect x="441.32" y="225.38" width="9.36" height="10.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceBeisobmf: 0/18 (0%)</title>
+<path d="M451.67 227.21H458.54M451.67 228.86H458.54M451.67 230.52H458.54" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.2163 0.5" stroke-dashoffset="1.4663"/>
+<path d="M451.67 232.17H458.54M451.67 233.83H458.54" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.7884 0.5" stroke-dashoffset="2.0384"/>
+<rect x="450.67" y="225.38" width="8.87" height="10.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceCustomMusicCore: 0/18 (0%)</title>
+<path d="M460.54 227.21H467.40M460.54 228.86H467.40M460.54 230.52H467.40" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.2163 0.5" stroke-dashoffset="1.4663"/>
+<path d="M460.54 232.17H467.40M460.54 233.83H467.40" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.7884 0.5" stroke-dashoffset="2.0384"/>
+<rect x="459.54" y="225.38" width="8.87" height="10.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceMoveTracker: 0/18 (0%)</title>
+<path d="M469.40 227.21H476.27M469.40 228.86H476.27M469.40 230.52H476.27" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.2163 0.5" stroke-dashoffset="1.4663"/>
+<path d="M469.40 232.17H476.27M469.40 233.83H476.27" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.7884 0.5" stroke-dashoffset="2.0384"/>
+<rect x="468.40" y="225.38" width="8.87" height="10.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpGameIntent: 0/18 (0%)</title>
+<path d="M478.27 227.21H485.13M478.27 228.86H485.13M478.27 230.52H485.13" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.2163 0.5" stroke-dashoffset="1.4663"/>
+<path d="M478.27 232.17H485.13M478.27 233.83H485.13" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.7884 0.5" stroke-dashoffset="2.0384"/>
+<rect x="477.27" y="225.38" width="8.87" height="10.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceRemotePlayClientIpc: 0/18 (0%)</title>
+<path d="M487.13 227.21H494.00M487.13 228.86H494.00M487.13 230.52H494.00" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.2163 0.5" stroke-dashoffset="1.4663"/>
+<path d="M487.13 232.17H494.00M487.13 233.83H494.00" fill="none" stroke="#6e7681" stroke-width="1.15" stroke-dasharray="1.7884 0.5" stroke-dashoffset="2.0384"/>
+<rect x="486.13" y="225.38" width="8.87" height="10.27" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceTtsCoreG3Bc: 0/18 (0%)</title>
+<path d="M411.78 237.62H419.17M411.78 239.54H419.17" fill="none" stroke="#6e7681" stroke-width="1.42" stroke-dasharray="0.9776 0.5" stroke-dashoffset="1.2276"/>
+<path d="M411.78 241.46H419.17M411.78 243.39H419.17" fill="none" stroke="#6e7681" stroke-width="1.42" stroke-dasharray="1.3470 0.5" stroke-dashoffset="1.5970"/>
+<rect x="410.78" y="235.65" width="9.39" height="9.70" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVdecsw: 0/18 (0%)</title>
+<path d="M411.78 247.31H419.17M411.78 249.24H419.17" fill="none" stroke="#6e7681" stroke-width="1.42" stroke-dasharray="0.9776 0.5" stroke-dashoffset="1.2276"/>
+<path d="M411.78 251.16H419.17M411.78 253.09H419.17" fill="none" stroke="#6e7681" stroke-width="1.42" stroke-dasharray="1.3470 0.5" stroke-dashoffset="1.5970"/>
+<rect x="410.78" y="245.35" width="9.39" height="9.70" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAbstractYoutube: 0/17 (0%)</title>
+<path d="M411.78 256.94H419.17" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="0.9776 0.5" stroke-dashoffset="1.2276"/>
+<path d="M411.78 258.73H419.17M411.78 260.52H419.17M411.78 262.31H419.17" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="1.3470 0.5" stroke-dashoffset="1.5970"/>
+<rect x="410.78" y="255.05" width="9.39" height="9.16" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceBgsStorage: 0/17 (0%)</title>
+<path d="M411.78 266.10H419.17" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="0.9776 0.5" stroke-dashoffset="1.2276"/>
+<path d="M411.78 267.89H419.17M411.78 269.68H419.17M411.78 271.47H419.17" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="1.3470 0.5" stroke-dashoffset="1.5970"/>
+<rect x="410.78" y="264.21" width="9.39" height="9.16" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceBluetoothHid: 0/17 (0%)</title>
+<path d="M411.78 275.26H419.17" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="0.9776 0.5" stroke-dashoffset="1.2276"/>
+<path d="M411.78 277.05H419.17M411.78 278.84H419.17M411.78 280.63H419.17" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="1.3470 0.5" stroke-dashoffset="1.5970"/>
+<rect x="410.78" y="273.37" width="9.39" height="9.16" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceCompanionHttpd: 0/17 (0%)</title>
+<path d="M411.78 284.42H419.17" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="0.9776 0.5" stroke-dashoffset="1.2276"/>
+<path d="M411.78 286.21H419.17M411.78 288.00H419.17M411.78 289.79H419.17" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="1.3470 0.5" stroke-dashoffset="1.5970"/>
+<rect x="410.78" y="282.52" width="9.39" height="9.16" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceM4aacEnc: 0/17 (0%)</title>
+<path d="M411.78 293.58H419.17" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="0.9776 0.5" stroke-dashoffset="1.2276"/>
+<path d="M411.78 295.37H419.17M411.78 297.16H419.17M411.78 298.95H419.17" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="1.3470 0.5" stroke-dashoffset="1.5970"/>
+<rect x="410.78" y="291.68" width="9.39" height="9.16" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePlayReady2: 0/17 (0%)</title>
+<path d="M411.78 302.74H419.17" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="0.9776 0.5" stroke-dashoffset="1.2276"/>
+<path d="M411.78 304.53H419.17M411.78 306.32H419.17M411.78 308.11H419.17" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="1.3470 0.5" stroke-dashoffset="1.5970"/>
+<rect x="410.78" y="300.84" width="9.39" height="9.16" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceFiber: 0/16 (0%)</title>
+<path d="M421.17 237.54H428.08M421.17 239.31H428.08M421.17 241.08H428.08M421.17 242.85H428.08" fill="none" stroke="#6e7681" stroke-width="1.27" stroke-dasharray="1.2279 0.5" stroke-dashoffset="1.4779"/>
+<rect x="420.17" y="235.65" width="8.91" height="9.08" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceOpusCeltEnc: 0/15 (0%)</title>
+<path d="M421.17 246.55H428.08M421.17 248.18H428.08M421.17 249.80H428.08" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.2279 0.5" stroke-dashoffset="1.4779"/>
+<path d="M421.17 251.43H428.08" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.8039 0.5" stroke-dashoffset="2.0539"/>
+<rect x="420.17" y="244.73" width="8.91" height="8.51" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceOpusSilkEnc: 0/15 (0%)</title>
+<path d="M421.17 255.06H428.08M421.17 256.69H428.08M421.17 258.32H428.08" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.2279 0.5" stroke-dashoffset="1.4779"/>
+<path d="M421.17 259.95H428.08" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.8039 0.5" stroke-dashoffset="2.0539"/>
+<rect x="420.17" y="253.25" width="8.91" height="8.51" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceTEEClient: 0/15 (0%)</title>
+<path d="M421.17 263.57H428.08M421.17 265.20H428.08M421.17 266.83H428.08" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.2279 0.5" stroke-dashoffset="1.4779"/>
+<path d="M421.17 268.46H428.08" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.8039 0.5" stroke-dashoffset="2.0539"/>
+<rect x="420.17" y="261.76" width="8.91" height="8.51" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceImeDialog: 13/14 (93%)</title>
+<path d="M421.17 272.26H428.08M421.17 274.25H428.08" fill="none" stroke="#2ea043" stroke-width="1.48" stroke-dasharray="0.8823 0.5" stroke-dashoffset="1.1323"/>
+<path d="M421.17 276.23H426.35" fill="none" stroke="#2ea043" stroke-width="1.48" stroke-dasharray="1.2279 0.5" stroke-dashoffset="1.4779"/>
+<path d="M426.35 276.23H428.08" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.2279 0.5" stroke-dashoffset="1.4779"/>
+<rect x="420.17" y="270.27" width="8.91" height="7.95" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAudiodec.native: 0/14 (0%)</title>
+<path d="M421.17 280.21H428.08M421.17 282.19H428.08" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="0.8823 0.5" stroke-dashoffset="1.1323"/>
+<path d="M421.17 284.17H428.08" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.2279 0.5" stroke-dashoffset="1.4779"/>
+<rect x="420.17" y="278.22" width="8.91" height="7.95" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceCffMgr: 0/14 (0%)</title>
+<path d="M421.17 288.15H428.08M421.17 290.14H428.08" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="0.8823 0.5" stroke-dashoffset="1.1323"/>
+<path d="M421.17 292.12H428.08" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.2279 0.5" stroke-dashoffset="1.4779"/>
+<rect x="420.17" y="286.16" width="8.91" height="7.95" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpAuth: 0/14 (0%)</title>
+<path d="M421.17 296.10H428.08M421.17 298.08H428.08" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="0.8823 0.5" stroke-dashoffset="1.1323"/>
+<path d="M421.17 300.06H428.08" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.2279 0.5" stroke-dashoffset="1.4779"/>
+<rect x="420.17" y="294.11" width="8.91" height="7.95" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpRemotePlaySessionSignaling: 0/14 (0%)</title>
+<path d="M421.17 304.05H428.08M421.17 306.03H428.08" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="0.8823 0.5" stroke-dashoffset="1.1323"/>
+<path d="M421.17 308.01H428.08" fill="none" stroke="#6e7681" stroke-width="1.48" stroke-dasharray="1.2279 0.5" stroke-dashoffset="1.4779"/>
+<rect x="420.17" y="302.05" width="8.91" height="7.95" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceOpusDec: 0/14 (0%)</title>
+<path d="M430.08 237.47H436.39M430.08 239.10H436.39" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.0785 0.5" stroke-dashoffset="1.3285"/>
+<path d="M430.08 240.73H436.39M430.08 242.36H436.39" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.6047 0.5" stroke-dashoffset="1.8547"/>
+<rect x="429.08" y="235.65" width="8.31" height="8.52" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceResourceArbitrator: 0/14 (0%)</title>
+<path d="M438.39 237.47H444.71M438.39 239.10H444.71" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.0785 0.5" stroke-dashoffset="1.3285"/>
+<path d="M438.39 240.73H444.71M438.39 242.36H444.71" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.6047 0.5" stroke-dashoffset="1.8547"/>
+<rect x="437.39" y="235.65" width="8.31" height="8.52" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSaveData: 0/14 (0%)</title>
+<path d="M446.71 237.47H453.02M446.71 239.10H453.02" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.0785 0.5" stroke-dashoffset="1.3285"/>
+<path d="M446.71 240.73H453.02M446.71 242.36H453.02" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.6047 0.5" stroke-dashoffset="1.8547"/>
+<rect x="445.71" y="235.65" width="8.31" height="8.52" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSystemLogger2: 0/14 (0%)</title>
+<path d="M455.02 237.47H461.34M455.02 239.10H461.34" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.0785 0.5" stroke-dashoffset="1.3285"/>
+<path d="M455.02 240.73H461.34M455.02 242.36H461.34" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.6047 0.5" stroke-dashoffset="1.8547"/>
+<rect x="454.02" y="235.65" width="8.31" height="8.52" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceTextToSpeech2: 0/14 (0%)</title>
+<path d="M463.34 237.47H469.65M463.34 239.10H469.65" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.0785 0.5" stroke-dashoffset="1.3285"/>
+<path d="M463.34 240.73H469.65M463.34 242.36H469.65" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.6047 0.5" stroke-dashoffset="1.8547"/>
+<rect x="462.34" y="235.65" width="8.31" height="8.52" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceUgcBgUploaderClient: 0/14 (0%)</title>
+<path d="M471.65 237.47H477.97M471.65 239.10H477.97" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.0785 0.5" stroke-dashoffset="1.3285"/>
+<path d="M471.65 240.73H477.97M471.65 242.36H477.97" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.6047 0.5" stroke-dashoffset="1.8547"/>
+<rect x="470.65" y="235.65" width="8.31" height="8.52" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceUgcServiceS3: 0/14 (0%)</title>
+<path d="M479.97 237.47H486.28M479.97 239.10H486.28" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.0785 0.5" stroke-dashoffset="1.3285"/>
+<path d="M479.97 240.73H486.28M479.97 242.36H486.28" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.6047 0.5" stroke-dashoffset="1.8547"/>
+<rect x="478.97" y="235.65" width="8.31" height="8.52" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAvcap2mvr: 0/13 (0%)</title>
+<path d="M488.28 237.47H494.00" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="0.9301 0.5" stroke-dashoffset="1.1801"/>
+<path d="M488.28 239.10H494.00M488.28 240.73H494.00M488.28 242.36H494.00" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.4068 0.5" stroke-dashoffset="1.6568"/>
+<rect x="487.28" y="235.65" width="7.72" height="8.52" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceJemspace: 0/13 (0%)</title>
+<path d="M430.08 245.97H435.92" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="0.9591 0.5" stroke-dashoffset="1.2091"/>
+<path d="M430.08 247.57H435.92M430.08 249.16H435.92M430.08 250.76H435.92" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="1.4455 0.5" stroke-dashoffset="1.6955"/>
+<rect x="429.08" y="244.17" width="7.84" height="8.39" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceJobManager: 0/13 (0%)</title>
+<path d="M430.08 254.36H435.92" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="0.9591 0.5" stroke-dashoffset="1.2091"/>
+<path d="M430.08 255.96H435.92M430.08 257.55H435.92M430.08 259.15H435.92" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="1.4455 0.5" stroke-dashoffset="1.6955"/>
+<rect x="429.08" y="252.56" width="7.84" height="8.39" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceScreenShot: 0/13 (0%)</title>
+<path d="M430.08 262.75H435.92" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="0.9591 0.5" stroke-dashoffset="1.2091"/>
+<path d="M430.08 264.35H435.92M430.08 265.94H435.92M430.08 267.54H435.92" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="1.4455 0.5" stroke-dashoffset="1.6955"/>
+<rect x="429.08" y="260.95" width="7.84" height="8.39" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSrcUtl: 0/13 (0%)</title>
+<path d="M430.08 271.14H435.92" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="0.9591 0.5" stroke-dashoffset="1.2091"/>
+<path d="M430.08 272.74H435.92M430.08 274.33H435.92M430.08 275.93H435.92" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="1.4455 0.5" stroke-dashoffset="1.6955"/>
+<rect x="429.08" y="269.34" width="7.84" height="8.39" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVdecShevc: 0/13 (0%)</title>
+<path d="M430.08 279.53H435.92" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="0.9591 0.5" stroke-dashoffset="1.2091"/>
+<path d="M430.08 281.13H435.92M430.08 282.72H435.92M430.08 284.32H435.92" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="1.4455 0.5" stroke-dashoffset="1.6955"/>
+<rect x="429.08" y="277.73" width="7.84" height="8.39" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceWebBrowserDialog: 0/13 (0%)</title>
+<path d="M430.08 287.92H435.92" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="0.9591 0.5" stroke-dashoffset="1.2091"/>
+<path d="M430.08 289.52H435.92M430.08 291.11H435.92M430.08 292.71H435.92" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="1.4455 0.5" stroke-dashoffset="1.6955"/>
+<rect x="429.08" y="286.12" width="7.84" height="8.39" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceFlexContent: 0/12 (0%)</title>
+<path d="M430.08 296.47H435.92M430.08 298.38H435.92M430.08 300.30H435.92" fill="none" stroke="#6e7681" stroke-width="1.41" stroke-dasharray="0.9591 0.5" stroke-dashoffset="1.2091"/>
+<rect x="429.08" y="294.51" width="7.84" height="7.74" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpCommerce: 0/12 (0%)</title>
+<path d="M430.08 304.21H435.92M430.08 306.13H435.92M430.08 308.04H435.92" fill="none" stroke="#6e7681" stroke-width="1.41" stroke-dasharray="0.9591 0.5" stroke-dashoffset="1.2091"/>
+<rect x="429.08" y="302.26" width="7.84" height="7.74" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePatchCheckerClient: 0/12 (0%)</title>
+<path d="M437.92 245.91H443.58M437.92 247.39H443.58M437.92 248.87H443.58M437.92 250.35H443.58" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.3864 0.5" stroke-dashoffset="1.6364"/>
+<rect x="436.92" y="244.17" width="7.66" height="7.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSystemLogger2NativeQueueClient: 0/12 (0%)</title>
+<path d="M445.58 245.91H451.24M445.58 247.39H451.24M445.58 248.87H451.24M445.58 250.35H451.24" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.3864 0.5" stroke-dashoffset="1.6364"/>
+<rect x="444.58" y="244.17" width="7.66" height="7.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceTextToSpeech: 0/12 (0%)</title>
+<path d="M453.24 245.91H458.90M453.24 247.39H458.90M453.24 248.87H458.90M453.24 250.35H458.90" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.3864 0.5" stroke-dashoffset="1.6364"/>
+<rect x="452.24" y="244.17" width="7.66" height="7.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceCdlgUtilServer: 0/11 (0%)</title>
+<path d="M460.90 245.91H465.92M460.90 247.39H465.92M460.90 248.87H465.92" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.1737 0.5" stroke-dashoffset="1.4237"/>
+<path d="M460.90 250.35H465.92" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="2.0105 0.5" stroke-dashoffset="2.2605"/>
+<rect x="459.90" y="244.17" width="7.02" height="7.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNetCtlAp: 0/11 (0%)</title>
+<path d="M467.92 245.91H472.94M467.92 247.39H472.94M467.92 248.87H472.94" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.1737 0.5" stroke-dashoffset="1.4237"/>
+<path d="M467.92 250.35H472.94" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="2.0105 0.5" stroke-dashoffset="2.2605"/>
+<rect x="466.92" y="244.17" width="7.02" height="7.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpSessionSignalingCrossplay: 0/11 (0%)</title>
+<path d="M474.94 245.91H479.96M474.94 247.39H479.96M474.94 248.87H479.96" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.1737 0.5" stroke-dashoffset="1.4237"/>
+<path d="M474.94 250.35H479.96" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="2.0105 0.5" stroke-dashoffset="2.2605"/>
+<rect x="473.94" y="244.17" width="7.02" height="7.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpTextToSpeech: 0/11 (0%)</title>
+<path d="M481.96 245.91H486.98M481.96 247.39H486.98M481.96 248.87H486.98" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.1737 0.5" stroke-dashoffset="1.4237"/>
+<path d="M481.96 250.35H486.98" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="2.0105 0.5" stroke-dashoffset="2.2605"/>
+<rect x="480.96" y="244.17" width="7.02" height="7.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceOpusCeltDec: 0/11 (0%)</title>
+<path d="M488.98 245.91H494.00M488.98 247.39H494.00M488.98 248.87H494.00" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.1737 0.5" stroke-dashoffset="1.4237"/>
+<path d="M488.98 250.35H494.00" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="2.0105 0.5" stroke-dashoffset="2.2605"/>
+<rect x="487.98" y="244.17" width="7.02" height="7.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSocialScreen: 0/11 (0%)</title>
+<path d="M437.92 254.02H443.25M437.92 255.89H443.25" fill="none" stroke="#6e7681" stroke-width="1.36" stroke-dasharray="0.8342 0.5" stroke-dashoffset="1.0842"/>
+<path d="M437.92 257.75H443.25" fill="none" stroke="#6e7681" stroke-width="1.36" stroke-dasharray="1.2789 0.5" stroke-dashoffset="1.5289"/>
+<rect x="436.92" y="252.09" width="7.34" height="7.58" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceTtsEngine: 0/11 (0%)</title>
+<path d="M437.92 261.61H443.25M437.92 263.47H443.25" fill="none" stroke="#6e7681" stroke-width="1.36" stroke-dasharray="0.8342 0.5" stroke-dashoffset="1.0842"/>
+<path d="M437.92 265.33H443.25" fill="none" stroke="#6e7681" stroke-width="1.36" stroke-dasharray="1.2789 0.5" stroke-dashoffset="1.5289"/>
+<rect x="436.92" y="259.68" width="7.34" height="7.58" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVdecSvp9: 0/11 (0%)</title>
+<path d="M437.92 269.19H443.25M437.92 271.05H443.25" fill="none" stroke="#6e7681" stroke-width="1.36" stroke-dasharray="0.8342 0.5" stroke-dashoffset="1.0842"/>
+<path d="M437.92 272.91H443.25" fill="none" stroke="#6e7681" stroke-width="1.36" stroke-dasharray="1.2789 0.5" stroke-dashoffset="1.5289"/>
+<rect x="436.92" y="267.26" width="7.34" height="7.58" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVdecwrap: 0/11 (0%)</title>
+<path d="M437.92 276.77H443.25M437.92 278.63H443.25" fill="none" stroke="#6e7681" stroke-width="1.36" stroke-dasharray="0.8342 0.5" stroke-dashoffset="1.0842"/>
+<path d="M437.92 280.50H443.25" fill="none" stroke="#6e7681" stroke-width="1.36" stroke-dasharray="1.2789 0.5" stroke-dashoffset="1.5289"/>
+<rect x="436.92" y="274.84" width="7.34" height="7.58" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceCustomMusicAudioOut: 0/10 (0%)</title>
+<path d="M437.92 284.24H443.25" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="0.8342 0.5" stroke-dashoffset="1.0842"/>
+<path d="M437.92 285.87H443.25M437.92 287.50H443.25" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.2789 0.5" stroke-dashoffset="1.5289"/>
+<rect x="436.92" y="282.43" width="7.34" height="6.89" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceDepth2: 0/10 (0%)</title>
+<path d="M437.92 291.13H443.25" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="0.8342 0.5" stroke-dashoffset="1.0842"/>
+<path d="M437.92 292.77H443.25M437.92 294.40H443.25" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.2789 0.5" stroke-dashoffset="1.5289"/>
+<rect x="436.92" y="289.32" width="7.34" height="6.89" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceDipsw: 0/10 (0%)</title>
+<path d="M437.92 298.03H443.25" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="0.8342 0.5" stroke-dashoffset="1.0842"/>
+<path d="M437.92 299.66H443.25M437.92 301.29H443.25" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.2789 0.5" stroke-dashoffset="1.5289"/>
+<rect x="436.92" y="296.21" width="7.34" height="6.89" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceImageUtil: 0/10 (0%)</title>
+<path d="M437.92 304.92H443.25" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="0.8342 0.5" stroke-dashoffset="1.0842"/>
+<path d="M437.92 306.55H443.25M437.92 308.18H443.25" fill="none" stroke="#6e7681" stroke-width="1.13" stroke-dasharray="1.2789 0.5" stroke-dashoffset="1.5289"/>
+<rect x="436.92" y="303.11" width="7.34" height="6.89" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceMsgDialog.native: 0/10 (0%)</title>
+<path d="M445.25 253.99H450.11" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="0.7144 0.5" stroke-dashoffset="0.9644"/>
+<path d="M445.25 255.78H450.11M445.25 257.57H450.11" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="1.1192 0.5" stroke-dashoffset="1.3692"/>
+<rect x="444.25" y="252.09" width="6.86" height="7.38" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSaveDataDialog.native: 0/10 (0%)</title>
+<path d="M452.11 253.99H456.97" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="0.7144 0.5" stroke-dashoffset="0.9644"/>
+<path d="M452.11 255.78H456.97M452.11 257.57H456.97" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="1.1192 0.5" stroke-dashoffset="1.3692"/>
+<rect x="451.11" y="252.09" width="6.86" height="7.38" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceEditMp4: 0/9 (0%)</title>
+<path d="M458.97 253.99H463.14M458.97 255.78H463.14M458.97 257.57H463.14" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="0.8906 0.5" stroke-dashoffset="1.1406"/>
+<rect x="457.97" y="252.09" width="6.17" height="7.38" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceGameCustomDataDialog: 0/9 (0%)</title>
+<path d="M465.14 253.99H469.31M465.14 255.78H469.31M465.14 257.57H469.31" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="0.8906 0.5" stroke-dashoffset="1.1406"/>
+<rect x="464.14" y="252.09" width="6.17" height="7.38" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceInvitationDialog: 0/9 (0%)</title>
+<path d="M471.31 253.99H475.48M471.31 255.78H475.48M471.31 257.57H475.48" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="0.8906 0.5" stroke-dashoffset="1.1406"/>
+<rect x="470.31" y="252.09" width="6.17" height="7.38" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceMsgDialog: 0/9 (0%)</title>
+<path d="M477.48 253.99H481.66M477.48 255.78H481.66M477.48 257.57H481.66" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="0.8906 0.5" stroke-dashoffset="1.1406"/>
+<rect x="476.48" y="252.09" width="6.17" height="7.38" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpEulaDialog: 0/9 (0%)</title>
+<path d="M483.66 253.99H487.83M483.66 255.78H487.83M483.66 257.57H487.83" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="0.8906 0.5" stroke-dashoffset="1.1406"/>
+<rect x="482.66" y="252.09" width="6.17" height="7.38" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpFriendListDialog: 0/9 (0%)</title>
+<path d="M489.83 253.99H494.00M489.83 255.78H494.00M489.83 257.57H494.00" fill="none" stroke="#6e7681" stroke-width="1.29" stroke-dasharray="0.8906 0.5" stroke-dashoffset="1.1406"/>
+<rect x="488.83" y="252.09" width="6.17" height="7.38" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePSNowGkp: 0/9 (0%)</title>
+<path d="M445.25 261.27H449.96M445.25 262.86H449.96M445.25 264.46H449.96" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="1.0687 0.5" stroke-dashoffset="1.3187"/>
+<rect x="444.25" y="259.47" width="6.71" height="6.79" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePfs: 0/9 (0%)</title>
+<path d="M445.25 268.05H449.96M445.25 269.65H449.96M445.25 271.25H449.96" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="1.0687 0.5" stroke-dashoffset="1.3187"/>
+<rect x="444.25" y="266.26" width="6.71" height="6.79" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSystemTts: 0/9 (0%)</title>
+<path d="M445.25 274.84H449.96M445.25 276.44H449.96M445.25 278.03H449.96" fill="none" stroke="#6e7681" stroke-width="1.10" stroke-dasharray="1.0687 0.5" stroke-dashoffset="1.3187"/>
+<rect x="444.25" y="273.04" width="6.71" height="6.79" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAudioSystem: 0/8 (0%)</title>
+<path d="M445.25 281.50H449.96M445.25 282.85H449.96" fill="none" stroke="#6e7681" stroke-width="0.84" stroke-dasharray="1.0687 0.5" stroke-dashoffset="1.3187"/>
+<path d="M445.25 284.19H449.96" fill="none" stroke="#6e7681" stroke-width="0.84" stroke-dasharray="1.8530 0.5" stroke-dashoffset="2.1030"/>
+<rect x="444.25" y="279.83" width="6.71" height="6.03" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAudiodec: 0/8 (0%)</title>
+<path d="M445.25 287.54H449.96M445.25 288.88H449.96" fill="none" stroke="#6e7681" stroke-width="0.84" stroke-dasharray="1.0687 0.5" stroke-dashoffset="1.3187"/>
+<path d="M445.25 290.23H449.96" fill="none" stroke="#6e7681" stroke-width="0.84" stroke-dasharray="1.8530 0.5" stroke-dashoffset="2.1030"/>
+<rect x="444.25" y="285.87" width="6.71" height="6.03" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAudiodecCpu: 0/8 (0%)</title>
+<path d="M445.25 293.57H449.96M445.25 294.92H449.96" fill="none" stroke="#6e7681" stroke-width="0.84" stroke-dasharray="1.0687 0.5" stroke-dashoffset="1.3187"/>
+<path d="M445.25 296.26H449.96" fill="none" stroke="#6e7681" stroke-width="0.84" stroke-dasharray="1.8530 0.5" stroke-dashoffset="2.1030"/>
+<rect x="444.25" y="291.90" width="6.71" height="6.03" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceContentDelete: 0/8 (0%)</title>
+<path d="M445.25 299.61H449.96M445.25 300.95H449.96" fill="none" stroke="#6e7681" stroke-width="0.84" stroke-dasharray="1.0687 0.5" stroke-dashoffset="1.3187"/>
+<path d="M445.25 302.29H449.96" fill="none" stroke="#6e7681" stroke-width="0.84" stroke-dasharray="1.8530 0.5" stroke-dashoffset="2.1030"/>
+<rect x="444.25" y="297.93" width="6.71" height="6.03" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceErrorDialog: 0/8 (0%)</title>
+<path d="M445.25 305.64H449.96M445.25 306.98H449.96" fill="none" stroke="#6e7681" stroke-width="0.84" stroke-dasharray="1.0687 0.5" stroke-dashoffset="1.3187"/>
+<path d="M445.25 308.33H449.96" fill="none" stroke="#6e7681" stroke-width="0.84" stroke-dasharray="1.8530 0.5" stroke-dashoffset="2.1030"/>
+<rect x="444.25" y="303.97" width="6.71" height="6.03" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceGameUpdate: 0/8 (0%)</title>
+<path d="M451.96 261.21H456.25M451.96 262.68H456.25" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="0.9305 0.5" stroke-dashoffset="1.1805"/>
+<path d="M451.96 264.16H456.25" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.6457 0.5" stroke-dashoffset="1.8957"/>
+<rect x="450.96" y="259.47" width="6.29" height="6.43" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpProfileDialog: 0/8 (0%)</title>
+<path d="M458.25 261.21H462.54M458.25 262.68H462.54" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="0.9305 0.5" stroke-dashoffset="1.1805"/>
+<path d="M458.25 264.16H462.54" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.6457 0.5" stroke-dashoffset="1.8957"/>
+<rect x="457.25" y="259.47" width="6.29" height="6.43" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePlayReady4L: 0/8 (0%)</title>
+<path d="M464.54 261.21H468.83M464.54 262.68H468.83" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="0.9305 0.5" stroke-dashoffset="1.1805"/>
+<path d="M464.54 264.16H468.83" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.6457 0.5" stroke-dashoffset="1.8957"/>
+<rect x="463.54" y="259.47" width="6.29" height="6.43" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePlayerSelectionDialog: 0/8 (0%)</title>
+<path d="M470.83 261.21H475.13M470.83 262.68H475.13" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="0.9305 0.5" stroke-dashoffset="1.1805"/>
+<path d="M470.83 264.16H475.13" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.6457 0.5" stroke-dashoffset="1.8957"/>
+<rect x="469.83" y="259.47" width="6.29" height="6.43" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSulphaDrv: 0/8 (0%)</title>
+<path d="M477.13 261.21H481.42M477.13 262.68H481.42" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="0.9305 0.5" stroke-dashoffset="1.1805"/>
+<path d="M477.13 264.16H481.42" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.6457 0.5" stroke-dashoffset="1.8957"/>
+<rect x="476.13" y="259.47" width="6.29" height="6.43" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceUrlConfigResolver: 0/8 (0%)</title>
+<path d="M483.42 261.21H487.71M483.42 262.68H487.71" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="0.9305 0.5" stroke-dashoffset="1.1805"/>
+<path d="M483.42 264.16H487.71" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.6457 0.5" stroke-dashoffset="1.8957"/>
+<rect x="482.42" y="259.47" width="6.29" height="6.43" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVrHand: 0/8 (0%)</title>
+<path d="M489.71 261.21H494.00M489.71 262.68H494.00" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="0.9305 0.5" stroke-dashoffset="1.1805"/>
+<path d="M489.71 264.16H494.00" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.6457 0.5" stroke-dashoffset="1.8957"/>
+<rect x="488.71" y="259.47" width="6.29" height="6.43" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAc3Enc: 0/7 (0%)</title>
+<path d="M451.96 267.81H456.25" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="0.5728 0.5" stroke-dashoffset="0.8228"/>
+<path d="M451.96 269.62H456.25" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="0.9305 0.5" stroke-dashoffset="1.1805"/>
+<rect x="450.96" y="265.90" width="6.29" height="5.63" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceCdlgAdIdClient: 0/7 (0%)</title>
+<path d="M458.25 267.81H462.54" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="0.5728 0.5" stroke-dashoffset="0.8228"/>
+<path d="M458.25 269.62H462.54" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="0.9305 0.5" stroke-dashoffset="1.1805"/>
+<rect x="457.25" y="265.90" width="6.29" height="5.63" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceCdlgG2P: 0/7 (0%)</title>
+<path d="M464.54 267.81H468.83" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="0.5728 0.5" stroke-dashoffset="0.8228"/>
+<path d="M464.54 269.62H468.83" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="0.9305 0.5" stroke-dashoffset="1.1805"/>
+<rect x="463.54" y="265.90" width="6.29" height="5.63" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceCdlgPlayerReview: 0/7 (0%)</title>
+<path d="M470.83 267.81H475.13" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="0.5728 0.5" stroke-dashoffset="0.8228"/>
+<path d="M470.83 269.62H475.13" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="0.9305 0.5" stroke-dashoffset="1.1805"/>
+<rect x="469.83" y="265.90" width="6.29" height="5.63" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceConnectAccountDialog: 0/7 (0%)</title>
+<path d="M477.13 267.81H481.42" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="0.5728 0.5" stroke-dashoffset="0.8228"/>
+<path d="M477.13 269.62H481.42" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="0.9305 0.5" stroke-dashoffset="1.1805"/>
+<rect x="476.13" y="265.90" width="6.29" height="5.63" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceDtsEnc: 0/7 (0%)</title>
+<path d="M483.42 267.81H487.71" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="0.5728 0.5" stroke-dashoffset="0.8228"/>
+<path d="M483.42 269.62H487.71" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="0.9305 0.5" stroke-dashoffset="1.1805"/>
+<rect x="482.42" y="265.90" width="6.29" height="5.63" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceHmdSetupDialog: 0/7 (0%)</title>
+<path d="M489.71 267.81H494.00" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="0.5728 0.5" stroke-dashoffset="0.8228"/>
+<path d="M489.71 269.62H494.00" fill="none" stroke="#6e7681" stroke-width="1.31" stroke-dasharray="0.9305 0.5" stroke-dashoffset="1.1805"/>
+<rect x="488.71" y="265.90" width="6.29" height="5.63" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceLoginDialog: 0/7 (0%)</title>
+<path d="M451.96 273.26H455.48" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="0.6738 0.5" stroke-dashoffset="0.9238"/>
+<path d="M451.96 274.73H455.48M451.96 276.20H455.48" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="1.2607 0.5" stroke-dashoffset="1.5107"/>
+<rect x="450.96" y="271.53" width="5.52" height="6.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNetCtlApDialog: 0/7 (0%)</title>
+<path d="M451.96 279.68H455.48" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="0.6738 0.5" stroke-dashoffset="0.9238"/>
+<path d="M451.96 281.15H455.48M451.96 282.62H455.48" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="1.2607 0.5" stroke-dashoffset="1.5107"/>
+<rect x="450.96" y="277.94" width="5.52" height="6.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpAuthAuthorizedAppDialog: 0/7 (0%)</title>
+<path d="M451.96 286.09H455.48" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="0.6738 0.5" stroke-dashoffset="0.9238"/>
+<path d="M451.96 287.56H455.48M451.96 289.03H455.48" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="1.2607 0.5" stroke-dashoffset="1.5107"/>
+<rect x="450.96" y="284.35" width="5.52" height="6.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpSnsFacebookDialog: 0/7 (0%)</title>
+<path d="M451.96 292.50H455.48" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="0.6738 0.5" stroke-dashoffset="0.9238"/>
+<path d="M451.96 293.97H455.48M451.96 295.44H455.48" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="1.2607 0.5" stroke-dashoffset="1.5107"/>
+<rect x="450.96" y="290.76" width="5.52" height="6.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpSnsYouTubeDialog: 0/7 (0%)</title>
+<path d="M451.96 298.91H455.48" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="0.6738 0.5" stroke-dashoffset="0.9238"/>
+<path d="M451.96 300.38H455.48M451.96 301.85H455.48" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="1.2607 0.5" stroke-dashoffset="1.5107"/>
+<rect x="450.96" y="297.18" width="5.52" height="6.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpSpeechToText: 0/7 (0%)</title>
+<path d="M451.96 305.32H455.48" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="0.6738 0.5" stroke-dashoffset="0.9238"/>
+<path d="M451.96 306.79H455.48M451.96 308.26H455.48" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="1.2607 0.5" stroke-dashoffset="1.5107"/>
+<rect x="450.96" y="303.59" width="5.52" height="6.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePlayGoDialog: 0/7 (0%)</title>
+<path d="M457.48 273.26H461.00" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="0.6738 0.5" stroke-dashoffset="0.9238"/>
+<path d="M457.48 274.73H461.00M457.48 276.20H461.00" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="1.2607 0.5" stroke-dashoffset="1.5107"/>
+<rect x="456.48" y="271.53" width="5.52" height="6.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePlayerInvitationDialog: 0/7 (0%)</title>
+<path d="M457.48 279.68H461.00" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="0.6738 0.5" stroke-dashoffset="0.9238"/>
+<path d="M457.48 281.15H461.00M457.48 282.62H461.00" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="1.2607 0.5" stroke-dashoffset="1.5107"/>
+<rect x="456.48" y="277.94" width="5.52" height="6.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePs2EmuMenuDialog: 0/7 (0%)</title>
+<path d="M457.48 286.09H461.00" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="0.6738 0.5" stroke-dashoffset="0.9238"/>
+<path d="M457.48 287.56H461.00M457.48 289.03H461.00" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="1.2607 0.5" stroke-dashoffset="1.5107"/>
+<rect x="456.48" y="284.35" width="5.52" height="6.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceShellUIUtil: 0/7 (0%)</title>
+<path d="M457.48 292.50H461.00" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="0.6738 0.5" stroke-dashoffset="0.9238"/>
+<path d="M457.48 293.97H461.00M457.48 295.44H461.00" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="1.2607 0.5" stroke-dashoffset="1.5107"/>
+<rect x="456.48" y="290.76" width="5.52" height="6.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSigninDialog: 0/7 (0%)</title>
+<path d="M457.48 298.91H461.00" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="0.6738 0.5" stroke-dashoffset="0.9238"/>
+<path d="M457.48 300.38H461.00M457.48 301.85H461.00" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="1.2607 0.5" stroke-dashoffset="1.5107"/>
+<rect x="456.48" y="297.18" width="5.52" height="6.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSocialScreenDialog: 0/7 (0%)</title>
+<path d="M457.48 305.32H461.00" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="0.6738 0.5" stroke-dashoffset="0.9238"/>
+<path d="M457.48 306.79H461.00M457.48 308.26H461.00" fill="none" stroke="#6e7681" stroke-width="0.97" stroke-dasharray="1.2607 0.5" stroke-dashoffset="1.5107"/>
+<rect x="456.48" y="303.59" width="5.52" height="6.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSystemLogger2Delivery: 0/7 (0%)</title>
+<path d="M463.00 273.27H466.50" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="0.6665 0.5" stroke-dashoffset="0.9165"/>
+<path d="M463.00 274.75H466.50M463.00 276.23H466.50" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.2497 0.5" stroke-dashoffset="1.4997"/>
+<rect x="462.00" y="271.53" width="5.50" height="6.44" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceUsbStorageDialog: 0/7 (0%)</title>
+<path d="M468.50 273.27H472.00" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="0.6665 0.5" stroke-dashoffset="0.9165"/>
+<path d="M468.50 274.75H472.00M468.50 276.23H472.00" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.2497 0.5" stroke-dashoffset="1.4997"/>
+<rect x="467.50" y="271.53" width="5.50" height="6.44" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVideodec: 0/7 (0%)</title>
+<path d="M474.00 273.27H477.50" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="0.6665 0.5" stroke-dashoffset="0.9165"/>
+<path d="M474.00 274.75H477.50M474.00 276.23H477.50" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.2497 0.5" stroke-dashoffset="1.4997"/>
+<rect x="473.00" y="271.53" width="5.50" height="6.44" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVrServiceDialog: 0/7 (0%)</title>
+<path d="M479.50 273.27H483.00" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="0.6665 0.5" stroke-dashoffset="0.9165"/>
+<path d="M479.50 274.75H483.00M479.50 276.23H483.00" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.2497 0.5" stroke-dashoffset="1.4997"/>
+<rect x="478.50" y="271.53" width="5.50" height="6.44" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVrSetupDialog: 0/7 (0%)</title>
+<path d="M485.00 273.27H488.50" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="0.6665 0.5" stroke-dashoffset="0.9165"/>
+<path d="M485.00 274.75H488.50M485.00 276.23H488.50" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.2497 0.5" stroke-dashoffset="1.4997"/>
+<rect x="484.00" y="271.53" width="5.50" height="6.44" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceWebmParserMdrw: 0/7 (0%)</title>
+<path d="M490.50 273.27H494.00" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="0.6665 0.5" stroke-dashoffset="0.9165"/>
+<path d="M490.50 274.75H494.00M490.50 276.23H494.00" fill="none" stroke="#6e7681" stroke-width="0.98" stroke-dasharray="1.2497 0.5" stroke-dashoffset="1.4997"/>
+<rect x="489.50" y="271.53" width="5.50" height="6.44" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAutoMounterClient: 0/6 (0%)</title>
+<path d="M463.00 279.80H466.69M463.00 281.47H466.69" fill="none" stroke="#6e7681" stroke-width="1.17" stroke-dasharray="0.7279 0.5" stroke-dashoffset="0.9779"/>
+<rect x="462.00" y="277.97" width="5.68" height="5.34" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceFontGs: 0/6 (0%)</title>
+<path d="M463.00 285.14H466.69M463.00 286.81H466.69" fill="none" stroke="#6e7681" stroke-width="1.17" stroke-dasharray="0.7279 0.5" stroke-dashoffset="0.9779"/>
+<rect x="462.00" y="283.30" width="5.68" height="5.34" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceFontGs.native: 0/6 (0%)</title>
+<path d="M463.00 290.48H466.69M463.00 292.15H466.69" fill="none" stroke="#6e7681" stroke-width="1.17" stroke-dasharray="0.7279 0.5" stroke-dashoffset="0.9779"/>
+<rect x="462.00" y="288.64" width="5.68" height="5.34" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceJpegDec: 0/6 (0%)</title>
+<path d="M463.00 295.82H466.69M463.00 297.49H466.69" fill="none" stroke="#6e7681" stroke-width="1.17" stroke-dasharray="0.7279 0.5" stroke-dashoffset="0.9779"/>
+<rect x="462.00" y="293.98" width="5.68" height="5.34" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePadTracker: 0/6 (0%)</title>
+<path d="M463.00 301.16H466.69M463.00 302.83H466.69" fill="none" stroke="#6e7681" stroke-width="1.17" stroke-dasharray="0.7279 0.5" stroke-dashoffset="0.9779"/>
+<rect x="462.00" y="299.32" width="5.68" height="5.34" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePngDec: 0/6 (0%)</title>
+<path d="M463.00 306.50H466.69M463.00 308.17H466.69" fill="none" stroke="#6e7681" stroke-width="1.17" stroke-dasharray="0.7279 0.5" stroke-dashoffset="0.9779"/>
+<rect x="462.00" y="304.66" width="5.68" height="5.34" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceShareFactoryUtil: 0/6 (0%)</title>
+<path d="M468.69 279.72H472.76M468.69 281.21H472.76" fill="none" stroke="#6e7681" stroke-width="1.00" stroke-dasharray="0.8565 0.5" stroke-dashoffset="1.1065"/>
+<rect x="467.69" y="277.97" width="6.07" height="5.00" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>ulobjmgr: 0/6 (0%)</title>
+<path d="M474.76 279.72H478.83M474.76 281.21H478.83" fill="none" stroke="#6e7681" stroke-width="1.00" stroke-dasharray="0.8565 0.5" stroke-dashoffset="1.1065"/>
+<rect x="473.76" y="277.97" width="6.07" height="5.00" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAt9Enc: 0/5 (0%)</title>
+<path d="M480.83 279.72H483.88" fill="none" stroke="#6e7681" stroke-width="1.00" stroke-dasharray="0.5193 0.5" stroke-dashoffset="0.7693"/>
+<path d="M480.83 281.21H483.88" fill="none" stroke="#6e7681" stroke-width="1.00" stroke-dasharray="1.0290 0.5" stroke-dashoffset="1.2790"/>
+<rect x="479.83" y="277.97" width="5.06" height="5.00" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceCompanionUtil: 0/5 (0%)</title>
+<path d="M485.88 279.72H488.94" fill="none" stroke="#6e7681" stroke-width="1.00" stroke-dasharray="0.5193 0.5" stroke-dashoffset="0.7693"/>
+<path d="M485.88 281.21H488.94" fill="none" stroke="#6e7681" stroke-width="1.00" stroke-dasharray="1.0290 0.5" stroke-dashoffset="1.2790"/>
+<rect x="484.88" y="277.97" width="5.06" height="5.00" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceDiscMap: 0/5 (0%)</title>
+<path d="M490.94 279.72H494.00" fill="none" stroke="#6e7681" stroke-width="1.00" stroke-dasharray="0.5193 0.5" stroke-dashoffset="0.7693"/>
+<path d="M490.94 281.21H494.00" fill="none" stroke="#6e7681" stroke-width="1.00" stroke-dasharray="1.0290 0.5" stroke-dashoffset="1.2790"/>
+<rect x="489.94" y="277.97" width="5.06" height="5.00" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceJpegParser: 0/5 (0%)</title>
+<path d="M468.69 284.53H471.36M468.69 285.67H471.36" fill="none" stroke="#6e7681" stroke-width="0.64" stroke-dasharray="0.8385 0.5" stroke-dashoffset="1.0885"/>
+<path d="M468.69 286.80H471.36" fill="none" stroke="#6e7681" stroke-width="0.64" stroke-dasharray="2.1769 0.5" stroke-dashoffset="2.4269"/>
+<rect x="467.69" y="282.96" width="4.68" height="5.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNKWeb: 0/5 (0%)</title>
+<path d="M468.69 289.94H471.36M468.69 291.08H471.36" fill="none" stroke="#6e7681" stroke-width="0.64" stroke-dasharray="0.8385 0.5" stroke-dashoffset="1.0885"/>
+<path d="M468.69 292.21H471.36" fill="none" stroke="#6e7681" stroke-width="0.64" stroke-dasharray="2.1769 0.5" stroke-dashoffset="2.4269"/>
+<rect x="467.69" y="288.37" width="4.68" height="5.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceProprietaryVoiceChatHelperPrx: 0/5 (0%)</title>
+<path d="M468.69 295.35H471.36M468.69 296.48H471.36" fill="none" stroke="#6e7681" stroke-width="0.64" stroke-dasharray="0.8385 0.5" stroke-dashoffset="1.0885"/>
+<path d="M468.69 297.62H471.36" fill="none" stroke="#6e7681" stroke-width="0.64" stroke-dasharray="2.1769 0.5" stroke-dashoffset="2.4269"/>
+<rect x="467.69" y="293.78" width="4.68" height="5.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVideoNativeExtEssential: 0/5 (0%)</title>
+<path d="M468.69 300.75H471.36M468.69 301.89H471.36" fill="none" stroke="#6e7681" stroke-width="0.64" stroke-dasharray="0.8385 0.5" stroke-dashoffset="1.0885"/>
+<path d="M468.69 303.03H471.36" fill="none" stroke="#6e7681" stroke-width="0.64" stroke-dasharray="2.1769 0.5" stroke-dashoffset="2.4269"/>
+<rect x="467.69" y="299.19" width="4.68" height="5.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceWebRtc: 0/5 (0%)</title>
+<path d="M468.69 306.16H471.36M468.69 307.30H471.36" fill="none" stroke="#6e7681" stroke-width="0.64" stroke-dasharray="0.8385 0.5" stroke-dashoffset="1.0885"/>
+<path d="M468.69 308.43H471.36" fill="none" stroke="#6e7681" stroke-width="0.64" stroke-dasharray="2.1769 0.5" stroke-dashoffset="2.4269"/>
+<rect x="467.69" y="304.59" width="4.68" height="5.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceWkFontConfig: 0/5 (0%)</title>
+<path d="M473.36 284.69H476.51" fill="none" stroke="#6e7681" stroke-width="0.96" stroke-dasharray="0.5482 0.5" stroke-dashoffset="0.7982"/>
+<path d="M473.36 286.15H476.51" fill="none" stroke="#6e7681" stroke-width="0.96" stroke-dasharray="1.0723 0.5" stroke-dashoffset="1.3223"/>
+<rect x="472.36" y="282.96" width="5.14" height="4.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceZlib: 0/5 (0%)</title>
+<path d="M478.51 284.69H481.65" fill="none" stroke="#6e7681" stroke-width="0.96" stroke-dasharray="0.5482 0.5" stroke-dashoffset="0.7982"/>
+<path d="M478.51 286.15H481.65" fill="none" stroke="#6e7681" stroke-width="0.96" stroke-dasharray="1.0723 0.5" stroke-dashoffset="1.3223"/>
+<rect x="477.51" y="282.96" width="5.14" height="4.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAudioLatencyEstimation: 0/4 (0%)</title>
+<path d="M483.65 284.69H485.77M483.65 286.15H485.77" fill="none" stroke="#6e7681" stroke-width="0.96" stroke-dasharray="0.5579 0.5" stroke-dashoffset="0.8079"/>
+<rect x="482.65" y="282.96" width="4.12" height="4.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceConvertKeycode: 0/4 (0%)</title>
+<path d="M487.77 284.69H489.88M487.77 286.15H489.88" fill="none" stroke="#6e7681" stroke-width="0.96" stroke-dasharray="0.5579 0.5" stroke-dashoffset="0.8079"/>
+<rect x="486.77" y="282.96" width="4.12" height="4.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceDseehx: 0/4 (0%)</title>
+<path d="M491.88 284.69H494.00M491.88 286.15H494.00" fill="none" stroke="#6e7681" stroke-width="0.96" stroke-dasharray="0.5579 0.5" stroke-dashoffset="0.8079"/>
+<rect x="490.88" y="282.96" width="4.12" height="4.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceJpegEnc: 0/4 (0%)</title>
+<path d="M473.36 289.49H475.94M473.36 290.70H475.94" fill="none" stroke="#6e7681" stroke-width="0.71" stroke-dasharray="0.7865 0.5" stroke-dashoffset="1.0365"/>
+<rect x="472.36" y="287.88" width="4.57" height="4.42" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceJxr: 0/4 (0%)</title>
+<path d="M473.36 293.91H475.94M473.36 295.12H475.94" fill="none" stroke="#6e7681" stroke-width="0.71" stroke-dasharray="0.7865 0.5" stroke-dashoffset="1.0365"/>
+<rect x="472.36" y="292.30" width="4.57" height="4.42" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNotification: 0/4 (0%)</title>
+<path d="M473.36 298.33H475.94M473.36 299.55H475.94" fill="none" stroke="#6e7681" stroke-width="0.71" stroke-dasharray="0.7865 0.5" stroke-dashoffset="1.0365"/>
+<rect x="472.36" y="296.73" width="4.57" height="4.42" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePngEnc: 0/4 (0%)</title>
+<path d="M473.36 302.76H475.94M473.36 303.97H475.94" fill="none" stroke="#6e7681" stroke-width="0.71" stroke-dasharray="0.7865 0.5" stroke-dashoffset="1.0365"/>
+<rect x="472.36" y="301.15" width="4.57" height="4.42" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libScePsmUtil: 0/4 (0%)</title>
+<path d="M473.36 307.18H475.94M473.36 308.39H475.94" fill="none" stroke="#6e7681" stroke-width="0.71" stroke-dasharray="0.7865 0.5" stroke-dashoffset="1.0365"/>
+<rect x="472.36" y="305.58" width="4.57" height="4.42" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceS3da: 0/4 (0%)</title>
+<path d="M477.94 289.50H480.45M477.94 290.74H480.45" fill="none" stroke="#6e7681" stroke-width="0.74" stroke-dasharray="0.7579 0.5" stroke-dashoffset="1.0079"/>
+<rect x="476.94" y="287.88" width="4.52" height="4.48" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVdecCore.native: 0/4 (0%)</title>
+<path d="M482.45 289.50H484.97M482.45 290.74H484.97" fill="none" stroke="#6e7681" stroke-width="0.74" stroke-dasharray="0.7579 0.5" stroke-dashoffset="1.0079"/>
+<rect x="481.45" y="287.88" width="4.52" height="4.48" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVdecSavc: 0/4 (0%)</title>
+<path d="M486.97 289.50H489.48M486.97 290.74H489.48" fill="none" stroke="#6e7681" stroke-width="0.74" stroke-dasharray="0.7579 0.5" stroke-dashoffset="1.0079"/>
+<rect x="485.97" y="287.88" width="4.52" height="4.48" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVdecSavc2: 0/4 (0%)</title>
+<path d="M491.48 289.50H494.00M491.48 290.74H494.00" fill="none" stroke="#6e7681" stroke-width="0.74" stroke-dasharray="0.7579 0.5" stroke-dashoffset="1.0079"/>
+<rect x="490.48" y="287.88" width="4.52" height="4.48" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVideoCoreInterface: 0/4 (0%)</title>
+<path d="M477.94 294.04H480.24M477.94 295.39H480.24" fill="none" stroke="#6e7681" stroke-width="0.85" stroke-dasharray="0.6504 0.5" stroke-dashoffset="0.9004"/>
+<rect x="476.94" y="292.36" width="4.30" height="4.70" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVideoDecoderArbitration: 0/4 (0%)</title>
+<path d="M477.94 298.74H480.24M477.94 300.09H480.24" fill="none" stroke="#6e7681" stroke-width="0.85" stroke-dasharray="0.6504 0.5" stroke-dashoffset="0.9004"/>
+<rect x="476.94" y="297.06" width="4.30" height="4.70" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVideoStreamingEngineAudioOnly: 0/4 (0%)</title>
+<path d="M477.94 303.44H480.24M477.94 304.80H480.24" fill="none" stroke="#6e7681" stroke-width="0.85" stroke-dasharray="0.6504 0.5" stroke-dashoffset="0.9004"/>
+<rect x="476.94" y="301.77" width="4.30" height="4.70" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAjm: 0/3 (0%)</title>
+<path d="M477.94 308.24H480.24" fill="none" stroke="#6e7681" stroke-width="1.03" stroke-dasharray="0.2669 0.5" stroke-dashoffset="0.5169"/>
+<rect x="476.94" y="306.47" width="4.30" height="3.53" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAppChecker: 0/3 (0%)</title>
+<path d="M482.24 293.96H483.68" fill="none" stroke="#6e7681" stroke-width="0.70" stroke-dasharray="0.2203 0.5" stroke-dashoffset="0.4703"/>
+<path d="M482.24 295.17H483.68" fill="none" stroke="#6e7681" stroke-width="0.70" stroke-dasharray="0.9406 0.5" stroke-dashoffset="1.1906"/>
+<rect x="481.24" y="292.36" width="3.44" height="4.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceFreeTypeOptOl: 0/3 (0%)</title>
+<path d="M485.68 293.96H487.12" fill="none" stroke="#6e7681" stroke-width="0.70" stroke-dasharray="0.2203 0.5" stroke-dashoffset="0.4703"/>
+<path d="M485.68 295.17H487.12" fill="none" stroke="#6e7681" stroke-width="0.70" stroke-dasharray="0.9406 0.5" stroke-dashoffset="1.1906"/>
+<rect x="484.68" y="292.36" width="3.44" height="4.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceFrontPanelDisplay: 0/3 (0%)</title>
+<path d="M489.12 293.96H490.56" fill="none" stroke="#6e7681" stroke-width="0.70" stroke-dasharray="0.2203 0.5" stroke-dashoffset="0.4703"/>
+<path d="M489.12 295.17H490.56" fill="none" stroke="#6e7681" stroke-width="0.70" stroke-dasharray="0.9406 0.5" stroke-dashoffset="1.1906"/>
+<rect x="488.12" y="292.36" width="3.44" height="4.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceHubAppUtil: 0/3 (0%)</title>
+<path d="M492.56 293.96H494.00" fill="none" stroke="#6e7681" stroke-width="0.70" stroke-dasharray="0.2203 0.5" stroke-dashoffset="0.4703"/>
+<path d="M492.56 295.17H494.00" fill="none" stroke="#6e7681" stroke-width="0.70" stroke-dasharray="0.9406 0.5" stroke-dashoffset="1.1906"/>
+<rect x="491.56" y="292.36" width="3.44" height="4.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceLoginService: 0/3 (0%)</title>
+<path d="M482.24 298.37H483.68" fill="none" stroke="#6e7681" stroke-width="0.70" stroke-dasharray="0.2203 0.5" stroke-dashoffset="0.4703"/>
+<path d="M482.24 299.58H483.68" fill="none" stroke="#6e7681" stroke-width="0.70" stroke-dasharray="0.9406 0.5" stroke-dashoffset="1.1906"/>
+<rect x="481.24" y="296.77" width="3.44" height="4.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpPartner001: 0/3 (0%)</title>
+<path d="M482.24 302.78H483.68" fill="none" stroke="#6e7681" stroke-width="0.70" stroke-dasharray="0.2203 0.5" stroke-dashoffset="0.4703"/>
+<path d="M482.24 303.99H483.68" fill="none" stroke="#6e7681" stroke-width="0.70" stroke-dasharray="0.9406 0.5" stroke-dashoffset="1.1906"/>
+<rect x="481.24" y="301.18" width="3.44" height="4.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpTcs: 0/3 (0%)</title>
+<path d="M482.24 307.19H483.68" fill="none" stroke="#6e7681" stroke-width="0.70" stroke-dasharray="0.2203 0.5" stroke-dashoffset="0.4703"/>
+<path d="M482.24 308.40H483.68" fill="none" stroke="#6e7681" stroke-width="0.70" stroke-dasharray="0.9406 0.5" stroke-dashoffset="1.1906"/>
+<rect x="481.24" y="305.59" width="3.44" height="4.41" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSystemLogger: 0/3 (0%)</title>
+<path d="M485.68 298.25H487.55" fill="none" stroke="#6e7681" stroke-width="0.46" stroke-dasharray="0.4354 0.5" stroke-dashoffset="0.6854"/>
+<path d="M485.68 299.21H487.55" fill="none" stroke="#6e7681" stroke-width="0.46" stroke-dasharray="1.3707 0.5" stroke-dashoffset="1.6207"/>
+<rect x="484.68" y="296.77" width="3.87" height="3.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVideoArbitration: 0/3 (0%)</title>
+<path d="M489.55 298.25H491.42" fill="none" stroke="#6e7681" stroke-width="0.46" stroke-dasharray="0.4354 0.5" stroke-dashoffset="0.6854"/>
+<path d="M489.55 299.21H491.42" fill="none" stroke="#6e7681" stroke-width="0.46" stroke-dasharray="1.3707 0.5" stroke-dashoffset="1.6207"/>
+<rect x="488.55" y="296.77" width="3.87" height="3.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAjmi: 0/2 (0%)</title>
+<path d="M493.42 298.25H494.00M493.42 299.21H494.00" fill="none" stroke="#6e7681" stroke-width="0.46" stroke-dasharray="0.0805 0.5" stroke-dashoffset="0.3305"/>
+<rect x="492.42" y="296.77" width="2.58" height="3.92" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceAvPlayer.native: 0/2 (0%)</title>
+<path d="M485.68 302.24H486.94" fill="none" stroke="#6e7681" stroke-width="0.60" stroke-dasharray="0.1298 0.5" stroke-dashoffset="0.3798"/>
+<rect x="484.68" y="300.69" width="3.26" height="3.10" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceDbgThreadSanitizer: 0/2 (0%)</title>
+<path d="M485.68 305.35H486.94" fill="none" stroke="#6e7681" stroke-width="0.60" stroke-dasharray="0.1298 0.5" stroke-dashoffset="0.3798"/>
+<rect x="484.68" y="303.79" width="3.26" height="3.10" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceDiscId: 0/2 (0%)</title>
+<path d="M485.68 308.45H486.94" fill="none" stroke="#6e7681" stroke-width="0.60" stroke-dasharray="0.1298 0.5" stroke-dashoffset="0.3798"/>
+<rect x="484.68" y="306.90" width="3.26" height="3.10" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNgs2: 0/2 (0%)</title>
+<path d="M488.94 302.12H490.47" fill="none" stroke="#6e7681" stroke-width="0.36" stroke-dasharray="0.2656 0.5" stroke-dashoffset="0.5156"/>
+<rect x="487.94" y="300.69" width="3.53" height="2.86" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNpPartnerSubscription: 0/2 (0%)</title>
+<path d="M492.47 302.12H494.00" fill="none" stroke="#6e7681" stroke-width="0.36" stroke-dasharray="0.2656 0.5" stroke-dashoffset="0.5156"/>
+<rect x="491.47" y="300.69" width="3.53" height="2.86" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceSystemLogger2Game: 0/2 (0%)</title>
+<path d="M488.94 305.17H490.08" fill="none" stroke="#6e7681" stroke-width="0.72" stroke-dasharray="0.0694 0.5" stroke-dashoffset="0.3194"/>
+<rect x="487.94" y="303.55" width="3.14" height="3.22" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceVideoOutSecondary: 0/2 (0%)</title>
+<path d="M488.94 308.39H490.08" fill="none" stroke="#6e7681" stroke-width="0.72" stroke-dasharray="0.0694 0.5" stroke-dashoffset="0.3194"/>
+<rect x="487.94" y="306.78" width="3.14" height="3.22" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceCustomMusicSysCallWrapper: 0/1 (0%)</title>
+<rect x="491.08" y="303.55" width="1.96" height="2.58" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceGic: 0/1 (0%)</title>
+<rect x="493.04" y="303.55" width="1.96" height="2.58" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceNKWebCdlgInjectedBundle: 0/1 (0%)</title>
+<rect x="491.08" y="306.13" width="2.62" height="1.93" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceRandom: 0/1 (0%)</title>
+<rect x="491.08" y="308.07" width="2.62" height="1.93" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+<g><title>libSceRnpsNKInjectedBundle: 0/1 (0%)</title>
+<rect x="493.69" y="306.13" width="1.31" height="3.87" fill="none" stroke="#0d1117" stroke-width="2"/>
+</g>
+</svg>
