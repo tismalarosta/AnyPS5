@@ -1,6 +1,7 @@
+import json
 import unittest
 
-from examples.doom.verify import CAPTURES, capture_tics
+from examples.doom.verify import CAPTURES, HERE, capture_tics, digest
 
 
 class ReplayTests(unittest.TestCase):
@@ -25,3 +26,14 @@ class ReplayTests(unittest.TestCase):
     def test_wrong_final_tic_rejected(self):
         with self.assertRaises(ValueError):
             capture_tics(self.trace(), 3836)
+
+    def test_measured_runtime_sources_pinned(self):
+        root = HERE.parents[3]
+        sources = json.loads((HERE / 'bindings.json').read_text())['sources']
+        for name in ['core/libs/prx/libSceSystemService/LoadExec.cpp', 'core/libs/prx/libScePad/src/PadState.cpp',
+                     'core/libs/prx/libkernel/Pthread/src/Mutex.cpp', 'core/libs/prx/libkernel/Time/SleepWake.cpp']:
+            self.assertEqual(sources.get(name), digest(root / name), name)
+
+
+if __name__ == '__main__':
+    unittest.main()
