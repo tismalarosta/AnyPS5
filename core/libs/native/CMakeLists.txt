@@ -97,6 +97,42 @@ foreach(mode IN ITEMS audio-out audio-out2 audio-out2-waiting-push audio-out2-ad
     set_tests_properties(native_${mode}_shutdown PROPERTIES TIMEOUT 10 ENVIRONMENT "SDL_AUDIODRIVER=dummy")
 endforeach()
 
+set(audioOutDirectory "${LIBS_INCLUDE_DIR}/prx/libSceAudioOut")
+foreach(suite IN ITEMS vibration_device default_open buffer_size)
+    if(suite STREQUAL "vibration_device")
+        set(suiteSource AudioOutVibrationDevice.cpp)
+        set(suiteModes quad pulse open_failure timing cadence discovery_failure disconnect)
+    elseif(suite STREQUAL "default_open")
+        set(suiteSource AudioOutDefaultOpen.cpp)
+        set(suiteModes zero_default wasapi_zero_default no_endpoint positive unknown disconnect)
+    else()
+        set(suiteSource AudioOutBufferSize.cpp)
+        set(suiteModes pass_through wrap mix threshold virtual_overflow invalid_format)
+    endif()
+    add_test_executable(native_audio_out_${suite}_tests "${audioOutDirectory}/tests/${suiteSource}"
+        "${audioOutDirectory}/src/AudioOut.cpp" "${audioOutDirectory}/src/AudioOut2PadMix.cpp"
+        "${audioOutDirectory}/src/AudioOutShutdown.cpp")
+    target_compile_definitions(native_audio_out_${suite}_tests PRIVATE SDL_MAIN_HANDLED)
+    target_link_libraries(native_audio_out_${suite}_tests PRIVATE anyps5_native_graphics)
+    foreach(mode IN LISTS suiteModes)
+        add_test(NAME native_audio_out_${suite}_${mode} COMMAND native_audio_out_${suite}_tests ${mode})
+        set_tests_properties(native_audio_out_${suite}_${mode} PROPERTIES TIMEOUT 5)
+    endforeach()
+endforeach()
+
+add_test_executable(native_guest_pad_tests ../tests/GuestPad.cpp)
+target_link_libraries(native_guest_pad_tests PRIVATE anyps5_native_graphics)
+add_test(NAME native_guest_pad COMMAND native_guest_pad_tests)
+
+add_test_executable(native_guest_user_service_lifecycle_tests ../tests/GuestUserServiceLifecycle.cpp)
+target_link_libraries(native_guest_user_service_lifecycle_tests PRIVATE anyps5_native_services)
+add_test(NAME native_guest_user_service_lifecycle COMMAND native_guest_user_service_lifecycle_tests)
+
+add_test_executable(native_pad_port0_tests ../prx/libSceVideoOut/tests/PadPort0.cpp)
+target_link_libraries(native_pad_port0_tests PRIVATE anyps5_native_services)
+add_test(NAME native_pad_port0 COMMAND native_pad_port0_tests)
+set_tests_properties(native_pad_port0 PROPERTIES SKIP_RETURN_CODE 77 TIMEOUT 60)
+
 add_test_executable(native_sce_crt_tests ../tests/NativeAotSceCrt.cpp NativeAotSceCrt.cpp NativeAotSce.cpp NativeAotGuest.cpp)
 target_link_libraries(native_sce_crt_tests PRIVATE anyps5_native_graphics)
 add_test(NAME native_sce_crt COMMAND native_sce_crt_tests)
