@@ -317,12 +317,18 @@ if(ANYPS5_NATIVE_AOT_EXAMPLE)
     add_library(anyps5_native_runtime STATIC
         ../libs/prx/libc/src/LocaleSupport.cpp
         ../libs/prx/libc/src/ApplicationHeap.cpp
+        ../libs/prx/libc/src/ApplicationProcessParameters.cpp
         ../libs/prx/libc/src/GuestHeap.cpp
         ../libs/prx/libc/src/GuestArena.cpp
         ../libs/prx/libc/src/GuestAllocations.cpp
         ../libs/prx/libkernel/Time/TimedWait.cpp
         ../libs/prx/libkernel/System/src/Notification.cpp
         ../libs/native/NativeAotTime.cpp)
+    if(APPLE)
+        target_sources(anyps5_native_runtime PRIVATE ../libs/prx/libc/src/specifics/macos/GuestImages.cpp)
+    endif()
+    set_source_files_properties(../libs/prx/libc/src/ApplicationProcessParameters.cpp
+        PROPERTIES COMPILE_DEFINITIONS APS5_NATIVE_AGGREGATE=1)
     target_include_directories(anyps5_native_runtime PUBLIC "${CMAKE_SOURCE_DIR}/core/libs")
     target_compile_options(anyps5_native_runtime PRIVATE -ffunction-sections -fdata-sections)
     target_link_libraries(anyps5_native_runtime PUBLIC anyps5_native_image)
