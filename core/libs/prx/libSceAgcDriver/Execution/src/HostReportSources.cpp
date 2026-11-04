@@ -17,6 +17,7 @@
 #include <cerrno>
 #include <sys/utsname.h>
 #include <unistd.h>
+extern char** environ;
 #endif
 
 namespace AgcDriver {

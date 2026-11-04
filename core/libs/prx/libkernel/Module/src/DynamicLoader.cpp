@@ -7,6 +7,7 @@
 #include <condition_variable>
 #include <filesystem>
 #include <cstdio>
+#include <cstring>
 #include <map>
 #include <memory>
 #include <limits>
@@ -21,15 +22,17 @@
 #define NOMINMAX
 #endif
 #include <windows.h>
-#elif defined(__APPLE__)
-#include "prx/libc/include/specifics/linux/ElfTypes.hpp"
-#include <dlfcn.h>
-#include <mach-o/dyld.h>
 #else
 #include <dlfcn.h>
+#ifdef __APPLE__
+#include <mach-o/dyld.h>
+#include <mach-o/getsect.h>
+#include <mach-o/loader.h>
+#else
 #include <link.h>
 #ifdef __linux__
 #include <unistd.h>
+#endif
 #endif
 #endif
 #include "prx/libc/include/HostThreadLocal.hpp"
@@ -78,6 +81,10 @@ struct Module {
 #ifdef _WIN32
     std::uintptr_t globalOrder = 0;
 #endif
+#ifdef __APPLE__
+    const void* image = nullptr;
+    const void* loadBias = nullptr;
+#endif
     ~Module() {
         if (owned && native) {
 #ifdef _WIN32
@@ -100,8 +107,59 @@ void* Symbol(Module& module, const char* name) {
     return ::dlsym(module.native, name);
 #endif
 }
-#ifndef _WIN32
-#ifndef __APPLE__
+#ifdef __APPLE__
+bool FromGuestModule(void* address) {
+    Dl_info info{};
+    if (address == nullptr || !::dladdr(address, &info) || info.dli_fname == nullptr || info.dli_fbase == nullptr) return false;
+    if (static_cast<const mach_header_64*>(info.dli_fbase)->filetype == MH_EXECUTE) return true;
+    const std::string path(info.dli_fname);
+    return path.ends_with(".prx");
+}
+
+void FindImage(Module& module, bool mainProgram) {
+    for (std::uint32_t index = 0; index < _dyld_image_count() && module.image == nullptr; ++index) {
+        const auto* header = reinterpret_cast<const mach_header_64*>(_dyld_get_image_header(index));
+        if (header == nullptr) continue;
+        if (mainProgram) {
+            if (header->filetype == MH_EXECUTE) module.image = header;
+            continue;
+        }
+        void* loaded = ::dlopen(_dyld_get_image_name(index), RTLD_LAZY | RTLD_NOLOAD);
+        if (loaded == nullptr) continue;
+        if (loaded == module.native) module.image = header;
+        ::dlclose(loaded);
+    }
+    module.loadBias = module.image;
+    unsigned long size = 0;
+    const auto* meta = module.image ? getsectiondata(static_cast<const mach_header_64*>(module.image), "__APS5DATA", "__meta", &size) : nullptr;
+    std::uint64_t version = 0;
+    if (meta != nullptr && size >= 0x60 && (std::memcpy(&version, meta, sizeof(version)), version == 2)) {
+        std::uint64_t loadBias = 0;
+        std::memcpy(&loadBias, meta + 0x08, sizeof(loadBias));
+        module.loadBias = reinterpret_cast<const void*>(static_cast<std::uintptr_t>(loadBias));
+    }
+}
+
+bool HiddenImage(const void* image) {
+    if (image == nullptr || static_cast<const mach_header_64*>(image)->filetype == MH_EXECUTE) return false;
+    bool local = false;
+    for (const auto& [key, module] : modules) {
+        if (module->image != image) continue;
+        if (module->global) return false;
+        local = true;
+    }
+    return local;
+}
+
+void* DefaultScopeSymbol(const char* symbolName) {
+    auto* result = ::dlsym(RTLD_DEFAULT, symbolName);
+    if (!FromGuestModule(result)) return nullptr;
+    Dl_info info{};
+    if (!::dladdr(result, &info) || info.dli_fbase == nullptr) return result;
+    std::lock_guard lock(modulesMutex);
+    return HiddenImage(info.dli_fbase) ? nullptr : result;
+}
+#elif !defined(_WIN32)
 const link_map* MainProgramMap() {
     static const link_map* const map = [] {
         void* handle = ::dlopen(nullptr, RTLD_LAZY);
@@ -113,18 +171,12 @@ const link_map* MainProgramMap() {
     }();
     return map;
 }
-#endif
 
 bool FromGuestModule(void* address) {
     Dl_info info{};
-#ifdef __APPLE__
-    if (address == nullptr || !::dladdr(address, &info) || info.dli_fname == nullptr) return false;
-    if (info.dli_fbase == reinterpret_cast<const void*>(_dyld_get_image_header(0))) return true;
-#else
     link_map* image = nullptr;
     if (address == nullptr || !::dladdr1(address, &info, reinterpret_cast<void**>(&image), RTLD_DL_LINKMAP) || info.dli_fname == nullptr || image == nullptr) return false;
     if (image == MainProgramMap()) return true;
-#endif
     const std::string path(info.dli_fname);
     return path.ends_with(".prx");
 }
@@ -148,26 +200,6 @@ void* FindSymbol(Module& module, const char* name) {
 #endif
 }
 }
-
-#ifdef __APPLE__
-static std::uintptr_t GuestImageBias(void* native) {
-    struct Search {
-        void* native;
-        std::uintptr_t bias;
-    } search{native, 0};
-    dl_iterate_phdr([](dl_phdr_info* image, std::size_t, void* data) {
-        auto& found = *static_cast<Search*>(data);
-        if (image->dlpi_name == nullptr || *image->dlpi_name == '\0') return 0;
-        void* handle = ::dlopen(image->dlpi_name, RTLD_LAZY | RTLD_NOLOAD);
-        if (handle == nullptr) return 0;
-        ::dlclose(handle);
-        if (handle != found.native) return 0;
-        found.bias = static_cast<std::uintptr_t>(image->dlpi_addr);
-        return 1;
-    }, &search);
-    return search.bias;
-}
-#endif
 
 extern "C" {
 char* APS5_VABI dlerror_nid_postfix() {
@@ -309,8 +341,12 @@ void* APS5_VABI dlopen_nid_postfix(const char* path, int flags) {
 #else
         const auto source = path ? ResolvePath_nid_no_patch(path) : std::filesystem::path{};
         const auto resolved = path ? RelinkedModulePath_nid_no_patch(source) : std::filesystem::path{};
+#ifdef __APPLE__
+        const int nativeFlags = ((flags & 3) == 1 ? RTLD_LAZY : RTLD_NOW) | RTLD_GLOBAL;
+#else
         const int nativeFlags = ((flags & 3) == 1 ? RTLD_LAZY : RTLD_NOW) |
             ((flags & 0x100) ? RTLD_GLOBAL : RTLD_LOCAL);
+#endif
         module->native = ::dlopen(path ? resolved.c_str() : nullptr, nativeFlags);
         if (!module->native) {
             if (path) LoadFailure(source, resolved, ::dlerror()); else Error(::dlerror());
@@ -320,7 +356,7 @@ void* APS5_VABI dlopen_nid_postfix(const char* path, int flags) {
         if (path) InitializeLinuxGuestModule(module->native);
 #endif
 #ifdef __APPLE__
-        if (!path) module->owned = false;
+        FindImage(*module, path == nullptr);
 #endif
 #endif
         std::lock_guard lock(modulesMutex);
@@ -347,9 +383,17 @@ void* APS5_VABI dlsym_nid_postfix(void* handle, const char* name) {
     if (!name || !*name) { Error("dlsym: empty symbol name"); return nullptr; }
     try {
         std::vector<std::shared_ptr<Module>> search;
+        bool defaultScope = handle == nullptr || handle == reinterpret_cast<void*>(static_cast<std::intptr_t>(-2));
         {
             std::lock_guard lock(modulesMutex);
-            if (handle == nullptr || handle == reinterpret_cast<void*>(static_cast<std::intptr_t>(-2))) {
+#ifdef __APPLE__
+            if (!defaultScope) {
+                auto found = modules.find(reinterpret_cast<std::uintptr_t>(handle));
+                defaultScope = found != modules.end() && found->second->image != nullptr &&
+                    static_cast<const mach_header_64*>(found->second->image)->filetype == MH_EXECUTE;
+            }
+#endif
+            if (defaultScope) {
                 for (const auto& [key, module] : modules) if (module->global) search.push_back(module);
 #ifdef _WIN32
                 std::sort(search.begin(), search.end(), [](const auto& left, const auto& right) { return left->globalOrder < right->globalOrder; });
@@ -363,7 +407,7 @@ void* APS5_VABI dlsym_nid_postfix(void* handle, const char* name) {
         }
         for (const auto& module : search) if (auto* result = FindSymbol(*module, name)) return result;
 #ifndef _WIN32
-        if (handle == nullptr || handle == reinterpret_cast<void*>(static_cast<std::intptr_t>(-2))) {
+        if (defaultScope) {
             if (auto* result = DefaultScopeSymbol(name)) return result;
             const auto nid = Nid::ComputeNid(name, "");
             if (auto* result = DefaultScopeSymbol(nid.c_str())) return result;
@@ -393,7 +437,7 @@ int APS5_VABI dlclose_nid_postfix(void* handle) {
 #ifdef _WIN32
         mutation.UnregisterImage(module->native);
 #elif defined(__APPLE__)
-        if (const auto bias = GuestImageBias(module->native)) mutation.UnregisterImage(reinterpret_cast<const void*>(bias));
+        mutation.UnregisterImage(module->loadBias);
 #else
         mutation.UnregisterImage(reinterpret_cast<const void*>(static_cast<link_map*>(module->native)->l_addr));
 #endif

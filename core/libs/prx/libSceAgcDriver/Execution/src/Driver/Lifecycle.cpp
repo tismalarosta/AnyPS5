@@ -33,6 +33,9 @@
 #include <pthread.h>
 #include <sys/mman.h>
 #endif
+#ifdef __APPLE__
+#include "prx/libSceAgcDriver/Execution/include/Driver/DriverMemory.hpp"
+#endif
 
 namespace AgcDriver::DriverDetail {
 
@@ -54,8 +57,13 @@ void PrintFailure(std::exception_ptr error) {
     std::fflush(stderr);
 }
 
+#if defined(__APPLE__) && !defined(__aarch64__)
+constexpr std::uint64_t DriverMemoryAddress = MacOsDriverMemoryBase;
+constexpr std::size_t DriverMemoryBytes = DriverMemorySpan;
+#else
 constexpr std::uint64_t DriverMemoryAddress = 0xfe0000000ull + GuestArena::GuestAddressOffset;
 constexpr std::size_t DriverMemoryBytes = 2u << 20u;
+#endif
 constexpr std::uint64_t FsTableOffset = 0x40000ull;
 constexpr std::uint64_t FsTableAddress = DriverMemoryAddress + FsTableOffset;
 constexpr std::uint64_t FsTableSlotBytes = 16u;

@@ -17,6 +17,8 @@ set_source_files_properties("${LIBS_INCLUDE_DIR}/prx/libkernel/System/src/Proces
     "${LIBS_INCLUDE_DIR}/prx/libc/src/ApplicationProcessParameters.cpp"
     "${LIBS_INCLUDE_DIR}/prx/libkernel/Module/src/ModuleInfo.cpp"
     TARGET_DIRECTORY anyps5_native_graphics PROPERTIES COMPILE_DEFINITIONS APS5_NATIVE_AGGREGATE=1)
+set_source_files_properties("${LIBS_INCLUDE_DIR}/prx/libSceAgcDriver/Execution/src/VulkanDevice.cpp"
+    TARGET_DIRECTORY anyps5_native_graphics PROPERTIES COMPILE_DEFINITIONS VK_ENABLE_BETA_EXTENSIONS)
 set(nativeComponents libc libkernel libSceAgc libSceAgcDriver
     libSceVideoOut libScePad libSceMouse libSceKeyboard libSceIme)
 set(nativeUnsupportedSources
