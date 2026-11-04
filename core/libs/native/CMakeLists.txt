@@ -299,6 +299,11 @@ add_test_executable(native_direct_memory_alias_tests ../tests/NativeDirectMemory
 target_link_libraries(native_direct_memory_alias_tests PRIVATE anyps5_native_graphics)
 add_test(NAME native_direct_memory_aliases COMMAND native_direct_memory_alias_tests)
 set_tests_properties(native_direct_memory_aliases PROPERTIES TIMEOUT 30)
+
+add_test_executable(native_module_info_tests ../tests/NativeModuleInfo.cpp)
+target_link_libraries(native_module_info_tests PRIVATE anyps5_native_graphics)
+add_test(NAME native_module_info COMMAND native_module_info_tests)
+set_tests_properties(native_module_info PROPERTIES TIMEOUT 30)
 set(padExample "${CMAKE_SOURCE_DIR}/core/aot/examples/pad_input")
 enable_language(C)
 set(padSdk "${CMAKE_SOURCE_DIR}/3rdparty/ps5link-sdk")
