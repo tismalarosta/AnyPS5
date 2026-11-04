@@ -105,6 +105,8 @@ downloads/
 !core/aot/catalogs/glibc-x86_64.json
 !core/aot/tests/guest_lab_cases.json
 !demo/web/i18n/*.json
+!/docs/run-report.schema.json
+!/docs/run-report-fixtures/*.json
 
 !/assets/*.jpg
 !/assets/*.png

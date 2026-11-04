@@ -1328,7 +1328,7 @@
           "evidence": [
             {
               "path": "core/libs/prx/libkernel/System/src/Notification.cpp",
-              "sha256": "88fce91b1f7116d80efb3df4f89818a2424759e03b58ebf317d1c888b4b4eadd",
+              "sha256": "dd9cfdbbcd23439abfa1b5974292f6abba9d2219216f0ebcd90572b578285fc7",
               "excerpt": "sceKernelSendNotificationRequest(int device, const void* request, std::size_t size, int flags)"
             }
           ]
@@ -1869,7 +1869,7 @@
     }
   },
   "qualification": {
-    "facts_sha256": "7948f7f8dee40046863bf45d621e35317ab740f05400c08cca7951de5d06f8d0",
+    "facts_sha256": "dd6fd56ecb4e5e8f6fab90a747d0152ec4b2f42d18010dca2557cc1a1944404a",
     "sources": [
       {
         "path": "core/aot/examples/gpu_cube/variant.py",

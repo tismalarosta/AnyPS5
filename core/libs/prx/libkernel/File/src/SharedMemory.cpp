@@ -42,6 +42,7 @@ extern "C" _invalid_parameter_handler _set_thread_local_invalid_parameter_handle
 #include <cstdio>
 #ifdef __APPLE__
 #include <filesystem>
+#include <sys/param.h>
 #endif
 #endif
 
@@ -121,6 +122,20 @@ bool IsHostSharedMemoryDescriptor(int descriptor) {
         return std::all_of(value.begin(), value.end(), [](wchar_t character) { return character >= L'0' && character <= L'9'; });
     };
     return decimal(suffix.substr(0, separator)) && decimal(suffix.substr(separator + 1));
+#elif defined(__APPLE__)
+    struct stat status{};
+    if (::fstat(descriptor, &status) != 0 || !S_ISREG(status.st_mode) || status.st_nlink != 0) return false;
+    char objectPath[MAXPATHLEN];
+    if (::fcntl(descriptor, F_GETPATH, objectPath) != 0) return false;
+    const std::string_view path(objectPath);
+    const auto slash = path.rfind('/');
+    if (slash == std::string_view::npos || !path.substr(slash + 1).starts_with("anyps5-shm-")) return false;
+    static const std::string directory = [] {
+        std::error_code error;
+        auto canonical = std::filesystem::canonical(std::filesystem::temp_directory_path(error), error);
+        return error ? std::string{} : canonical.string();
+    }();
+    return !directory.empty() && std::string_view(objectPath, slash) == directory;
 #else
     (void)descriptor;
     return false;
@@ -604,6 +619,9 @@ int OpenNamedFile(const char* path, int flags, int mode) {
     int validationError = 0;
     const auto hostName = NamedHostName(path, validationError);
     if (validationError != 0) return Fail(NamedGuestError(validationError) ? NamedGuestError(validationError) : GuestInvalid);
+#ifdef __APPLE__
+    NotImplemented_nid_no_patch("shm_open");
+#endif
     HostShmLock namespaceLock;
     if (namespaceLock.Error() != 0) {
         errno = namespaceLock.Error();
@@ -682,10 +700,8 @@ int CreateAnonymousFile() {
     return -1;
 #elif defined(__APPLE__)
     auto path = (std::filesystem::temp_directory_path() / "anyps5-shm-XXXXXX").string();
-    const int descriptor = mkstemp(path.data());
-    if (descriptor < 0) return -1;
-    unlink(path.c_str());
-    fcntl(descriptor, F_SETFD, FD_CLOEXEC);
+    const int descriptor = mkostemp(path.data(), O_CLOEXEC);
+    if (descriptor >= 0) ::unlink(path.c_str());
     return descriptor;
 #else
     const int descriptor = memfd_create("anyps5 shm_open", MFD_CLOEXEC);
@@ -1050,6 +1066,9 @@ extern "C" int APS5_VABI shm_unlink_nid_postfix(const char* path) {
     int validationError = 0;
     const auto hostName = NamedHostName(path, validationError);
     if (validationError != 0) return Fail(NamedGuestError(validationError) ? NamedGuestError(validationError) : GuestInvalid);
+#ifdef __APPLE__
+    NotImplemented_nid_no_patch("shm_unlink");
+#endif
     HostShmLock namespaceLock;
     if (namespaceLock.Error() != 0) {
         errno = namespaceLock.Error();

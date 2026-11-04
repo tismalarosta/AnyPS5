@@ -1,6 +1,9 @@
 #include "prx/libSceAgc/Misc/include/StaticBuffer.hpp"
 #include "prx/libSceAgcDriver/Execution/include/Driver.hpp"
 #include "prx/libc/include/GuestArena.hpp"
+#ifdef __APPLE__
+#include "prx/libSceAgcDriver/Execution/include/Driver/DriverMemory.hpp"
+#endif
 
 #include <array>
 #include <cstdint>
@@ -19,6 +22,8 @@ void check(bool condition, const char* message) {
 std::uintptr_t StaticTable() {
 #if defined(__APPLE__) && defined(__aarch64__)
     return reinterpret_cast<std::uintptr_t>(AgcDriverStaticTable_nid_postfix());
+#elif defined(__APPLE__)
+    return AgcDriver::DriverDetail::RetargetPs5DriverMemory(0xfe0040000ull) + GuestArena::GuestAddressOffset;
 #else
     return 0xfe0040000ull + GuestArena::GuestAddressOffset;
 #endif
